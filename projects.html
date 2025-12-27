@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Projects | Mawda Alguraafi</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg0:#07030f;
+      --bg1:#120522;
+      --panel:#1b0b2e;
+      --panel2:#140824;
+      --stroke:rgba(167,118,255,.22);
+      --text:#ece7ff;
+      --muted:rgba(236,231,255,.72);
+      --muted2:rgba(236,231,255,.55);
+      --accent:#a36bff;
+      --accent2:#7c3cff;
+      --radius:18px;
+      --shadow: 0 14px 35px rgba(0,0,0,.45);
+      --shadow2: 0 10px 24px rgba(0,0,0,.35);
+      --max:980px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(900px 600px at 50% 10%, rgba(163,107,255,.20), transparent 60%),
+        radial-gradient(700px 500px at 50% 45%, rgba(124,60,255,.18), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #0b0416);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto;}
+
+    /* =========================
+       PAGE LOAD ANIMATIONS
+       ========================= */
+    [data-animate]{
+      opacity:0;
+      animation-duration:.9s;
+      animation-fill-mode:forwards;
+      animation-timing-function:cubic-bezier(.22,.61,.36,1);
+      will-change: transform, opacity;
+    }
+    @keyframes slideInRight{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes slideInLeft {from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:translateX(0)}}
+    @keyframes slideInUp   {from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+    [data-animate="right"]{animation-name:slideInRight}
+    [data-animate="left"]{animation-name:slideInLeft}
+    [data-animate="up"]{animation-name:slideInUp}
+    .delay-1{animation-delay:.12s}
+    .delay-2{animation-delay:.24s}
+    .delay-3{animation-delay:.36s}
+    .delay-4{animation-delay:.48s}
+    .delay-5{animation-delay:.60s}
+
+    @media (prefers-reduced-motion: reduce){
+      [data-animate]{animation:none !important; opacity:1 !important; transform:none !important;}
+    }
+
+    /* =========================
+       NAV (LIKE INDEX) – LINKS FIXED
+       ========================= */
+    .topbar{
+      position: sticky;
+      top: 12px;
+      z-index: 100;
+      background: transparent;
+    }
+    .nav-pill{
+      display:flex;
+      justify-content:center;
+      gap:18px;
+      padding:0;
+      background:none;
+      box-shadow:none;
+    }
+    .nav-item{
+      position:relative;
+      z-index:1;
+      padding:8px 16px;
+      font-size:13px;
+      font-weight:600;
+      color: rgba(236,231,255,.75);
+      border-radius:999px;
+      transition: background .18s ease, color .18s ease, box-shadow .18s ease;
+    }
+    .nav-item:hover{
+      color: rgba(236,231,255,.98);
+      background: rgba(163,107,255,.14);
+    }
+.nav-item.active{
+  background: transparent;
+  box-shadow: none;
+  color: rgba(236,231,255,.75);
+}
+.nav-item{
+  position: relative;
+  z-index: 1;
+}
+
+.nav-item::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:50%;
+  width: calc(100% + 8px);
+  height: calc(100% + 6px);
+  border-radius: 999px;
+  background: rgba(163,107,255,.10);
+  border: 1px solid rgba(163,107,255,.18);
+  transform: translate(-50%,-50%) scale(.96);
+  opacity: 0;
+  transition: opacity .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease;
+  z-index: -1;
+}
+
+/* Hover فقط */
+.nav-item:hover::before{
+  opacity: 1;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-color: rgba(255,255,255,.14);
+  box-shadow: 0 10px 22px rgba(124,60,255,.35);
+  transform: translate(-50%,-50%) scale(1);
+}
+
+
+    /* =========================
+       HERO
+       ========================= */
+    .hero{
+      padding-top: 100px;
+      padding-bottom: 60px;
+      text-align:center;
+    }
+    .hero-inner{
+      display:grid;
+      gap:14px;
+      justify-items:center;
+      margin-top: 10px;
+    }
+    .hero h1{
+      margin:0;
+      font-size:34px;
+      letter-spacing:-.4px;
+      line-height:1.15;
+    }
+    .hero p{
+      margin:0 auto;
+      max-width:820px;
+      color:var(--muted);
+      line-height:1.75;
+      font-size:13.8px;
+    }
+
+    .orbit-image-wrap{
+      margin: 18px 0 0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      position:relative;
+      height:110px;
+    }
+    .orbit-image{
+      width: 520px;
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 20px 28px rgba(0,0,0,.45));
+      opacity: .95;
+      user-select:none;
+      pointer-events:none;
+    }
+
+    /* =========================
+       SECTION
+       ========================= */
+    section{ padding: 55px 0; }
+    .section-title{
+      margin:0 0 14px;
+      text-align:center;
+      font-size:22px;
+      letter-spacing:-.2px;
+    }
+    .subhead{
+      text-align:center;
+      margin:-6px 0 18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* =========================
+       PROJECTS GRID (CARDS)
+       ========================= */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:18px;
+      margin-top:18px;
+    }
+
+    .card{
+      padding:14px;
+      border-radius:18px;
+      border:1px solid rgba(163,107,255,.18);
+      background: linear-gradient(180deg, rgba(24,9,40,.75), rgba(14,5,26,.75));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      will-change: transform;
+      cursor:pointer;
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background: radial-gradient(520px 180px at 30% 0%, rgba(163,107,255,.20), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+    }
+
+    .card:hover{
+      transform: translateY(-7px);
+      box-shadow: 0 26px 54px rgba(0,0,0,.50), 0 0 0 1px rgba(163,107,255,.22);
+      border-color: rgba(163,107,255,.35);
+    }
+
+    .thumb{
+      width:100%;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+      background: rgba(0,0,0,.18);
+      line-height:0;
+      position:relative;
+    }
+
+    .thumb img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:14px;
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .card:hover .thumb img{
+      transform: scale(1.05);
+      filter: saturate(1.06) contrast(1.03);
+    }
+
+    .thumb::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(420px 200px at 30% 10%, rgba(163,107,255,.22), transparent 55%),
+        linear-gradient(180deg, transparent, rgba(0,0,0,.20));
+      opacity:0;
+      transition: opacity .25s ease;
+      pointer-events:none;
+      border-radius:14px;
+    }
+    .card:hover .thumb::after{opacity:1}
+
+    .card h3{
+      margin:12px 0 6px;
+      font-size:14px;
+      font-weight:800;
+      position:relative;
+    }
+    .card p{
+      margin:0 0 10px;
+      color:var(--muted);
+      font-size:12.8px;
+      line-height:1.75;
+      position:relative;
+    }
+
+    .card-actions{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-top:10px;
+      position:relative;
+    }
+
+    .btn{
+      border:1px solid rgba(163,107,255,.22);
+      background: rgba(20,8,34,.55);
+      color:var(--text);
+      padding:10px 16px;
+      border-radius:14px;
+      font-size:13px;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
+      user-select:none;
+    }
+
+    .btn.mini{
+      min-width:auto;
+      padding:9px 12px;
+      font-size:12px;
+      border-radius:13px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: rgba(255,255,255,.14);
+    }
+    .btn.mini:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 16px 26px rgba(124,60,255,.22);
+    }
+
+    .icons{display:flex; gap:10px}
+
+    .iconbtn{
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(163,107,255,.10);
+      border: 1px solid rgba(163,107,255,.18);
+      color: rgba(236,231,255,.85);
+      transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease, border-color .18s ease;
+      position:relative;
+      z-index:5;
+    }
+    .iconbtn svg{width:18px;height:18px;opacity:.95}
+    .iconbtn:hover{
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-color: rgba(255,255,255,.14);
+      box-shadow: 0 10px 22px rgba(124,60,255,.35);
+      transform: translateY(-1px);
+    }
+
+    /* =========================
+       EXPAND DETAILS
+       ========================= */
+    .details{
+      margin-top:12px;
+      border-top: 1px solid rgba(163,107,255,.14);
+      padding-top:12px;
+      display:none;
+      position:relative;
+    }
+
+    .card.expanded .details{
+      display:block;
+      animation: detailsIn .22s ease forwards;
+    }
+
+    @keyframes detailsIn{
+      from{opacity:0; transform: translateY(10px);}
+      to{opacity:1; transform: translateY(0);}
+    }
+
+    .list{
+      margin:10px 0 0;
+      padding-left:18px;
+      color: rgba(236,231,255,.78);
+      font-size:12.8px;
+      line-height:1.75;
+    }
+    .list li{ margin:6px 0; }
+
+    .expand-hint{
+      font-size:12px;
+      color: rgba(236,231,255,.55);
+      margin-top:6px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .caret{
+      width:10px; height:10px;
+      border-right:2px solid rgba(236,231,255,.65);
+      border-bottom:2px solid rgba(236,231,255,.65);
+      transform: rotate(45deg);
+      transition: transform .18s ease;
+    }
+    .card.expanded .caret{ transform: rotate(225deg); }
+
+    .anchor{ scroll-margin-top: 90px; }
+
+    /* =========================
+       CHIPS
+       ========================= */
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin:12px 0 0;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+      color: rgba(236,231,255,.85);
+      background: rgba(163,107,255,.10);
+      border:1px solid rgba(163,107,255,.18);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .card:hover .chip{
+      background: rgba(163,107,255,.14);
+      border-color: rgba(163,107,255,.26);
+      box-shadow: 0 10px 20px rgba(124,60,255,.18);
+      transform: translateY(-1px);
+    }
+
+    /* =========================
+       FOOTER
+       ========================= */
+    footer{
+      margin-top: 40px;
+      padding: 28px 0 18px;
+      background: linear-gradient(180deg, rgba(10,4,20,.20), rgba(6,3,14,.70));
+      border-top: 1px solid rgba(163,107,255,.16);
+    }
+
+    .footer-inner{
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .foot h4{
+      margin: 0 0 12px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      color: rgba(236,231,255,.95);
+    }
+
+    .foot p{
+      margin: 0;
+      color: rgba(236,231,255,.70);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .foot a{
+      color: rgba(236,231,255,.72);
+      transition: color .18s ease, opacity .18s ease;
+    }
+
+    .foot a:hover{ color: rgba(236,231,255,.96); opacity: 1; }
+
+    .foot ul{
+      list-style:none;
+      padding:0;
+      margin:0;
+      display:grid;
+      gap:10px;
+    }
+
+    .foot ul a{
+      position:relative;
+      padding:6px 14px;
+      border-radius:999px;
+      color: rgba(236,231,255,.75);
+      transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+    }
+
+    .foot ul a:hover{
+      color:#fff;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 10px 22px rgba(124,60,255,.35);
+      transform: translateY(-1px);
+    }
+
+    .social{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top:10px;
+    }
+
+    .footer-bottom{
+      margin-top: 18px;
+      text-align:center;
+      color: rgba(236,231,255,.55);
+      font-size: 12.5px;
+    }
+
+    @media (max-width: 920px){
+      .projects-grid{ grid-template-columns: 1fr; }
+      .footer-inner{ grid-template-columns: 1fr; gap:18px; text-align:center; }
+      .social{ justify-content:center; }
+    }
+    @media (max-width: 560px){
+      .hero h1{font-size:30px}
+    }
+/* =========================
+   PROJECTS – RECTANGULAR CARDS
+   ========================= */
+
+/* grid */
+.projects-grid{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+/* card */
+.card{
+  display: grid;
+  grid-template-columns: 38% 62%;   /* صورة | محتوى */
+  gap: 18px;
+
+  padding: 16px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, rgba(24,9,40,.75), rgba(14,5,26,.75));
+  border: 1px solid rgba(163,107,255,.18);
+  box-shadow: 0 18px 40px rgba(0,0,0,.45);
+
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+/* hover */
+.card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 28px 55px rgba(0,0,0,.55);
+  border-color: rgba(163,107,255,.35);
+}
+
+/* image */
+.thumb{
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .35s ease;
+}
+
+.card:hover .thumb img{
+  transform: scale(1.06);
+}
+
+/* content */
+.card-body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-body h3{
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.card-body p{
+  margin: 0 0 12px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(236,231,255,.75);
+}
+
+/* chips */
+.chips{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.chip{
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 999px;
+  background: rgba(163,107,255,.12);
+  border: 1px solid rgba(163,107,255,.22);
+  color: rgba(236,231,255,.9);
+}
+
+/* actions */
+.card-actions{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.iconbtn{
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, #a36bff, #7c3cff);
+  border: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.iconbtn:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(124,60,255,.35);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 900px){
+  .card{
+    grid-template-columns: 1fr;
+  }
+
+  .card-actions{
+    justify-content: flex-start;
+  }
+}
+/* =========================
+   FOOTER SOCIAL ICONS - HOVER MOVE
+   ========================= */
+
+footer .social .iconbtn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* مهم: عشان الحركة تكون ناعمة */
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
+  will-change: transform;
+
+  /* اختياري لو فيه قص */
+  position: relative;
+}
+
+/* الحركة + glow */
+footer .social .iconbtn:hover{
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 14px 30px rgba(163, 107, 255, .55);
+}
+
+/* حركة عند الضغط */
+footer .social .iconbtn:active{
+  transform: translateY(-2px) scale(1.02);
+}
+/* FIX GitHub button position inside project card */
+.card-body{ min-width: 0; }
+
+.card-actions{
+  margin-top: auto;                 /* ينزل لتحت */
+  display: flex;
+  justify-content: flex-end;        /* يمين */
+  align-items: center;
+}
+
+/* يلغي أي ستايل قديم يخليه دائرة/متموضع */
+.card-actions .iconbtn{
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 16px !important;
+  border-radius: 999px !important;
+
+  white-space: nowrap;
+}
+
+/* لو عندك wrapper اسمه icons ومخرب التموضع */
+.card-actions .icons{
+  position: static !important;
+  display: flex !important;
+  justify-content: flex-end;
+  width: 100%;
+}
+/* ضبط مكان GitHub داخل الكارد */
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+
+/* خلي الزر تحت الـ chips */
+.card-actions{
+  margin-top: 14px;          /* مسافة بعد الـ chips */
+  display: flex;
+  justify-content: flex-start; /* يسار مع المحتوى */
+}
+
+/* ستايل الزر */
+.card-actions .iconbtn{
+  position: static !important;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #a36bff, #7c3cff);
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(124,60,255,.35);
+}
+/* =========================
+   FOOTER CONNECT ICONS (LIKE SCREENSHOT)
+   ========================= */
+
+footer .social{
+  display: flex;
+  gap: 14px;
+}
+
+footer .social .iconbtn{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,.06);                 /* داكن */
+  border: 1px solid rgba(163,107,255,.22);           /* موف خفيف */
+  color: rgba(236,231,255,.85);
+
+  box-shadow: 0 10px 22px rgba(0,0,0,.35);
+  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
+  will-change: transform;
+}
+
+footer .social .iconbtn svg{
+  width: 20px;
+  height: 20px;
+  display: block;
+}
+
+/* Hover = يصير موف + يطلع لفوق + glow */
+footer .social .iconbtn:hover{
+  transform: translateY(-6px) scale(1.07);
+  background: linear-gradient(135deg, #a36bff, #7c3cff);
+  border-color: rgba(255,255,255,.14);
+  color: #fff;
+  box-shadow: 0 16px 34px rgba(163,107,255,.45);
+}
+
+/* Active click */
+footer .social .iconbtn:active{
+  transform: translateY(-2px) scale(1.03);
+}
+
+/* لو الحركة تنقص/تتقّص بسبب overflow */
+footer .footer-inner,
+footer .social{
+  overflow: visible;
+}
+/* =========================
+   FIX PROJECT THUMB IMAGES (LONG TEXT SAFE)
+   ========================= */
+
+/* خلّي عمود الصورة ثابت وما يتمدد مع طول النص */
+.card{
+  align-items: start;                 /* لا تخلي الصورة تتمطط مع النص */
+}
+
+/* مساحة الصورة */
+.thumb{
+  height: 220px;                      /* عدلي الرقم لو تبين أكبر */
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+/* الصورة داخلها */
+.thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                  /* يعبّي بدون تشويه */
+  object-position: center;            /* يركز بالصورة */
+  display: block;
+}
+
+/* شاشات أكبر: خلي الصورة أعلى شوي */
+@media (min-width: 1100px){
+  .thumb{ height: 240px; }
+}
+
+/* موبايل: ارتفاع أقل */
+@media (max-width: 900px){
+  .thumb{ height: 200px; }
+}
+.thumb img{ object-fit: contain; background: rgba(0,0,0,.25); }
+/* تصغير النص داخل كروت المشاريع */
+.card-body h3{
+  font-size: 14px;     /* كان أكبر */
+  line-height: 1.4;
+}
+
+.card-body p{
+  font-size: 12.5px;   /* كان 13–14 */
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+
+/* تصغير الـ chips شوي */
+.chip{
+  font-size: 11px;
+  padding: 5px 10px;
+}
+
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="topbar" data-animate="up">
+    <div class="container">
+      <nav class="nav-pill">
+        <a class="nav-item" href="index.html#home">Home</a>
+        <a class="nav-item" href="index.html#about">About</a>
+        <a class="nav-item" href="index.html#skills">Skills</a>
+        <a class="nav-item active" href="projects.html">Projects</a>
+
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="container">
+      <div class="hero-inner">
+        <h1 data-animate="up" class="delay-1">My Projects</h1>
+        <p data-animate="up" class="delay-2">
+          A selection of projects across AI, data analysis, and interactive dashboards.
+          Click any card to expand details.
+        </p>
+
+        <div class="orbit-image-wrap" aria-hidden="true" data-animate="up" class="delay-3">
+          <img src="Image/Skills.png" alt="" class="orbit-image">
+        </div>
+      </div>
+    </div>
+  </header>
+<section>
+  <div class="container">
+    <h2 class="section-title"></h2>
+    <p class="subhead"></p>
+
+    <div class="projects-grid">
+
+      <!-- 1) Nabāhah -->
+      <article class="card" id="nabahah">
+        <div class="thumb">
+          <img src="Image/1.png" alt="Nabāhah Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>Nabāhah (نباهة) – AI-based Laboratory Safety System</h3>
+          <p>
+            Nabāhah is an AI-powered laboratory safety monitoring system designed to enhance safety compliance and reduce real-world risks in laboratory environments.
+            The platform uses computer vision to monitor PPE compliance and detect hazardous situations in real time, then provides actionable insights through an interactive dashboard and alerts.<br><br>
+            <strong>Key features:</strong><br>
+            • Real-time detection of PPE violations, red-zone breaches, and chemical or liquid spills<br>
+            • Live monitoring dashboard built with FastAPI<br>
+            • Centralized logging of detections and alerts in Supabase<br>
+            • Bilingual voice alerts (Arabic/English) using Edge-TTS<br>
+            • RAG-based chatbot for laboratory safety queries
+          </p>
+
+          <div class="chips">
+            <span class="chip">YOLOv8</span>
+            <span class="chip">Computer Vision</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Supabase</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MUSAB10000/NABAHAH" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2) King County -->
+      <article class="card" id="king-county">
+        <div class="thumb">
+          <img src="Image/2.png" alt="King County Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>King County – Housing Sales Analytics</h3>
+          <p>
+King County Housing Sales Analysis & Prediction is a data analytics and machine learning project that analyzes house sales data in
+King County (USA) and builds a predictive model for estimating housing prices. The project integrates exploratory data analysis, regression modeling, and an interactive dashboard to deliver actionable insights.<br><br>
+            <strong>Key features:</strong><br>
+            • Exploratory data analysis (EDA) of housing prices and key property attributes<br>
+            • Feature engineering with log-transformed house prices<br>
+            • OLS regression model using key features such as living area (sqft), grade, bedrooms, bathrooms, condition, and waterfrontbr>
+            • Model evaluation using R², RMSE, MAE, and accuracy metrics
+          </p>
+
+          <div class="chips">
+            <span class="chip">EDA</span>
+            <span class="chip">Data Cleaning</span>
+            <span class="chip">Feature Engineering</span>
+            <span class="chip">KPIs</span>
+            <span class="chip">Model evaluation</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/King-County-Housing-Sales" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3) InterviewSense -->
+      <article class="card" id="interviewsense">
+        <div class="thumb">
+          <img src="Image/3.png" alt="InterviewSense">
+        </div>
+
+        <div class="card-body">
+          <h3>InterviewSense – AI Interview Evaluation</h3>
+          <p>
+            InterviewSense is an AI-powered system that evaluates job applicants by analyzing speech, text, and facial expressions to provide objective assessments.
+            It combines speech-to-text conversion, text similarity analysis, and facial emotion recognition to support fair and data-driven hiring decisions.<br><br>
+            <strong>Key features:</strong><br>
+            • Automatic Speech Recognition (ASR) and transcription<br>
+            • Q&A generation for interview flow support<br>
+            • Text similarity scoring (Cosine & Jaccard)<br>
+            • Facial Emotion Recognition (FER) for candidate evaluation
+          </p>
+
+          <div class="chips">
+            <span class="chip">ASR</span>
+            <span class="chip">NLP</span>
+            <span class="chip">FER</span>
+            <span class="chip">AI Evaluation</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/InterviewSense" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4) Adidas -->
+      <article class="card" id="adidas">
+        <div class="thumb">
+          <img src="Image/4.png" alt="Adidas Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>Adidas Sales Dashboard – EDA & Visualization</h3>
+          <p>
+Adidas Sales Dashboard is a data analytics system that analyzes Adidas sales performance through exploratory data analysis and interactive visualizations. It combines data cleaning, statistical analysis, and dashboarding to provide clear and actionable business insights.<br><br>
+            <strong>Key features:</strong><br>
+            • Data cleaning and preprocessing of sales records<br>
+            • Exploratory data analysis (EDA) of sales trends and performance<br>
+            • Interactive dashboard for real-time data exploration<br>
+            • KPI tracking for total sales, profit, units sold, and top products<br>
+            • Visual analysis of regional performance and sales methods
+          </p>
+
+          <div class="chips">
+            <span class="chip">EDA</span>
+            <span class="chip">Streamlit</span>
+            <span class="chip">Plotly</span>
+            <span class="chip">Python</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Adidas_Sales_EDA" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5) Saudi Business -->
+      <article class="card" id="saudi-business">
+        <div class="thumb">
+          <img src="Image/5.png" alt="Saudi Business Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>Saudi Arabia Business Activities Dashboard</h3>
+          <p>
+This dashboard provides an overview of business activities across different regions of Saudi Arabia.It shows the distribution of small, medium, and large businesses with interactive visuals. Users can explore key data, including the total number of businesses, their sizes, and their economic activities.
+<br><br>
+            <strong>Key features:</strong><br>
+            • Regional Distribution: Displays the number of businesses in each region, highlighting major areas like Riyadh and Makkah.<br>
+            • Business Size Analysis: Divides businesses into micro, small, medium, and large categories for a clear view.<br>
+            • Economic Activities: Shows leading activities such as trade, manufacturing, and other key industries.<br>
+            • Map Visualization: Offers a geographical view of business distribution by region.
+          </p>
+
+          <div class="chips">
+            <span class="chip">KPIs</span>
+            <span class="chip">Dashboard</span>
+            <span class="chip">Power BI</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Business-activities-in-various-cities-of-the-Kingdom-of-Saudi-Arabia-Dashbored" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6) E-Commerce -->
+      <article class="card" id="ecommerce">
+        <div class="thumb">
+          <img src="Image/6.png" alt="E-Commerce Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>E-Commerce Customer Behavior Dashboard</h3>
+          <p>
+            This dashboard provides an overview of customer purchasing behavior in e-commerce. It highlights sales performance, customer satisfaction, and the impact of ads and social media on buying decisions.<br><br>
+            <strong>Key features:</strong><br>
+            • Sales Performance: Displays total sales, number of customers, and return rate.<br>
+            • Customer Insights: Shows satisfaction by purchase intent and average product rating.<br>
+            • Ad & Social Media Impact: Analyzes sales distribution based on ad engagement and social influence.<br>
+            • Category & Time Analysis: Breaks down sales by product categories and tracks trends by month.
+          </p>
+
+          <div class="chips">
+            <span class="chip">Customer Analytics</span>
+            <span class="chip">Microsoft Excel</span>
+            <span class="chip">Power BI</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/E-Commerce-Customer-Behavior-Dashboard-" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 7) Uber -->
+      <article class="card" id="uber">
+        <div class="thumb">
+          <img src="Image/7.png" alt="Uber Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>Uber Bookings Overview Dashboard</h3>
+          <p>
+            
+This dashboard provides insights into Uber booking performance and customer behavior. It covers completed, cancelled, and incomplete bookings, along with preferred payment methods and monthly trends.<br><br>
+            <strong>Key features:</strong><br>
+            • Booking Overview: Shows total bookings and breakdown by status.<br>
+            • Payment Analysis: Highlights the most used payment methods.<br>
+            • Trend Monitoring: Displays booking activity by month.<br>
+            • Filtering Options: Allows users to analyze bookings by date and vehicle type.
+          </p>
+
+          <div class="chips">
+            <span class="chip">KPIs</span>
+            <span class="chip">Microsoft Excel</span>
+            <span class="chip">Data Processing</span>
+            <span class="chip">Power BI</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Uber-Data-Analysis-Power-BI" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- 8) (Optional) Riyadh Tracking -->
+      <article class="card" id="riyadh-tracking">
+        <div class="thumb">
+          <img src="Image/8.png" alt="Riyadh Tracking Dashboard">
+        </div>
+
+        <div class="card-body">
+          <h3>Revenue Tracking Dashboard by Product and Region</h3>
+          <p>
+            
+This dashboard provides a comprehensive view of revenue distribution across different products and regions in Saudi Arabia. It enables users to analyze sales performance, top products, and regional contributions.<br><br>
+            <strong>Key Features:</strong><br>
+            • Total Revenue: Displays the overall revenue and number of customers.<br>
+            • Geographic Distribution: Interactive map showing revenue by region.<br>
+            • Product Analysis: Compares revenue by product and identifies top-performing items.<br>
+            • Time Trends: Tracks daily revenue trends with clear performance fluctuations.
+          </p>
+
+          <div class="chips">
+            <span class="chip">Power BI</span>
+            <span class="chip">KPIs</span>
+            <span class="chip">Data Cleaning & Processing</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Revenue-Tracking-Dashboard-by-Product-and-Region" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- FOOTER -->
+  <footer data-animate="up" class="delay-3">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="foot" data-animate="left" class="delay-2">
+          <h4>Mawda Alguraafi</h4>
+          <p>Data & AI | Analytics | Dashboard Development</p>
+        </div>
+
+        <div class="foot" data-animate="up" class="delay-3">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#skills">Skills</a></li>
+            <li><a href="projects.html#home">Projects</a></li>
+          </ul>
+        </div>
+
+        <div class="foot" data-animate="right" class="delay-2">
+          <h4>Connect</h4>
+          <div class="social">
+            <a class="iconbtn" href="mailto:MawdaALguraafi@gmail.com" title="Email">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
+                <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </a>
+
+            <a class="iconbtn" href="https://www.linkedin.com/in/mawda-alguraafi/" target="_blank" rel="noopener" title="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path d="M6 9v11" stroke="currentColor" stroke-width="2"/>
+                <circle cx="7.5" cy="6.5" r="1.5" fill="currentColor"/>
+                <path d="M11 9v11" stroke="currentColor" stroke-width="2"/>
+                <path d="M11 13c0-2 1-4 3.5-4S18 11 18 14.5V20" stroke="currentColor" stroke-width="2"/>
+              </svg>
+            </a>
+
+            <a class="iconbtn" href="https://github.com/MawdaALguraafi" target="_blank" rel="noopener" title="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7
+                         .5.1.7-.2.7-.5v-1.7
+                         c-2.8.6-3.4-1.4-3.4-1.4
+                         -.4-1.2-1.1-1.5-1.1-1.5
+                         -.9-.6.1-.6.1-.6
+                         1 .1 1.5 1.1 1.5 1.1
+                         .9 1.6 2.4 1.1 3 .9
+                         .1-.7.4-1.1.6-1.4
+                         -2.2-.3-4.6-1.2-4.6-5.1
+                         0-1.1.4-2 1-2.7
+                         -.1-.3-.4-1.3.1-2.7
+                         0 0 .8-.3 2.7 1
+                         .8-.2 1.7-.3 2.5-.3
+                         .9 0 1.7.1 2.5.3
+                         1.9-1.3 2.7-1 2.7-1
+                         .5 1.4.2 2.4.1 2.7
+                         .6.7 1 1.6 1 2.7
+                         0 3.9-2.4 4.8-4.7 5.1
+                         .4.3.7.9.7 1.9v2.8
+                         c0 .3.2.6.7.5
+                         3.9-1.3 6.8-5.2 6.8-9.7
+                         C22 6.6 17.5 2 12 2z"
+                      fill="currentColor"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">© 2025 Mawda Alguraafi</div>
+    </div>
+  </footer>
+</body>
+</html>
