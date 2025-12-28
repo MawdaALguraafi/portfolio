@@ -648,6 +648,69 @@ html[data-theme="light"] .icon-toggle:hover{
     gap: 12px !important;
   }
 }
+/* =========================
+   FINAL MOBILE HEADER FIX
+   Break absolute layout safely
+   ========================= */
+@media (max-width: 768px){
+
+  /* الحاوية الرئيسية */
+  .topbar .nav{
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 12px 14px !important;
+  }
+
+  /* قائمة الروابط (Home / About / Skills / Projects) */
+  .nav-center{
+    position: relative !important;   /* ❗ يكسر absolute */
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+
+    width: 100% !important;
+    order: 1 !important;
+    white-space: normal !important;
+  }
+
+  /* أزرار اللغة + الثيم */
+  .lang-switch{
+    position: relative !important;   /* ❗ يكسر absolute */
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    gap: 10px !important;
+
+    width: 100% !important;
+    order: 2 !important;
+    margin: 0 !important;
+  }
+
+  /* تصغير بسيط للعناصر */
+  .nav-item{
+    height: 38px !important;
+    padding: 8px 14px !important;
+    font-size: 13px !important;
+  }
+
+  .icon-toggle{
+    width: 40px !important;
+    height: 40px !important;
+  }
+}
 
 
   </style>
