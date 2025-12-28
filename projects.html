@@ -496,6 +496,90 @@ html[data-theme="light"] .icon-toggle:hover{
 .icon-toggle svg *{
   stroke: currentColor !important;
 }
+/* =========================
+   MOBILE FIX: Footer layout
+   ========================= */
+@media (max-width: 680px){
+
+  /* أي Grid/أعمدة بالفوتر -> عمود واحد */
+  .foot-grid,
+  .footer-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    text-align: center;
+  }
+
+  /* قوائم الروابط تتوسّط */
+  .foot ul,
+  .foot .links{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .foot ul li{
+    margin: 8px 0;
+  }
+
+  /* مجموعة الأيقونات (Connect) تصير صف واحد وتلتف */
+  .social,
+  .connect,
+  .foot .social{
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
+  }
+
+  /* أيقونات التواصل حجمها موحد */
+  footer .iconbtn,
+  footer .social .iconbtn{
+    width: 44px;
+    height: 44px;
+  }
+
+  /* سطر الحقوق في النص */
+  .footer-bottom{
+    text-align: center !important;
+  }
+}
+/* =========================
+   MOBILE FIX: Header layout (Lang/Theme icons)
+   ========================= */
+@media (max-width: 680px){
+
+  /* خلّي شريط التنقل يلف بدل ما يتكدّس */
+  .nav{
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  /* اللينكات (Home/About/Skills/Projects) تاخذ سطر لحالها */
+  .nav-pill{
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    order: 2;
+  }
+
+  /* أيقونات اللغة/الثيم تنزل سطر فوق/تحت اللينكات (بدون تداخل) */
+  .lang-switch{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    order: 3;
+    margin-top: 4px;
+  }
+
+  /* تصغير بسيط للأيقونات عشان تكون مريحة */
+  .icon-toggle{
+    width: 40px;
+    height: 40px;
+  }
+}
 
 
   </style>
