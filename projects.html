@@ -580,6 +580,74 @@ html[data-theme="light"] .icon-toggle:hover{
     height: 40px;
   }
 }
+/* =========================
+   FIX MOBILE OVERLAP (HEADER + FOOTER)
+   Paste at END of your CSS
+   ========================= */
+
+/* --- HEADER: stop absolute overlap on small screens --- */
+@media (max-width: 680px){
+
+  /* nav container becomes flexible */
+  .nav-pill{
+    height: auto !important;
+    padding: 10px 10px 12px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 10px !important;
+  }
+
+  /* center links become normal flow + wrap */
+  .nav-center{
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    white-space: normal !important; /* مهم عشان ما يضغط */
+  }
+
+  /* switch buttons move into their own row */
+  .lang-switch{
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    gap: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* reduce nav pills a bit */
+  .nav-item{
+    padding: 8px 12px !important;
+    height: 38px !important;
+    font-size: 12.5px !important;
+  }
+}
+
+/* --- FOOTER: ensure clean stacking on mobile (override any forced horizontal flex) --- */
+@media (max-width: 680px){
+
+  footer .footer-inner{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    text-align: center !important;
+  }
+
+  footer .foot{
+    text-align: center !important;
+  }
+
+  footer .social{
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+}
 
 
   </style>
