@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
+    
     :root{
       --bg0:#07030f;
       --bg1:#120522;
@@ -19,16 +20,20 @@
       --text:#ece7ff;
       --muted:rgba(236,231,255,.72);
       --muted2:rgba(236,231,255,.55);
-      --accent:#a36bff;
-      --accent2:#7c3cff;
+      --accent:#9a84ff;    /* موف هادي */
+      --accent2:#7a63e6;   /* موف غامق ناعم */
+
       --radius:18px;
       --shadow: 0 14px 35px rgba(0,0,0,.45);
       --shadow2: 0 10px 24px rgba(0,0,0,.35);
       --max:980px; /* آخر نسخة كانت محتوى أنحف */
-    }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
+      --purple-g-1:#130428;
+      --purple-g-2:#251043;
+      --purple-g-3:#38126D;
+      --purple-g-4:#261045;
+      --purple-g-5:#190634;
+    }
 
     body{
       margin:0;
@@ -40,6 +45,136 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #0b0416);
       overflow-x:hidden;
     }
+/* =========================
+   LIGHT THEME (OVERRIDE ONLY)
+   لا يغيّر الدارك نهائياً
+   ========================= */
+html[data-theme="light"]{
+  --bg0:#ffffff;
+  --bg1:#ffffff;
+
+  --panel:#ffffff;
+  --panel2:#ffffff;
+
+  --stroke: rgba(30,20,70,.10);
+
+  --text:#141225;
+  --muted: rgba(20,18,37,.70);
+  --muted2: rgba(20,18,37,.55);
+
+  --accent:#5b47ff;
+  --accent2:#7c6cff;
+
+  --shadow: 0 18px 40px rgba(20,18,37,.08);
+  --shadow2: 0 10px 22px rgba(20,18,37,.06);
+
+  --purple-g-1:#5b47ff;
+  --purple-g-2:#6a55ff;
+  --purple-g-3:#7c6cff;
+  --purple-g-4:#6a55ff;
+  --purple-g-5:#5b47ff;
+}
+
+/* BODY */
+html[data-theme="light"] body{
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(91,71,255,.06), transparent 62%),
+    linear-gradient(180deg, #ffffff, #ffffff);
+  color: var(--text);
+}
+
+/* HERO */
+html[data-theme="light"] .hero h1{ color: var(--text); text-shadow:none; }
+html[data-theme="light"] .name{ color: var(--accent); text-shadow:none; }
+html[data-theme="light"] .hero p{ color: var(--muted); }
+
+/* HEADER / NAV */
+html[data-theme="light"] .topbar{
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30,20,70,.10);
+}
+html[data-theme="light"] .nav-item{ color: rgba(20,18,37,.70) !important; }
+html[data-theme="light"] .nav-item:hover{ color: rgba(20,18,37,.95) !important; }
+html[data-theme="light"] .nav-item::before{
+  background: rgba(91,71,255,.08) !important;
+  border-color: rgba(91,71,255,.14) !important;
+}
+
+/* CARDS */
+html[data-theme="light"] .panel,
+html[data-theme="light"] .skill,
+html[data-theme="light"] .card{
+  background: #ffffff;
+  border: 1px solid rgba(30,20,70,.10);
+  box-shadow: var(--shadow2);
+}
+
+/* TEXT */
+html[data-theme="light"] .section-title,
+html[data-theme="light"] .card h3,
+html[data-theme="light"] .skill h4{ color: rgba(20,18,37,.96); }
+
+html[data-theme="light"] .about p,
+html[data-theme="light"] .card p,
+html[data-theme="light"] .subhead{ color: var(--muted); }
+
+html[data-theme="light"] .skill small{ color: var(--muted2); }
+
+/* BUTTONS */
+html[data-theme="light"] .btn{
+  border-color: rgba(91,71,255,.16);
+  background: rgba(91,71,255,.08);
+  color: rgba(20,18,37,.92);
+}
+html[data-theme="light"] .hero .cta .btn,
+html[data-theme="light"] .btn.mini,
+html[data-theme="light"] .iconbtn,
+html[data-theme="light"] .nav-item.active{
+  background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+  border-color: rgba(255,255,255,.18) !important;
+  color:#fff !important;
+  box-shadow: 0 12px 26px rgba(91,71,255,.22) !important;
+}
+
+/* THUMBS */
+html[data-theme="light"] .thumb{
+  background: #fbfaff;
+  border-color: rgba(91,71,255,.12);
+}
+html[data-theme="light"] .thumb::after{ opacity: .08; }
+
+/* ORBIT (خفيف) */
+html[data-theme="light"] .orbit-image{ opacity:.22; filter:saturate(.85); }
+
+/* FOOTER */
+html[data-theme="light"] footer{
+  background: #ffffff;
+  border-top: 1px solid rgba(30,20,70,.10);
+}
+html[data-theme="light"] .foot h4{ color: rgba(20,18,37,.95); }
+html[data-theme="light"] .foot p,
+html[data-theme="light"] .foot a,
+html[data-theme="light"] .footer-bottom{ color: rgba(20,18,37,.65) !important; }
+/* FIX: Language & Theme buttons text in LIGHT */
+html[data-theme="light"] .lang-btn{
+  color: #1f1b2e !important;           /* نص غامق */
+  background: rgba(91,71,255,.08);     /* بنفسجي خفيف */
+  border: 1px solid rgba(91,71,255,.18);
+}
+
+html[data-theme="light"] .lang-btn:hover{
+  background: rgba(91,71,255,.14);
+  color: #1f1b2e !important;
+}
+
+/* الزر النشط (Active) */
+html[data-theme="light"] .lang-btn.active{
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  color: #fff !important;
+}
+
+
 
     a{color:inherit;text-decoration:none}
 
@@ -49,7 +184,7 @@
     }
 
     /* =========================
-       PAGE LOAD ANIMATIONS (NEW)
+       PAGE LOAD ANIMATIONS
        ========================= */
     [data-animate]{
       opacity: 0;
@@ -94,7 +229,7 @@
     }
 
     /* =========================
-       NAV – ACTIVE CIRCLE STYLE (FINAL)
+       NAV – ACTIVE CIRCLE STYLE
        ========================= */
     .topbar{
       position: sticky;
@@ -110,6 +245,7 @@
       padding: 0;
       background: none;
       box-shadow: none;
+      flex-wrap: wrap;
     }
 
     .nav-item{
@@ -124,6 +260,8 @@
         background .18s ease,
         color .18s ease,
         box-shadow .18s ease;
+      cursor: pointer;
+      user-select:none;
     }
 
     .nav-item:hover{
@@ -137,17 +275,8 @@
       box-shadow: 0 10px 22px rgba(124,60,255,.35);
     }
 
-    /* FORCE PURPLE HOVER – FIX (حتى لو navlinks مو مستخدمه حالياً) */
-    .navlinks a:hover,
-    .navlinks a.active{
-      background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
-      color: #fff !important;
-      border-color: rgba(255,255,255,.14) !important;
-      box-shadow: 0 10px 22px rgba(124,60,255,.35) !important;
-    }
-
     /* =========================
-       HERO – LOWER POSITION (FINAL)
+       HERO
        ========================= */
     .hero{
       padding-top: 100px;
@@ -226,7 +355,7 @@
       box-shadow: 0 0 0 4px rgba(255,255,255,.25);
     }
 
-    /* HERO BUTTONS: ALL SAME COLOR + HOVER */
+    /* HERO BUTTONS */
     .hero .cta .btn,
     .hero .cta .btn.primary{
       background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -244,7 +373,7 @@
     .hero .cta .btn .dot{display:none}
 
     /* =========================
-       ORBIT IMAGE (Skills.png)
+       ORBIT IMAGE
        ========================= */
     .orbit-image-wrap{
       margin: 18px 0 10px;
@@ -266,7 +395,7 @@
     }
 
     /* =========================
-       SECTION SPACING – SMALL (FINAL)
+       SECTION SPACING
        ========================= */
     section{ padding: 50px 0; }
 
@@ -308,7 +437,7 @@
     }
 
     /* =========================
-       SKILLS GRID + INTERACTION (MERGED FINAL)
+       SKILLS GRID + INTERACTION
        ========================= */
     .skills-grid{
       display:grid;
@@ -533,7 +662,7 @@
     .icons{display:flex; gap:10px}
 
     /* =========================
-       ICON BUTTONS – FINAL (NO DUPLICATES)
+       ICON BUTTONS
        ========================= */
     .iconbtn{
       width: 40px;
@@ -586,7 +715,7 @@
     }
 
     /* =========================
-       FOOTER – FINAL CLEAN VERSION
+       FOOTER
        ========================= */
     footer{
       margin-top: 40px;
@@ -632,7 +761,6 @@
       opacity: 1;
     }
 
-    /* QUICK LINKS – NAV STYLE (FINAL) */
     .foot ul{
       list-style: none;
       padding: 0;
@@ -671,7 +799,7 @@
     }
 
     /* =========================
-       RESPONSIVE (MERGED)
+       RESPONSIVE
        ========================= */
     @media (max-width: 920px){
       .skills-grid{ grid-template-columns: 1fr; }
@@ -692,7 +820,7 @@
     }
 
     /* =========================
-       NAV – PURPLE PILL (FINAL, NO DUPLICATES)
+       NAV – PURPLE PILL
        ========================= */
     .nav-item{
       position: relative;
@@ -736,27 +864,19 @@
       transform: translate(-50%, -50%) scale(1);
     }
 
-    /* =========================
-       HEADER – LOWER POSITION
-       ========================= */
     .topbar{ top: 12px; }
 
-    /* FIX: خلي روابط GitHub دايم فوق */
     .iconbtn,
     .btn.github{
       position: relative;
       z-index: 5;
     }
 
-    /* FIX: أي طبقات تجميلية ما تمسك الكلك */
     .card::before,
     .thumb::after{
       pointer-events: none;
     }
 
-    /* =========================
-       FIX SKILLS ICON SIZES
-       ========================= */
     .skill-top{ align-items: center; }
 
     .ico{
@@ -777,41 +897,398 @@
       object-fit:contain;
       display:block;
     }
+
+    /* FOOTER – FORCE HORIZONTAL ON MOBILE */
+    footer .footer-inner{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+    }
+
+    footer .foot{
+      flex: 1;
+    }
+
+    @media (max-width: 768px){
+      footer .footer-inner{
+        flex-direction: row;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      footer .foot{ flex: 1; }
+
+      footer h4{
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      footer p,
+      footer ul li a{
+        font-size: 12px;
+      }
+
+      footer .social{
+        justify-content: flex-start;
+      }
+    }
+
+    /* FIGMA CALM PURPLE (interactive only) */
+    .hero .cta .btn,
+    .hero .cta .btn.primary,
+    .btn.mini,
+    .iconbtn,
+    .nav-item.active{
+      background: linear-gradient(
+        135deg,
+        var(--purple-g-1) 7%,
+        var(--purple-g-2) 34%,
+        var(--purple-g-3) 57%,
+        var(--purple-g-4) 85%,
+        var(--purple-g-5) 100%
+      ) !important;
+      border-color: rgba(255,255,255,.14) !important;
+      color: rgba(236,231,255,.98) !important;
+    }
+
+    .hero .cta .btn:hover,
+    .btn.mini:hover,
+    .iconbtn:hover,
+    .nav-item:hover,
+    .foot ul a:hover{
+      background: linear-gradient(
+        135deg,
+        var(--purple-g-2),
+        var(--purple-g-3),
+        var(--purple-g-5)
+      ) !important;
+      box-shadow: 0 14px 28px rgba(56,18,109,.28) !important;
+    }
+
+    .btn:active,
+    .btn.mini:active,
+    .iconbtn:active{
+      transform: translateY(0) !important;
+      box-shadow: inset 0 3px 8px rgba(0,0,0,.35) !important;
+    }
+
+    /* HEADER NAV – FORCE FIGMA GRADIENT */
+    .nav-item:hover::before,
+    .nav-item.active::before{
+      background: linear-gradient(
+        135deg,
+        var(--purple-g-1) 7%,
+        var(--purple-g-2) 34%,
+        var(--purple-g-3) 57%,
+        var(--purple-g-4) 85%,
+        var(--purple-g-5) 100%
+      ) !important;
+
+      border-color: rgba(255,255,255,.14) !important;
+      box-shadow: 0 10px 22px rgba(56,18,109,.28) !important;
+      opacity: 1 !important;
+    }
+
+    .nav-item:hover{
+      background: transparent !important;
+      color: rgba(236,231,255,.98) !important;
+    }
+
+    /* =========================
+       LANGUAGE SWITCH (NO COLOR CHANGE)
+       ========================= */
+    .lang-switch{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:center;
+      margin-top: 10px;
+    }
+
+    /* نخليها نفس شكل nav-item */
+    .lang-btn{
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 999px;
+      border: 1px solid rgba(163,107,255,.18);
+      background: rgba(163,107,255,.10);
+      color: rgba(236,231,255,.86);
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+    }
+    .lang-btn:hover{
+      transform: translateY(-1px);
+      background: rgba(163,107,255,.14);
+      color: rgba(236,231,255,.98);
+    }
+    .lang-btn.active{
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      box-shadow: 0 10px 22px rgba(124,60,255,.35);
+      border-color: rgba(255,255,255,.14);
+    }
+
+    /* لما تكون عربي: نخلي اتجاه النص بشكل طبيعي بدون ما نغير ألوان */
+    html[dir="rtl"] body{
+      direction: rtl;
+    }
+    html[dir="rtl"] .skill h4,
+    html[dir="rtl"] .skill small{
+      transform-origin: right center;
+    }
+  /* Keep language buttons aligned with nav items */
+.nav-item.lang-switch{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;            /* لأن nav-item أصلاً له padding */
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+/* Make buttons look/size consistent with nav items */
+.lang-btn{
+  all: unset;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(236,231,255,.75);
+  transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+
+.lang-btn:hover{
+  color: rgba(236,231,255,.98);
+  background: rgba(163,107,255,.14);
+}
+
+.lang-btn.active{
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  box-shadow: 0 10px 22px rgba(124,60,255,.35);
+}
+/* الهيدر */
+.nav-pill{
+  position: relative;
+  height: 56px;
+}
+
+/* روابط الهيدر – توسيط حقيقي */
+.nav-center{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  gap: 20px;
+}
+
+/* عناصر الروابط */
+.nav-item{
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(236,231,255,.75);
+  border-radius: 999px;
+  transition: .2s;
+}
+
+.nav-item:hover{
+  color: #fff;
+  background: rgba(163,107,255,.15);
+}
+
+/* اللغة – على الطرف */
+.lang-switch{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  gap: 10px;
+}
+
+/* RTL */
+html[dir="rtl"] .lang-switch{
+  right: auto;
+  left: 0;
+}
+
+/* أزرار اللغة */
+.lang-btn{
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(163,107,255,.25);
+  background: rgba(163,107,255,.12);
+  color: rgba(236,231,255,.85);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lang-btn.active{
+  background: linear-gradient(135deg,#9a84ff,#7a63e6);
+  color: #fff;
+}
+/* ===== Language single switch (FINAL) ===== */
+.lang-switch{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 !important;
+}
+
+html[dir="rtl"] .lang-switch{
+  right: auto;
+  left: 0;
+}
+
+#langToggle.lang-btn{
+  all: unset;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(236,231,255,.86);
+  border: 1px solid rgba(163,107,255,.18);
+  background: rgba(163,107,255,.10);
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
+
+#langToggle.lang-btn:hover{
+  transform: translateY(-1px);
+  background: rgba(163,107,255,.14);
+  color: rgba(236,231,255,.98);
+}
+/* ===== Icon toggles (Language + Theme) ===== */
+.icon-toggle{
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  border: 1px solid rgba(163,107,255,.18);
+  background: rgba(163,107,255,.10);
+  color: rgba(236,231,255,.88);
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+}
+
+.icon-toggle svg{
+  width: 18px;
+  height: 18px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon-toggle:hover{
+  transform: translateY(-1px);
+  background: rgba(163,107,255,.14);
+  color: rgba(236,231,255,.98);
+}
+
+/* Light mode styles for icon buttons */
+html[data-theme="light"] .icon-toggle{
+  background: rgba(91,71,255,.08);
+  border-color: rgba(91,71,255,.16);
+  color: rgba(20,18,37,.78);
+}
+
+html[data-theme="light"] .icon-toggle:hover{
+  background: rgba(91,71,255,.14);
+  color: rgba(20,18,37,.95);
+}
+
+
   </style>
 </head>
 
 <body>
 
 <!-- NAV -->
-<div class="topbar" data-animate="up">
+<div class="topbar">
   <div class="container">
     <nav class="nav-pill">
-      <a class="nav-item" href="#home">Home</a>
-      <a class="nav-item" href="#about">About</a>
-      <a class="nav-item" href="#skills">Skills</a>
-      <a class="nav-item nav-cta" href="projects.html">Projects</a>
+
+      <!-- روابط الهيدر (نص حقيقي) -->
+      <div class="nav-center">
+        <a class="nav-item" href="#home">Home</a>
+        <a class="nav-item" href="#about">About</a>
+        <a class="nav-item" href="#skills">Skills</a>
+       <a class="nav-item" href="projects.html">Projects</a>
+
+      </div>
+
+<div class="lang-switch" aria-label="Language Switch">
+<div class="lang-switch" aria-label="Language & Theme Switch">
+  <!-- Language: globe icon -->
+  <button type="button" id="langToggle" class="icon-toggle" aria-label="Toggle Language" title="Language">
+    <!-- Globe -->
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2c3 3.5 3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2c-3 3.5-3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- Theme: sun/moon icon -->
+  <button type="button" id="themeToggle" class="icon-toggle" aria-label="Toggle Theme" title="Theme">
+    <!-- (راح نبدّلها بالـ JS) -->
+    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <!-- Moon default -->
+      <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
+               a7 7 0 1 0 11.5 11.5Z"
+            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
+</div>
+
+
+
     </nav>
   </div>
 </div>
+
+
+
 
 <!-- HERO -->
 <header id="home" class="hero">
   <div class="container">
     <div class="hero-inner">
-      <h1 data-animate="up" class="delay-1">Hello! I Am <span class="name">Mawda Alguraafi</span></h1>
+      <h1 data-animate="up" class="delay-1" data-i18n="hero_title">
+        Hello! I Am <span class="name">Mawda Alguraafi</span>
+      </h1>
 
-      <p data-animate="up" class="delay-2">
+      <p data-animate="up" class="delay-2" data-i18n="hero_desc">
         I create intelligent, data-driven digital solutions that transform complex data into actionable insights.
         By combining analytics, AI, and business understanding, I help organizations make informed decisions and deliver meaningful real-world impact.
       </p>
 
       <div class="cta" data-animate="up" class="delay-3">
-        <a class="btn primary" href="#projects"><span class="dot"></span> View My Project</a>
+        <a class="btn primary" href="#projects">
+          <span class="dot"></span>
+          <span data-i18n="btn_view_project">View My Project</span>
+        </a>
 
         <a href="assets/MawdaAlguraafi-CV.pdf"
            class="btn primary"
            download="Mawda_Alguraafi_CV.pdf">
-          Download My CV
+          <span data-i18n="btn_download_cv">Download My CV</span>
         </a>
 
         <a class="btn primary"
@@ -833,10 +1310,10 @@
 <!-- ABOUT -->
 <section id="about">
   <div class="container">
-    <h2 class="section-title" data-animate="left">About Me</h2>
+    <h2 class="section-title" data-animate="left" data-i18n="about_title">About Me</h2>
 
     <div class="panel about" data-animate="right" class="delay-1">
-      <p>
+      <p data-i18n="about_desc">
         A Computer Science graduate passionate about Artificial Intelligence and data analysis.
         I build AI-driven, data-powered solutions that transform complex information into clear, actionable insights and address real-world challenges.
         <br><br>
@@ -850,7 +1327,7 @@
 <!-- SKILLS -->
 <section id="skills">
   <div class="container">
-    <h2 class="section-title" data-animate="up">Skills</h2>
+    <h2 class="section-title" data-animate="up" data-i18n="skills_title">Skills</h2>
 
     <div class="skills-grid">
 
@@ -861,8 +1338,8 @@
             <img src="Image/105.png" alt="Programming Languages">
           </div>
           <div>
-            <h4>Programming Languages</h4>
-            <small>Java, Python, SQL</small>
+            <h4 data-i18n="skill_prog_title">Programming Languages</h4>
+            <small data-i18n="skill_prog_desc">Java, Python, SQL</small>
           </div>
         </div>
       </div>
@@ -874,8 +1351,8 @@
             <img src="Image/106.png" alt="Data Analysis & Visualization">
           </div>
           <div>
-            <h4>Data Analysis & Visualization</h4>
-            <small>
+            <h4 data-i18n="skill_data_title">Data Analysis & Visualization</h4>
+            <small data-i18n="skill_data_desc">
               Data Cleaning, Exploratory Data Analysis (EDA), Power BI, Streamlit, FastAPI
             </small>
           </div>
@@ -889,8 +1366,8 @@
             <img src="Image/103.png" alt="Machine Learning">
           </div>
           <div>
-            <h4>Machine Learning</h4>
-            <small>Scikit-learn, Model Training, Model Evaluation</small>
+            <h4 data-i18n="skill_ml_title">Machine Learning</h4>
+            <small data-i18n="skill_ml_desc">Scikit-learn, Model Training, Model Evaluation</small>
           </div>
         </div>
       </div>
@@ -902,8 +1379,8 @@
             <img src="Image/101.png" alt="Microsoft Office">
           </div>
           <div>
-            <h4>Microsoft Office</h4>
-            <small>Excel, Word</small>
+            <h4 data-i18n="skill_office_title">Microsoft Office</h4>
+            <small data-i18n="skill_office_desc">Excel, Word</small>
           </div>
         </div>
       </div>
@@ -915,8 +1392,8 @@
             <img src="Image/104.png" alt="Front-End">
           </div>
           <div>
-            <h4>Front-End</h4>
-            <small>HTML, CSS</small>
+            <h4 data-i18n="skill_front_title">Front-End</h4>
+            <small data-i18n="skill_front_desc">HTML, CSS</small>
           </div>
         </div>
       </div>
@@ -928,8 +1405,8 @@
             <img src="Image/102.png" alt="Design">
           </div>
           <div>
-            <h4>Design</h4>
-            <small>Figma, Canva</small>
+            <h4 data-i18n="skill_design_title">Design</h4>
+            <small data-i18n="skill_design_desc">Figma, Canva</small>
           </div>
         </div>
       </div>
@@ -941,8 +1418,10 @@
 <!-- PROJECTS -->
 <section id="projects">
   <div class="container">
-    <h2 class="section-title" data-animate="up">Featured Projects</h2>
-    <p class="subhead" data-animate="up" class="delay-1">A selection of projects across AI, data analysis, and interactive dashboards.</p>
+    <h2 class="section-title" data-animate="up" data-i18n="projects_title">Featured Projects</h2>
+    <p class="subhead" data-animate="up" class="delay-1" data-i18n="projects_subhead">
+      A selection of projects across AI, data analysis, and interactive dashboards.
+    </p>
 
     <div class="projects-grid">
 
@@ -952,15 +1431,17 @@
           <img src="Image/1.png" alt="Nabāhah Project preview">
         </div>
 
-        <h3>Nabāhah (نباهة) – AI-based Laboratory Safety System</h3>
+        <h3 data-i18n="p1_title">Nabāhah (نباهة) – AI-based Laboratory Safety System</h3>
 
-        <p>
+        <p data-i18n="p1_desc">
           An AI-powered lab safety monitoring system using computer vision to detect PPE compliance and hazards,
           with dashboard analytics and alerts.
         </p>
 
         <div class="card-actions">
-          <a class="btn mini primary" href="projects.html#nabahah">View My Project</a>
+          <a class="btn mini primary" href="projects.html#nabahah">
+            <span data-i18n="btn_view_project">View My Project</span>
+          </a>
 
           <div class="icons">
             <a class="iconbtn"
@@ -1004,15 +1485,17 @@
           <img src="Image/5.png" alt="Saudi Business Activities preview">
         </div>
 
-        <h3>Saudi Business Activities Dashboard</h3>
+        <h3 data-i18n="p2_title">Saudi Business Activities Dashboard</h3>
 
-        <p>
+        <p data-i18n="p2_desc">
           A dashboard showcasing business activity distribution across Saudi regions with KPI highlights
           and interactive analysis.
         </p>
 
         <div class="card-actions">
-          <a class="btn mini primary" href="projects.html#saudi-business">View My Project</a>
+          <a class="btn mini primary" href="projects.html#saudi-business">
+            <span data-i18n="btn_view_project">View My Project</span>
+          </a>
 
           <div class="icons">
             <a class="iconbtn"
@@ -1056,15 +1539,17 @@
           <img src="Image/6.png" alt="E-Commerce preview">
         </div>
 
-        <h3>E-Commerce Customer Behavior Dashboard</h3>
+        <h3 data-i18n="p3_title">E-Commerce Customer Behavior Dashboard</h3>
 
-        <p>
+        <p data-i18n="p3_desc">
           An interactive dashboard designed to analyze customer purchasing behavior in e-commerce,
           exploring sales performance, satisfaction, and social influence.
         </p>
 
         <div class="card-actions">
-          <a class="btn mini primary" href="projects.html#ecommerce">View My Project</a>
+          <a class="btn mini primary" href="projects.html#ecommerce">
+            <span data-i18n="btn_view_project">View My Project</span>
+          </a>
 
           <div class="icons">
             <a class="iconbtn"
@@ -1110,23 +1595,26 @@
       <!-- Name -->
       <div class="foot" data-animate="left" class="delay-2">
         <h4>Mawda Alguraafi</h4>
-        <p>Data & AI | Analytics | Dashboard Development</p>
+        <p data-i18n="footer_tagline">Data & AI | Analytics | Dashboard Development</p>
       </div>
 
       <!-- Quick Links -->
       <div class="foot" data-animate="up" class="delay-3">
-        <h4>Quick Links</h4>
+        <h4 data-i18n="footer_quick">Quick Links</h4>
         <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
+          <li><a href="#home" data-i18n="nav_home">Home</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
+          <li>
+  <a href="projects.html" data-i18n="nav_projects_inline">Projects</a>
+</li>
+
         </ul>
       </div>
 
       <!-- Connect -->
       <div class="foot" data-animate="right" class="delay-2">
-        <h4>Connect</h4>
+        <h4 data-i18n="footer_connect">Connect</h4>
         <div class="social">
 
           <!-- Email -->
@@ -1139,7 +1627,7 @@
 
           <!-- LinkedIn -->
           <a class="iconbtn"
-             href="https://www.linkedin.com/in/mawda-alguraafi/"
+             href="http://linkedin.com/in/mawda-alguraafi-836073243"
              target="_blank"
              rel="noopener"
              title="LinkedIn">
@@ -1190,11 +1678,207 @@
 
     </div>
 
-    <div class="footer-bottom">
-      © 2025 Mawda Alguraafi
+    <div class="footer-bottom" style="margin-top:16px; text-align:center; color: rgba(236,231,255,.55); font-size:12px;">
+      <span data-i18n="footer_copy">© 2025 Mawda Alguraafi</span>
     </div>
   </div>
 </footer>
 
+<script>
+  // =========================
+  // i18n (Arabic/English)
+  // =========================
+  const I18N = {
+    en: {
+      nav_home: "Home",
+      nav_about: "About",
+      nav_skills: "Skills",
+      nav_projects: "Projects",
+      nav_projects_inline: "Projects",
+
+      hero_title: 'Hello! I Am <span class="name">Mawda Alguraafi</span>',
+      hero_desc: "I create intelligent, data-driven digital solutions that transform complex data into actionable insights. By combining analytics, AI, and business understanding, I help organizations make informed decisions and deliver meaningful real-world impact.",
+
+      btn_view_project: "View My Project",
+      btn_download_cv: "Download My CV",
+
+      about_title: "About Me",
+      about_desc: "A Computer Science graduate passionate about Artificial Intelligence and data analysis. I build AI-driven, data-powered solutions that transform complex information into clear, actionable insights and address real-world challenges.<br><br>Skilled in Python, SQL, Excel, Power BI, and Figma, with a strong focus on AI-assisted analytics, data visualization, and designing intuitive user experiences. Always eager to learn, grow, and contribute to impactful, technology-driven projects.",
+
+      skills_title: "Skills",
+      skill_prog_title: "Programming Languages",
+      skill_prog_desc: "Java, Python, SQL",
+      skill_data_title: "Data Analysis & Visualization",
+      skill_data_desc: "Data Cleaning, Exploratory Data Analysis (EDA), Power BI, Streamlit, FastAPI",
+      skill_ml_title: "Machine Learning",
+      skill_ml_desc: "Scikit-learn, Model Training, Model Evaluation",
+      skill_office_title: "Microsoft Office",
+      skill_office_desc: "Excel, Word",
+      skill_front_title: "Front-End",
+      skill_front_desc: "HTML, CSS",
+      skill_design_title: "Design",
+      skill_design_desc: "Figma, Canva",
+
+      projects_title: "Featured Projects",
+      projects_subhead: "A selection of projects across AI, data analysis, and interactive dashboards.",
+
+      p1_title: "Nabāhah (نباهة) – AI-based Laboratory Safety System",
+      p1_desc: "An AI-powered lab safety monitoring system using computer vision to detect PPE compliance and hazards, with dashboard analytics and alerts.",
+
+      p2_title: "Saudi Business Activities Dashboard",
+      p2_desc: "A dashboard showcasing business activity distribution across Saudi regions with KPI highlights and interactive analysis.",
+
+      p3_title: "E-Commerce Customer Behavior Dashboard",
+      p3_desc: "An interactive dashboard designed to analyze customer purchasing behavior in e-commerce, exploring sales performance, satisfaction, and social influence.",
+
+      footer_tagline: "Data & AI | Analytics | Dashboard Development",
+      footer_quick: "Quick Links",
+      footer_connect: "Connect",
+      footer_copy: "© 2025 Mawda Alguraafi"
+    },
+
+    ar: {
+      nav_home: "الرئيسية",
+      nav_about: "عني",
+      nav_skills: "المهارات",
+      nav_projects: "المشاريع",
+      nav_projects_inline: "المشاريع",
+
+      hero_title: 'مرحباً! أنا <span class="name">مودة القرافي</span>',
+      hero_desc: "أصمم حلولًا رقمية ذكية تعتمد على البيانات لتحويل التعقيد إلى رؤى واضحة قابلة للتنفيذ. من خلال الجمع بين التحليلات والذكاء الاصطناعي وفهم الأعمال، أساعد الجهات على اتخاذ قرارات أفضل وتحقيق أثر واقعي.",
+
+      btn_view_project: "عرض مشروعي",
+      btn_download_cv: "تحميل السيرة الذاتية",
+
+      about_title: "نبذة عني",
+      about_desc: "خريجة علوم حاسب شغوفة بالذكاء الاصطناعي وتحليل البيانات. أبني حلولًا مدعومة بالذكاء الاصطناعي والبيانات لتحويل المعلومات المعقدة إلى رؤى واضحة وقابلة للتنفيذ ومعالجة تحديات واقعية.<br><br>أمتلك مهارات في Python وSQL وExcel وPower BI وFigma، مع تركيز قوي على التحليلات بمساعدة الذكاء الاصطناعي، وتصور البيانات، وتصميم تجارب مستخدم بسيطة وواضحة. دائمًا متحمسة للتعلم والتطور والمساهمة في مشاريع تقنية مؤثرة.",
+
+      skills_title: "المهارات",
+      skill_prog_title: "لغات البرمجة",
+      skill_prog_desc: "Java, Python, SQL",
+      skill_data_title: "تحليل البيانات وتصورها",
+      skill_data_desc: "تنظيف البيانات، التحليل الاستكشافي (EDA)، Power BI، Streamlit، FastAPI",
+      skill_ml_title: "تعلم الآلة",
+      skill_ml_desc: "Scikit-learn، تدريب النماذج، تقييم النماذج",
+      skill_office_title: "مايكروسوفت أوفيس",
+      skill_office_desc: "Excel، Word",
+      skill_front_title: "تطوير الواجهات",
+      skill_front_desc: "HTML، CSS",
+      skill_design_title: "التصميم",
+      skill_design_desc: "Figma، Canva",
+
+      projects_title: "أبرز المشاريع",
+      projects_subhead: "مجموعة مختارة من المشاريع في الذكاء الاصطناعي وتحليل البيانات ولوحات المعلومات التفاعلية.",
+
+      p1_title: "نباهة (Nabāhah) – نظام سلامة مختبرات بالذكاء الاصطناعي",
+      p1_desc: "نظام مراقبة سلامة المختبرات يعتمد على الرؤية الحاسوبية لاكتشاف الالتزام بمعدات السلامة والمخاطر، مع تحليلات وتنبيهات عبر لوحة معلومات.",
+
+      p2_title: "لوحة أعمال الأنشطة التجارية في السعودية",
+      p2_desc: "لوحة تعرض توزيع الأنشطة التجارية عبر مناطق المملكة مع مؤشرات أداء وتحليلات تفاعلية.",
+
+      p3_title: "لوحة سلوك عملاء التجارة الإلكترونية",
+      p3_desc: "لوحة تفاعلية لتحليل سلوك الشراء في التجارة الإلكترونية واستكشاف الأداء والرضا والتأثير الاجتماعي.",
+
+      footer_tagline: "البيانات والذكاء الاصطناعي | التحليلات | تطوير لوحات المعلومات",
+      footer_quick: "روابط سريعة",
+      footer_connect: "تواصل",
+      footer_copy: "© 2025 مودة القرافي"
+    }
+  };
+
+  function applyTranslations(lang){
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      const val = (I18N[lang] && I18N[lang][key]) || (I18N.en[key] || "");
+
+      // لو فيه HTML مثل span في العنوان
+      if (typeof val === "string" && val.includes("<") && val.includes(">")) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    });
+  }
+
+function setLang(lang){
+  const html = document.documentElement;
+  html.dataset.lang = lang;
+  html.lang = (lang === "ar") ? "ar" : "en";
+  html.dir  = (lang === "ar") ? "rtl" : "ltr";
+
+  // زر اللغة (أيقونة)
+  const langBtn = document.getElementById("langToggle");
+  langBtn.dataset.lang = lang;
+
+  // ✅ هذا السطر اللي تسألين عنه
+  langBtn.title = (lang === "ar") ? "English" : "Arabic";
+
+  applyTranslations(lang);
+  localStorage.setItem("site_lang", lang);
+}
+
+
+  // Init
+  const saved = localStorage.getItem("site_lang") || "en";
+  setLang(saved);
+
+  // Toggle
+  document.getElementById("langToggle").addEventListener("click", () => {
+    const current = document.documentElement.dataset.lang || "en";
+    setLang(current === "en" ? "ar" : "en");
+  });
+// 1️⃣ دالة تغيير أيقونة الثيم (شمس / قمر)
+function renderThemeIcon(theme){
+  const icon = document.getElementById("themeIcon");
+  if(!icon) return;
+
+  if(theme === "light"){
+    // Sun
+    icon.innerHTML = `
+      <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 20v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M4.93 4.93l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.66 17.66l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M2 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M4.93 19.07l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    `;
+  }else{
+    // Moon
+    icon.innerHTML = `
+      <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
+               a7 7 0 1 0 11.5 11.5Z"
+            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    `;
+  }
+}
+
+// =========================
+// Theme (Dark/Light)
+// =========================
+function setTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("site_theme", theme);
+
+  // ✅ هنا ننادي الدالة
+  renderThemeIcon(theme);
+}
+
+
+// Init theme
+const savedTheme = localStorage.getItem("site_theme") || "dark";
+setTheme(savedTheme);
+
+// Toggle theme
+document.getElementById("themeToggle").addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  setTheme(current === "dark" ? "light" : "dark");
+});
+
+</script>
+
 </body>
+
 </html>

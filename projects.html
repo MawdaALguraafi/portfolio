@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr" data-lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Projects | Mawda Alguraafi</title>
+  <title data-i18n="page_title">Projects | Mawda Alguraafi</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +13,31 @@
     :root{
       --bg0:#07030f;
       --bg1:#120522;
-      --panel:#1b0b2e;
-      --panel2:#140824;
-      --stroke:rgba(167,118,255,.22);
       --text:#ece7ff;
       --muted:rgba(236,231,255,.72);
-      --muted2:rgba(236,231,255,.55);
       --accent:#a36bff;
       --accent2:#7c3cff;
-      --radius:18px;
-      --shadow: 0 14px 35px rgba(0,0,0,.45);
-      --shadow2: 0 10px 24px rgba(0,0,0,.35);
       --max:980px;
+
+      /* Figma-like */
+      --purple-g-1:#130428;
+      --purple-g-2:#251043;
+      --purple-g-3:#38126D;
+      --purple-g-4:#261045;
+      --purple-g-5:#190634;
+
+      --figma-grad: linear-gradient(
+        135deg,
+        var(--purple-g-1) 7%,
+        var(--purple-g-2) 34%,
+        var(--purple-g-3) 57%,
+        var(--purple-g-4) 85%,
+        var(--purple-g-5) 100%
+      );
+      --figma-grad-hover: linear-gradient(135deg, var(--purple-g-2), var(--purple-g-3), var(--purple-g-5));
+      --figma-border: rgba(255,255,255,.14);
+      --figma-glow: 0 10px 22px rgba(56,18,109,.26);
+      --figma-glow-strong: 0 16px 34px rgba(56,18,109,.30);
     }
 
     *{box-sizing:border-box}
@@ -39,19 +52,143 @@
         linear-gradient(180deg, var(--bg0), var(--bg1) 55%, #0b0416);
       overflow-x:hidden;
     }
+  /* =========================
+   LIGHT THEME (OVERRIDE ONLY) — نفس الصفحة الأولى
+   ========================= */
+html[data-theme="light"]{
+  --bg0:#ffffff;
+  --bg1:#ffffff;
+
+  --panel:#ffffff;
+  --panel2:#ffffff;
+
+  --stroke: rgba(30,20,70,.10);
+
+  --text:#141225;
+  --muted: rgba(20,18,37,.70);
+  --muted2: rgba(20,18,37,.55);
+
+  --accent:#5b47ff;
+  --accent2:#7c6cff;
+
+  --shadow: 0 18px 40px rgba(20,18,37,.08);
+  --shadow2: 0 10px 22px rgba(20,18,37,.06);
+
+  --purple-g-1:#5b47ff;
+  --purple-g-2:#6a55ff;
+  --purple-g-3:#7c6cff;
+  --purple-g-4:#6a55ff;
+  --purple-g-5:#5b47ff;
+}
+
+/* BODY */
+html[data-theme="light"] body{
+  background:
+    radial-gradient(900px 500px at 50% 0%, rgba(91,71,255,.06), transparent 62%),
+    linear-gradient(180deg, #ffffff, #ffffff);
+  color: var(--text);
+}
+
+/* HERO */
+html[data-theme="light"] .hero h1{ color: var(--text); text-shadow:none; }
+html[data-theme="light"] .name{ color: var(--accent); text-shadow:none; }
+html[data-theme="light"] .hero p{ color: var(--muted); }
+
+/* HEADER / NAV */
+html[data-theme="light"] .topbar{
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30,20,70,.10);
+}
+html[data-theme="light"] .nav-item{ color: rgba(20,18,37,.70) !important; }
+html[data-theme="light"] .nav-item:hover{ color: rgba(20,18,37,.95) !important; }
+html[data-theme="light"] .nav-item::before{
+  background: rgba(91,71,255,.08) !important;
+  border-color: rgba(91,71,255,.14) !important;
+}
+
+/* CARDS */
+html[data-theme="light"] .panel,
+html[data-theme="light"] .skill,
+html[data-theme="light"] .card{
+  background: #ffffff;
+  border: 1px solid rgba(30,20,70,.10);
+  box-shadow: var(--shadow2);
+}
+
+/* TEXT */
+html[data-theme="light"] .section-title,
+html[data-theme="light"] .card h3,
+html[data-theme="light"] .skill h4{ color: rgba(20,18,37,.96); }
+
+html[data-theme="light"] .about p,
+html[data-theme="light"] .card p,
+html[data-theme="light"] .subhead{ color: var(--muted); }
+
+html[data-theme="light"] .skill small{ color: var(--muted2); }
+
+/* BUTTONS */
+html[data-theme="light"] .btn{
+  border-color: rgba(91,71,255,.16);
+  background: rgba(91,71,255,.08);
+  color: rgba(20,18,37,.92);
+}
+html[data-theme="light"] .hero .cta .btn,
+html[data-theme="light"] .btn.mini,
+html[data-theme="light"] .iconbtn,
+html[data-theme="light"] .nav-item.active{
+  background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+  border-color: rgba(255,255,255,.18) !important;
+  color:#fff !important;
+  box-shadow: 0 12px 26px rgba(91,71,255,.22) !important;
+}
+
+/* THUMBS */
+html[data-theme="light"] .thumb{
+  background: #fbfaff;
+  border-color: rgba(91,71,255,.12);
+}
+html[data-theme="light"] .thumb::after{ opacity: .08; }
+
+/* ORBIT (خفيف) */
+html[data-theme="light"] .orbit-image{ opacity:.22; filter:saturate(.85); }
+
+/* FOOTER */
+html[data-theme="light"] footer{
+  background: #ffffff;
+  border-top: 1px solid rgba(30,20,70,.10);
+}
+html[data-theme="light"] .foot h4{ color: rgba(20,18,37,.95); }
+html[data-theme="light"] .foot p,
+html[data-theme="light"] .foot a,
+html[data-theme="light"] .footer-bottom{ color: rgba(20,18,37,.65) !important; }
+/* =========================
+   LIGHT – CHIPS (BADGES)
+   ========================= */
+html[data-theme="light"] .chip{
+  background: rgba(91,71,255,.12);   /* بنفسجي أوضح */
+  color: #2a1f6b;                    /* نص غامق */
+  border: 1px solid rgba(91,71,255,.35);
+  font-weight: 600;
+}
+
+/* لو عندك hover */
+html[data-theme="light"] .chip:hover{
+  background: rgba(91,71,255,.20);
+}
+
+/* لو بعض التشيبس لها ستايل خاص */
+html[data-theme="light"] .chip.secondary{
+  background: rgba(20,18,37,.08);
+  color: rgba(20,18,37,.85);
+  border-color: rgba(20,18,37,.18);
+}
+
     a{color:inherit;text-decoration:none}
     .container{width:min(var(--max), calc(100% - 40px)); margin:0 auto;}
 
-    /* =========================
-       PAGE LOAD ANIMATIONS
-       ========================= */
-    [data-animate]{
-      opacity:0;
-      animation-duration:.9s;
-      animation-fill-mode:forwards;
-      animation-timing-function:cubic-bezier(.22,.61,.36,1);
-      will-change: transform, opacity;
-    }
+    /* Animations */
+    [data-animate]{opacity:0; animation-duration:.9s; animation-fill-mode:forwards; animation-timing-function:cubic-bezier(.22,.61,.36,1); will-change: transform, opacity;}
     @keyframes slideInRight{from{opacity:0;transform:translateX(70px)}to{opacity:1;transform:translateX(0)}}
     @keyframes slideInLeft {from{opacity:0;transform:translateX(-70px)}to{opacity:1;transform:translateX(0)}}
     @keyframes slideInUp   {from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
@@ -63,361 +200,161 @@
     .delay-3{animation-delay:.36s}
     .delay-4{animation-delay:.48s}
     .delay-5{animation-delay:.60s}
-
     @media (prefers-reduced-motion: reduce){
       [data-animate]{animation:none !important; opacity:1 !important; transform:none !important;}
     }
 
-    /* =========================
-       NAV (LIKE INDEX) – LINKS FIXED
-       ========================= */
-    .topbar{
-      position: sticky;
-      top: 12px;
-      z-index: 100;
-      background: transparent;
+    /* NAV – true center + single lang switch */
+    .topbar{ position: sticky; top: 12px; z-index: 100; background: transparent; }
+    .nav-pill{ position: relative; height: 56px; }
+    .nav-center{
+      position:absolute; left:50%; top:50%;
+      transform: translate(-50%, -50%);
+      display:flex; align-items:center; gap:18px;
+      white-space: nowrap;
     }
-    .nav-pill{
-      display:flex;
-      justify-content:center;
-      gap:18px;
-      padding:0;
-      background:none;
-      box-shadow:none;
-    }
+
     .nav-item{
-      position:relative;
-      z-index:1;
+      position:relative; z-index:1;
       padding:8px 16px;
-      font-size:13px;
-      font-weight:600;
+      font-size:13px; font-weight:600;
       color: rgba(236,231,255,.75);
       border-radius:999px;
       transition: background .18s ease, color .18s ease, box-shadow .18s ease;
-    }
-    .nav-item:hover{
-      color: rgba(236,231,255,.98);
-      background: rgba(163,107,255,.14);
-    }
-.nav-item.active{
-  background: transparent;
-  box-shadow: none;
-  color: rgba(236,231,255,.75);
-}
-.nav-item{
-  position: relative;
-  z-index: 1;
-}
-
-.nav-item::before{
-  content:"";
-  position:absolute;
-  left:50%;
-  top:50%;
-  width: calc(100% + 8px);
-  height: calc(100% + 6px);
-  border-radius: 999px;
-  background: rgba(163,107,255,.10);
-  border: 1px solid rgba(163,107,255,.18);
-  transform: translate(-50%,-50%) scale(.96);
-  opacity: 0;
-  transition: opacity .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease;
-  z-index: -1;
-}
-
-/* Hover فقط */
-.nav-item:hover::before{
-  opacity: 1;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border-color: rgba(255,255,255,.14);
-  box-shadow: 0 10px 22px rgba(124,60,255,.35);
-  transform: translate(-50%,-50%) scale(1);
-}
-
-
-    /* =========================
-       HERO
-       ========================= */
-    .hero{
-      padding-top: 100px;
-      padding-bottom: 60px;
-      text-align:center;
-    }
-    .hero-inner{
-      display:grid;
-      gap:14px;
-      justify-items:center;
-      margin-top: 10px;
-    }
-    .hero h1{
-      margin:0;
-      font-size:34px;
-      letter-spacing:-.4px;
-      line-height:1.15;
-    }
-    .hero p{
-      margin:0 auto;
-      max-width:820px;
-      color:var(--muted);
-      line-height:1.75;
-      font-size:13.8px;
+      display:inline-flex; align-items:center;
+      height:40px; line-height:1;
     }
 
-    .orbit-image-wrap{
-      margin: 18px 0 0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      position:relative;
-      height:110px;
-    }
-    .orbit-image{
-      width: 520px;
-      max-width: 100%;
-      height: auto;
-      filter: drop-shadow(0 20px 28px rgba(0,0,0,.45));
-      opacity: .95;
-      user-select:none;
-      pointer-events:none;
-    }
-
-    /* =========================
-       SECTION
-       ========================= */
-    section{ padding: 55px 0; }
-    .section-title{
-      margin:0 0 14px;
-      text-align:center;
-      font-size:22px;
-      letter-spacing:-.2px;
-    }
-    .subhead{
-      text-align:center;
-      margin:-6px 0 18px;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    /* =========================
-       PROJECTS GRID (CARDS)
-       ========================= */
-    .projects-grid{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:18px;
-      margin-top:18px;
-    }
-
-    .card{
-      padding:14px;
-      border-radius:18px;
-      border:1px solid rgba(163,107,255,.18);
-      background: linear-gradient(180deg, rgba(24,9,40,.75), rgba(14,5,26,.75));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-      will-change: transform;
-      cursor:pointer;
-    }
-
-    .card::before{
+    .nav-item::before{
       content:"";
       position:absolute;
-      inset:-2px;
-      background: radial-gradient(520px 180px at 30% 0%, rgba(163,107,255,.20), transparent 60%);
-      opacity:.9;
-      pointer-events:none;
+      left:50%; top:50%;
+      width: calc(100% + 8px);
+      height: calc(100% + 6px);
+      border-radius:999px;
+      background: rgba(163,107,255,.10);
+      border:1px solid rgba(163,107,255,.18);
+      transform: translate(-50%,-50%) scale(.96);
+      opacity:0;
+      transition: opacity .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease;
+      z-index:-1;
     }
 
-    .card:hover{
-      transform: translateY(-7px);
-      box-shadow: 0 26px 54px rgba(0,0,0,.50), 0 0 0 1px rgba(163,107,255,.22);
-      border-color: rgba(163,107,255,.35);
+    .nav-item:hover{ background: transparent; color: rgba(236,231,255,.98); }
+    .nav-item:hover::before{
+      opacity:1;
+      background: var(--figma-grad);
+      border-color: var(--figma-border);
+      box-shadow: var(--figma-glow);
+      transform: translate(-50%,-50%) scale(1);
     }
+
+    .nav-item.active{ color:#fff; }
+    .nav-item.active::before{
+      opacity:1;
+      background: var(--figma-grad);
+      border-color: var(--figma-border);
+      box-shadow: var(--figma-glow);
+      transform: translate(-50%,-50%) scale(1);
+    }
+
+    .lang-switch{
+      position:absolute;
+      right:0; top:50%;
+      transform: translateY(-50%);
+      display:inline-flex; align-items:center;
+    }
+    html[dir="rtl"] .lang-switch{ right:auto; left:0; }
+
+    #langToggle.lang-btn{
+      all: unset;
+      cursor: pointer;
+      height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      color: rgba(236,231,255,.86);
+      border: 1px solid rgba(163,107,255,.18);
+      background: rgba(163,107,255,.10);
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      line-height:1;
+    }
+    #langToggle.lang-btn:hover{
+      transform: translateY(-1px);
+      background: rgba(163,107,255,.14);
+      color: rgba(236,231,255,.98);
+      box-shadow: 0 10px 22px rgba(56,18,109,.22);
+    }
+
+    /* HERO */
+    .hero{ padding-top: 100px; padding-bottom: 60px; text-align:center; }
+    .hero-inner{ display:grid; gap:14px; justify-items:center; margin-top: 10px; }
+    .hero h1{ margin:0; font-size:34px; letter-spacing:-.4px; line-height:1.15; }
+    .hero p{ margin:0 auto; max-width:820px; color:var(--muted); line-height:1.75; font-size:13.8px; }
+    .orbit-image-wrap{ margin: 18px 0 0; display:flex; justify-content:center; align-items:center; position:relative; height:110px; }
+    .orbit-image{ width: 520px; max-width: 100%; height:auto; filter: drop-shadow(0 20px 28px rgba(0,0,0,.45)); opacity:.95; user-select:none; pointer-events:none; }
+
+    /* Section */
+    section{ padding: 55px 0; }
+    .section-title{ margin:0 0 14px; text-align:center; font-size:22px; letter-spacing:-.2px; }
+    .subhead{ text-align:center; margin:-6px 0 18px; color:var(--muted); font-size:14px; }
+
+    /* Cards */
+    .projects-grid{ display:grid; grid-template-columns:1fr; gap:22px; }
+    .card{
+      display:grid;
+      grid-template-columns: 38% 62%;
+      gap:18px;
+      padding:16px;
+      border-radius:18px;
+      background: linear-gradient(180deg, rgba(24,9,40,.75), rgba(14,5,26,.75));
+      border: 1px solid rgba(163,107,255,.18);
+      box-shadow: 0 18px 40px rgba(0,0,0,.45);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      align-items:start;
+    }
+    .card:hover{ transform: translateY(-6px); box-shadow: 0 28px 55px rgba(0,0,0,.55); border-color: rgba(163,107,255,.35); }
 
     .thumb{
       width:100%;
+      height:220px;
       border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
       overflow:hidden;
+      border:1px solid rgba(255,255,255,.08);
       background: rgba(0,0,0,.18);
-      line-height:0;
-      position:relative;
     }
+.thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* بدل cover */
+  object-position: center;
+  display: block;
+  background: rgba(0,0,0,.25);
+}
 
-    .thumb img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:14px;
-      transition: transform .35s ease, filter .35s ease;
-    }
+    .card:hover .thumb img{ transform: scale(1.06); filter: saturate(1.06) contrast(1.03); }
 
-    .card:hover .thumb img{
-      transform: scale(1.05);
-      filter: saturate(1.06) contrast(1.03);
-    }
-
-    .thumb::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(420px 200px at 30% 10%, rgba(163,107,255,.22), transparent 55%),
-        linear-gradient(180deg, transparent, rgba(0,0,0,.20));
-      opacity:0;
-      transition: opacity .25s ease;
-      pointer-events:none;
-      border-radius:14px;
-    }
-    .card:hover .thumb::after{opacity:1}
-
-    .card h3{
-      margin:12px 0 6px;
-      font-size:14px;
-      font-weight:800;
-      position:relative;
-    }
-    .card p{
-      margin:0 0 10px;
-      color:var(--muted);
-      font-size:12.8px;
+    .card-body{ min-width:0; display:flex; flex-direction:column; }
+    .card-body h3{ margin:0 0 10px; font-size:14px; font-weight:800; line-height:1.4; }
+    .card-body .desc{
+      margin:0 0 12px;
+      font-size:12.7px;
       line-height:1.75;
-      position:relative;
+      color: rgba(236,231,255,.75);
+      white-space: pre-line; /* عشان الأسطر الجديدة تظهر */
     }
 
-    .card-actions{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      margin-top:10px;
-      position:relative;
-    }
-
-    .btn{
-      border:1px solid rgba(163,107,255,.22);
-      background: rgba(20,8,34,.55);
-      color:var(--text);
-      padding:10px 16px;
-      border-radius:14px;
-      font-size:13px;
-      font-weight:800;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      transition: transform .2s ease, background .2s ease, box-shadow .2s ease, border-color .2s ease;
-      user-select:none;
-    }
-
-    .btn.mini{
-      min-width:auto;
-      padding:9px 12px;
-      font-size:12px;
-      border-radius:13px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-color: rgba(255,255,255,.14);
-    }
-    .btn.mini:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 16px 26px rgba(124,60,255,.22);
-    }
-
-    .icons{display:flex; gap:10px}
-
-    .iconbtn{
-      width: 40px;
-      height: 40px;
-      display: grid;
-      place-items: center;
-      border-radius: 999px;
-      background: rgba(163,107,255,.10);
-      border: 1px solid rgba(163,107,255,.18);
-      color: rgba(236,231,255,.85);
-      transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease, border-color .18s ease;
-      position:relative;
-      z-index:5;
-    }
-    .iconbtn svg{width:18px;height:18px;opacity:.95}
-    .iconbtn:hover{
-      color:#fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-color: rgba(255,255,255,.14);
-      box-shadow: 0 10px 22px rgba(124,60,255,.35);
-      transform: translateY(-1px);
-    }
-
-    /* =========================
-       EXPAND DETAILS
-       ========================= */
-    .details{
-      margin-top:12px;
-      border-top: 1px solid rgba(163,107,255,.14);
-      padding-top:12px;
-      display:none;
-      position:relative;
-    }
-
-    .card.expanded .details{
-      display:block;
-      animation: detailsIn .22s ease forwards;
-    }
-
-    @keyframes detailsIn{
-      from{opacity:0; transform: translateY(10px);}
-      to{opacity:1; transform: translateY(0);}
-    }
-
-    .list{
-      margin:10px 0 0;
-      padding-left:18px;
-      color: rgba(236,231,255,.78);
-      font-size:12.8px;
-      line-height:1.75;
-    }
-    .list li{ margin:6px 0; }
-
-    .expand-hint{
-      font-size:12px;
-      color: rgba(236,231,255,.55);
-      margin-top:6px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    .caret{
-      width:10px; height:10px;
-      border-right:2px solid rgba(236,231,255,.65);
-      border-bottom:2px solid rgba(236,231,255,.65);
-      transform: rotate(45deg);
-      transition: transform .18s ease;
-    }
-    .card.expanded .caret{ transform: rotate(225deg); }
-
-    .anchor{ scroll-margin-top: 90px; }
-
-    /* =========================
-       CHIPS
-       ========================= */
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:8px;
-      margin:12px 0 0;
-    }
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin: 10px 0 14px; }
     .chip{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      padding:6px 10px;
-      border-radius:999px;
-      font-size:12px;
-      font-weight:700;
-      color: rgba(236,231,255,.85);
-      background: rgba(163,107,255,.10);
-      border:1px solid rgba(163,107,255,.18);
+      padding: 5px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 999px;
+      background: rgba(163,107,255,.12);
+      border: 1px solid rgba(163,107,255,.22);
+      color: rgba(236,231,255,.9);
       transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
     }
     .card:hover .chip{
@@ -427,402 +364,137 @@
       transform: translateY(-1px);
     }
 
-    /* =========================
-       FOOTER
-       ========================= */
+    .card-actions{ margin-top: 6px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+
+    .btn{
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      color:#fff;
+      background: var(--figma-grad);
+      border: 1px solid var(--figma-border);
+      box-shadow: var(--figma-glow);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      display:inline-flex; align-items:center; justify-content:center;
+      white-space:nowrap;
+    }
+    .btn:hover{ transform: translateY(-2px); background: var(--figma-grad-hover); box-shadow: var(--figma-glow-strong); }
+
+    .iconbtn{
+      width: 40px; height: 40px;
+      min-width: 40px; min-height: 40px;
+      padding:0;
+      border-radius:999px;
+      display:grid; place-items:center;
+      background: var(--figma-grad);
+      border: 1px solid var(--figma-border);
+      color:#fff;
+      box-shadow: var(--figma-glow);
+      transition: box-shadow .18s ease, transform .18s ease;
+    }
+    .iconbtn:hover{ box-shadow: var(--figma-glow-strong); transform: translateY(-1px); }
+    .iconbtn svg{ width:20px; height:20px; display:block; }
+
+    /* Footer */
     footer{
       margin-top: 40px;
       padding: 28px 0 18px;
       background: linear-gradient(180deg, rgba(10,4,20,.20), rgba(6,3,14,.70));
       border-top: 1px solid rgba(163,107,255,.16);
     }
-
-    .footer-inner{
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 28px;
-      align-items: start;
-    }
-
-    .foot h4{
-      margin: 0 0 12px;
-      font-size: 14px;
-      font-weight: 800;
-      letter-spacing: .2px;
-      color: rgba(236,231,255,.95);
-    }
-
-    .foot p{
-      margin: 0;
-      color: rgba(236,231,255,.70);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    .foot a{
-      color: rgba(236,231,255,.72);
-      transition: color .18s ease, opacity .18s ease;
-    }
-
-    .foot a:hover{ color: rgba(236,231,255,.96); opacity: 1; }
-
-    .foot ul{
-      list-style:none;
-      padding:0;
-      margin:0;
-      display:grid;
-      gap:10px;
-    }
-
+    .footer-inner{ display:grid; grid-template-columns: 1.2fr 1fr 1fr; gap:28px; align-items:start; }
+    .foot h4{ margin:0 0 12px; font-size:14px; font-weight:800; letter-spacing:.2px; color: rgba(236,231,255,.95); }
+    .foot p{ margin:0; color: rgba(236,231,255,.70); font-size:13px; line-height:1.8; white-space: pre-line; }
+    .foot ul{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
     .foot ul a{
-      position:relative;
-      padding:6px 14px;
-      border-radius:999px;
+      padding:6px 14px; border-radius:999px;
       color: rgba(236,231,255,.75);
       transition: background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+      display:inline-flex; align-items:center;
     }
+    .foot ul a:hover{ color:#fff; background: var(--figma-grad); box-shadow: var(--figma-glow); transform: translateY(-1px); }
 
-    .foot ul a:hover{
-      color:#fff;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 10px 22px rgba(124,60,255,.35);
-      transform: translateY(-1px);
-    }
+    .social{ display:flex; gap:10px; flex-wrap:wrap; margin-top:10px; justify-content:flex-start; }
+    html[dir="rtl"] .social{ justify-content:flex-start; }
+    footer .social .iconbtn svg{ width:20px; height:20px; }
 
-    .social{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top:10px;
-    }
-
-    .footer-bottom{
-      margin-top: 18px;
-      text-align:center;
-      color: rgba(236,231,255,.55);
-      font-size: 12.5px;
-    }
+    .footer-bottom{ margin-top:18px; text-align:center; color: rgba(236,231,255,.55); font-size: 12.5px; }
 
     @media (max-width: 920px){
-      .projects-grid{ grid-template-columns: 1fr; }
+      .card{ grid-template-columns: 1fr; }
+      .thumb{ height:200px; }
       .footer-inner{ grid-template-columns: 1fr; gap:18px; text-align:center; }
       .social{ justify-content:center; }
     }
     @media (max-width: 560px){
-      .hero h1{font-size:30px}
+      .hero h1{ font-size:30px; }
+      .nav-item{ padding: 0 12px; }
     }
-/* =========================
-   PROJECTS – RECTANGULAR CARDS
-   ========================= */
 
-/* grid */
-.projects-grid{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 22px;
+    html[dir="rtl"] body{ direction: rtl; }
+/* ===== Icon toggles (Language + Theme) ===== */
+.lang-switch{
+  gap:10px;               /* يخليهم جنب بعض بفراغ لطيف */
 }
 
-/* card */
-.card{
+.icon-toggle{
+  width: 42px;
+  height: 42px;
   display: grid;
-  grid-template-columns: 38% 62%;   /* صورة | محتوى */
-  gap: 18px;
-
-  padding: 16px;
-  border-radius: 18px;
-  background: linear-gradient(180deg, rgba(24,9,40,.75), rgba(14,5,26,.75));
+  place-items: center;
+  border-radius: 999px;
   border: 1px solid rgba(163,107,255,.18);
-  box-shadow: 0 18px 40px rgba(0,0,0,.45);
-
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  background: rgba(163,107,255,.10);
+  color: rgba(236,231,255,.86);
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
 }
 
-/* hover */
-.card:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 28px 55px rgba(0,0,0,.55);
-  border-color: rgba(163,107,255,.35);
+.icon-toggle svg{
+  width: 18px;
+  height: 18px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
-/* image */
-.thumb{
-  width: 100%;
-  height: 100%;
-  border-radius: 14px;
-  overflow: hidden;
+.icon-toggle:hover{
+  transform: translateY(-1px);
+  background: rgba(163,107,255,.14);
+  color: rgba(236,231,255,.98);
+  box-shadow: 0 10px 22px rgba(56,18,109,.22);
 }
+/* =========================
+   FIX: Icon Toggle Visibility
+   ========================= */
 
-.thumb img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform .35s ease;
-}
-
-.card:hover .thumb img{
-  transform: scale(1.06);
-}
-
-/* content */
-.card-body{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.card-body h3{
-  margin: 0 0 8px;
-  font-size: 15px;
-  font-weight: 800;
-}
-
-.card-body p{
-  margin: 0 0 12px;
-  font-size: 13px;
-  line-height: 1.7;
-  color: rgba(236,231,255,.75);
-}
-
-/* chips */
-.chips{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 14px;
-}
-
-.chip{
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: 700;
-  border-radius: 999px;
+/* Dark: خلي الأيقونة أوضح */
+html[data-theme="dark"] .icon-toggle{
   background: rgba(163,107,255,.12);
-  border: 1px solid rgba(163,107,255,.22);
-  color: rgba(236,231,255,.9);
+  border-color: rgba(163,107,255,.22);
+  color: rgba(255,255,255,.92);
 }
-
-/* actions */
-.card-actions{
-  display: flex;
-  justify-content: flex-end;
-}
-
-.iconbtn{
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
+html[data-theme="dark"] .icon-toggle:hover{
+  background: rgba(163,107,255,.18);
   color: #fff;
-  background: linear-gradient(135deg, #a36bff, #7c3cff);
-  border: none;
-  transition: transform .2s ease, box-shadow .2s ease;
 }
 
-.iconbtn:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(124,60,255,.35);
+/* Light: خلي الأيقونة أغمق وواضحة */
+html[data-theme="light"] .icon-toggle{
+  background: rgba(91,71,255,.10);
+  border-color: rgba(91,71,255,.22);
+  color: rgba(20,18,37,.92);      /* هذا أهم سطر */
+}
+html[data-theme="light"] .icon-toggle:hover{
+  background: rgba(91,71,255,.16);
+  color: rgba(20,18,37,.98);
+  box-shadow: 0 10px 22px rgba(91,71,255,.18);
 }
 
-/* =========================
-   RESPONSIVE
-   ========================= */
-@media (max-width: 900px){
-  .card{
-    grid-template-columns: 1fr;
-  }
-
-  .card-actions{
-    justify-content: flex-start;
-  }
-}
-/* =========================
-   FOOTER SOCIAL ICONS - HOVER MOVE
-   ========================= */
-
-footer .social .iconbtn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  /* مهم: عشان الحركة تكون ناعمة */
-  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease;
-  will-change: transform;
-
-  /* اختياري لو فيه قص */
-  position: relative;
-}
-
-/* الحركة + glow */
-footer .social .iconbtn:hover{
-  transform: translateY(-6px) scale(1.06);
-  box-shadow: 0 14px 30px rgba(163, 107, 255, .55);
-}
-
-/* حركة عند الضغط */
-footer .social .iconbtn:active{
-  transform: translateY(-2px) scale(1.02);
-}
-/* FIX GitHub button position inside project card */
-.card-body{ min-width: 0; }
-
-.card-actions{
-  margin-top: auto;                 /* ينزل لتحت */
-  display: flex;
-  justify-content: flex-end;        /* يمين */
-  align-items: center;
-}
-
-/* يلغي أي ستايل قديم يخليه دائرة/متموضع */
-.card-actions .iconbtn{
-  position: static !important;
-  width: auto !important;
-  height: auto !important;
-
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-
-  padding: 10px 16px !important;
-  border-radius: 999px !important;
-
-  white-space: nowrap;
-}
-
-/* لو عندك wrapper اسمه icons ومخرب التموضع */
-.card-actions .icons{
-  position: static !important;
-  display: flex !important;
-  justify-content: flex-end;
-  width: 100%;
-}
-/* ضبط مكان GitHub داخل الكارد */
-.card-body{
-  display: flex;
-  flex-direction: column;
-}
-
-/* خلي الزر تحت الـ chips */
-.card-actions{
-  margin-top: 14px;          /* مسافة بعد الـ chips */
-  display: flex;
-  justify-content: flex-start; /* يسار مع المحتوى */
-}
-
-/* ستايل الزر */
-.card-actions .iconbtn{
-  position: static !important;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-size: 13px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #a36bff, #7c3cff);
-  color: #fff;
-  box-shadow: 0 10px 22px rgba(124,60,255,.35);
-}
-/* =========================
-   FOOTER CONNECT ICONS (LIKE SCREENSHOT)
-   ========================= */
-
-footer .social{
-  display: flex;
-  gap: 14px;
-}
-
-footer .social .iconbtn{
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,.06);                 /* داكن */
-  border: 1px solid rgba(163,107,255,.22);           /* موف خفيف */
-  color: rgba(236,231,255,.85);
-
-  box-shadow: 0 10px 22px rgba(0,0,0,.35);
-  transition: transform .22s ease, box-shadow .22s ease, background .22s ease, border-color .22s ease, color .22s ease;
-  will-change: transform;
-}
-
-footer .social .iconbtn svg{
-  width: 20px;
-  height: 20px;
-  display: block;
-}
-
-/* Hover = يصير موف + يطلع لفوق + glow */
-footer .social .iconbtn:hover{
-  transform: translateY(-6px) scale(1.07);
-  background: linear-gradient(135deg, #a36bff, #7c3cff);
-  border-color: rgba(255,255,255,.14);
-  color: #fff;
-  box-shadow: 0 16px 34px rgba(163,107,255,.45);
-}
-
-/* Active click */
-footer .social .iconbtn:active{
-  transform: translateY(-2px) scale(1.03);
-}
-
-/* لو الحركة تنقص/تتقّص بسبب overflow */
-footer .footer-inner,
-footer .social{
-  overflow: visible;
-}
-/* =========================
-   FIX PROJECT THUMB IMAGES (LONG TEXT SAFE)
-   ========================= */
-
-/* خلّي عمود الصورة ثابت وما يتمدد مع طول النص */
-.card{
-  align-items: start;                 /* لا تخلي الصورة تتمطط مع النص */
-}
-
-/* مساحة الصورة */
-.thumb{
-  height: 220px;                      /* عدلي الرقم لو تبين أكبر */
-  border-radius: 14px;
-  overflow: hidden;
-}
-
-/* الصورة داخلها */
-.thumb img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;                  /* يعبّي بدون تشويه */
-  object-position: center;            /* يركز بالصورة */
-  display: block;
-}
-
-/* شاشات أكبر: خلي الصورة أعلى شوي */
-@media (min-width: 1100px){
-  .thumb{ height: 240px; }
-}
-
-/* موبايل: ارتفاع أقل */
-@media (max-width: 900px){
-  .thumb{ height: 200px; }
-}
-.thumb img{ object-fit: contain; background: rgba(0,0,0,.25); }
-/* تصغير النص داخل كروت المشاريع */
-.card-body h3{
-  font-size: 14px;     /* كان أكبر */
-  line-height: 1.4;
-}
-
-.card-body p{
-  font-size: 12.5px;   /* كان 13–14 */
-  line-height: 1.65;
-  margin-bottom: 10px;
-}
-
-/* تصغير الـ chips شوي */
-.chip{
-  font-size: 11px;
-  padding: 5px 10px;
+/* تأكيد أن مسارات الـ SVG تاخذ لون الزر */
+.icon-toggle svg,
+.icon-toggle svg *{
+  stroke: currentColor !important;
 }
 
 
@@ -835,10 +507,39 @@ footer .social{
   <div class="topbar" data-animate="up">
     <div class="container">
       <nav class="nav-pill">
-        <a class="nav-item" href="index.html#home">Home</a>
-        <a class="nav-item" href="index.html#about">About</a>
-        <a class="nav-item" href="index.html#skills">Skills</a>
-        <a class="nav-item active" href="projects.html">Projects</a>
+
+        <div class="nav-center">
+          <a class="nav-item" href="index.html#home" data-i18n="nav_home">Home</a>
+          <a class="nav-item" href="index.html#about" data-i18n="nav_about">About</a>
+          <a class="nav-item" href="index.html#skills" data-i18n="nav_skills">Skills</a>
+ <a class="nav-item" href="projects.html">Projects</a>
+
+        </div>
+<div class="lang-switch" aria-label="Language & Theme Switch">
+
+  <!-- Language: Globe -->
+  <button type="button" id="langToggle" class="icon-toggle" aria-label="Toggle Language" title="Language">
+    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2c3 3.5 3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2c-3 3.5-3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </button>
+
+  <!-- Theme: Sun/Moon -->
+  <button type="button" id="themeToggle" class="icon-toggle" aria-label="Toggle Theme" title="Theme">
+    <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <!-- Moon default -->
+      <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
+               a7 7 0 1 0 11.5 11.5Z"
+            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </button>
+
+</div>
+
+        </div>
 
       </nav>
     </div>
@@ -848,10 +549,9 @@ footer .social{
   <header class="hero" id="home">
     <div class="container">
       <div class="hero-inner">
-        <h1 data-animate="up" class="delay-1">My Projects</h1>
-        <p data-animate="up" class="delay-2">
+        <h1 data-animate="up" class="delay-1" data-i18n="hero_title">Featured Projects</h1>
+        <p data-animate="up" class="delay-2" data-i18n="hero_desc">
           A selection of projects across AI, data analysis, and interactive dashboards.
-          Click any card to expand details.
         </p>
 
         <div class="orbit-image-wrap" aria-hidden="true" data-animate="up" class="delay-3">
@@ -860,296 +560,290 @@ footer .social{
       </div>
     </div>
   </header>
-<section>
-  <div class="container">
-    <h2 class="section-title"></h2>
-    <p class="subhead"></p>
 
-    <div class="projects-grid">
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title" data-animate="up" data-i18n="sec_title">Projects</h2>
+      <p class="subhead" data-animate="up" class="delay-1" data-i18n="sec_subhead">Explore the full details of each project below.</p>
 
-      <!-- 1) Nabāhah -->
-      <article class="card" id="nabahah">
-        <div class="thumb">
-          <img src="Image/1.png" alt="Nabāhah Dashboard">
-        </div>
+      <div class="projects-grid">
 
-        <div class="card-body">
-          <h3>Nabāhah (نباهة) – AI-based Laboratory Safety System</h3>
-          <p>
-            Nabāhah is an AI-powered laboratory safety monitoring system designed to enhance safety compliance and reduce real-world risks in laboratory environments.
-            The platform uses computer vision to monitor PPE compliance and detect hazardous situations in real time, then provides actionable insights through an interactive dashboard and alerts.<br><br>
-            <strong>Key features:</strong><br>
-            • Real-time detection of PPE violations, red-zone breaches, and chemical or liquid spills<br>
-            • Live monitoring dashboard built with FastAPI<br>
-            • Centralized logging of detections and alerts in Supabase<br>
-            • Bilingual voice alerts (Arabic/English) using Edge-TTS<br>
-            • RAG-based chatbot for laboratory safety queries
-          </p>
+        <!-- 1) Nabāhah -->
+        <article class="card" id="nabahah" data-animate="left" class="delay-1">
+          <div class="thumb"><img src="Image/1.png" alt="Nabāhah"></div>
+          <div class="card-body">
+            <h3 data-i18n="p1_title">Nabāhah (نباهة) – Intelligent Laboratory Safety Monitoring System</h3>
+            <p class="desc" data-i18n="p1_desc">Nabāhah (نباهة) is an AI-powered laboratory safety monitoring system designed to enhance safety compliance and reduce risks in laboratory environments. It uses computer vision to detect PPE compliance (lab coat, gloves, mask, goggles), red-zone violations, and hazards such as spills, smoke, and fire, and then generates alerts and analytics through a dashboard.
 
-          <div class="chips">
-            <span class="chip">YOLOv8</span>
-            <span class="chip">Computer Vision</span>
-            <span class="chip">FastAPI</span>
-            <span class="chip">Supabase</span>
+Technologies Used:
+Python, FastAPI, YOLOv8 (Ultralytics), OpenCV, Supabase, SQL, Chart.js, Edge-TTS
+
+Key Features:
+- Real-time PPE detection and safety violations monitoring
+- Hazard detection (spill / smoke / fire) with alert logic
+- Dashboard analytics with KPIs, charts, and database viewer
+- Model toggles management (enable/disable models) and logging of detections and alerts
+- Bilingual UI (Arabic/English) with a smooth language switch</p>
+
+            <div class="chips">
+              <span class="chip">YOLOv8</span><span class="chip">FastAPI</span><span class="chip">Supabase</span><span class="chip">Chart.js</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MUSAB10000/NABAHAH" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
+        </article>
 
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MUSAB10000/NABAHAH" target="_blank" rel="noopener">GitHub</a>
+        <!-- 2) InterviewSense -->
+        <article class="card" id="interviewsense" data-animate="right" class="delay-2">
+          <div class="thumb"><img src="Image/3.png" alt="InterviewSense"></div>
+          <div class="card-body">
+            <h3 data-i18n="p2_title">InterviewSense – AI Interview Evaluation System</h3>
+            <p class="desc" data-i18n="p2_desc">InterviewSense is an AI-powered system that evaluates job applicants by analyzing speech, text, and facial expressions. It combines speech-to-text conversion, text similarity analysis, and facial emotion recognition (FER) to provide objective assessments.
+
+Technologies Used:
+Python, Flask, JavaScript, AssemblyAI, DeepFace, FER Library
+
+Datasets:
+LibriSpeech, FER2013, Customized FER, Modified ARTJI
+
+Key Features:
+- Automatic speech recognition (ASR)
+- Question & answer generation using ChatGPT
+- Text similarity analysis with cosine & Jaccard metrics
+- Facial emotion recognition for candidate evaluation</p>
+
+            <div class="chips">
+              <span class="chip">Flask</span><span class="chip">AssemblyAI</span><span class="chip">DeepFace</span><span class="chip">NLP</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/InterviewSense" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 2) King County -->
-      <article class="card" id="king-county">
-        <div class="thumb">
-          <img src="Image/2.png" alt="King County Dashboard">
-        </div>
+        <!-- 3) Adidas Sales Dashboard -->
+        <article class="card" id="adidas" data-animate="left" class="delay-3">
+          <div class="thumb"><img src="Image/4.png" alt="Adidas Dashboard"></div>
+          <div class="card-body">
+            <h3 data-i18n="p3_title">Adidas Sales Dashboard – EDA & Interactive Visualization</h3>
+            <p class="desc" data-i18n="p3_desc">Adidas Sales Dashboard – EDA & Interactive Visualization
+This repository contains a complete Exploratory Data Analysis (EDA), data cleaning, and interactive dashboard project for Adidas sales data. Built with Python, Pandas, Matplotlib, Streamlit, and Plotly.
 
-        <div class="card-body">
-          <h3>King County – Housing Sales Analytics</h3>
-          <p>
-King County Housing Sales Analysis & Prediction is a data analytics and machine learning project that analyzes house sales data in
-King County (USA) and builds a predictive model for estimating housing prices. The project integrates exploratory data analysis, regression modeling, and an interactive dashboard to deliver actionable insights.<br><br>
-            <strong>Key features:</strong><br>
-            • Exploratory data analysis (EDA) of housing prices and key property attributes<br>
-            • Feature engineering with log-transformed house prices<br>
-            • OLS regression model using key features such as living area (sqft), grade, bedrooms, bathrooms, condition, and waterfrontbr>
-            • Model evaluation using R², RMSE, MAE, and accuracy metrics
-          </p>
+Features
+Data Cleaning & Preprocessing
+- Remove missing or invalid values
+- Convert dates to datetime objects
+- Standardize numeric and currency columns
 
-          <div class="chips">
-            <span class="chip">EDA</span>
-            <span class="chip">Data Cleaning</span>
-            <span class="chip">Feature Engineering</span>
-            <span class="chip">KPIs</span>
-            <span class="chip">Model evaluation</span>
+Exploratory Data Analysis (EDA)
+- Summary statistics with .describe()
+- Random samples and quick insights
+- Visualizations of sales trends, regional performance, and product performance
+
+Interactive Dashboard
+- Built with Streamlit
+- Interactive filters and dynamic charts
+- Clear KPI cards and business-focused insights</p>
+
+            <div class="chips">
+              <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">Streamlit</span><span class="chip">Plotly</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/Adidas_Sales_EDA" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
+        </article>
 
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/King-County-Housing-Sales" target="_blank" rel="noopener">GitHub</a>
+        <!-- 4) King County -->
+        <article class="card" id="king-county" data-animate="right" class="delay-4">
+          <div class="thumb"><img src="Image/2.png" alt="King County"></div>
+          <div class="card-body">
+            <h3 data-i18n="p4_title">King County – Housing Sales Dashboard & Price Prediction</h3>
+            <p class="desc" data-i18n="p4_desc">King County – Housing Sales Dashboard & Price Prediction
+A complete analytics project for housing sales data. It includes data cleaning, exploratory analysis, feature engineering, and building machine learning models to predict house prices. The project focuses on generating clear insights and supporting decision-making using visualizations and evaluation metrics.
+
+Technologies Used:
+Python, Pandas, NumPy, Matplotlib, Scikit-learn
+
+Key Steps:
+- Data cleaning and handling missing values
+- Feature engineering and correlation analysis
+- Model training and evaluation (regression)
+- Visualizations for trends and important factors impacting price</p>
+
+            <div class="chips">
+              <span class="chip">EDA</span><span class="chip">Scikit-learn</span><span class="chip">Regression</span><span class="chip">Visualization</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/King-County-Housing-Sales" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 3) InterviewSense -->
-      <article class="card" id="interviewsense">
-        <div class="thumb">
-          <img src="Image/3.png" alt="InterviewSense">
-        </div>
+        <!-- 5) Saudi Business Activities -->
+        <article class="card" id="saudi-business" data-animate="left" class="delay-5">
+          <div class="thumb"><img src="Image/5.png" alt="Saudi Business"></div>
+          <div class="card-body">
+            <h3 data-i18n="p5_title">Business Activities in Saudi Arabia – Dashboard</h3>
+            <p class="desc" data-i18n="p5_desc">Business Activities in Saudi Arabia – Dashboard
+A Power BI dashboard project that provides an overview of business activities across different cities/regions of Saudi Arabia. It highlights KPIs, categories, and distributions using interactive visuals to support quick insights and reporting.
 
-        <div class="card-body">
-          <h3>InterviewSense – AI Interview Evaluation</h3>
-          <p>
-            InterviewSense is an AI-powered system that evaluates job applicants by analyzing speech, text, and facial expressions to provide objective assessments.
-            It combines speech-to-text conversion, text similarity analysis, and facial emotion recognition to support fair and data-driven hiring decisions.<br><br>
-            <strong>Key features:</strong><br>
-            • Automatic Speech Recognition (ASR) and transcription<br>
-            • Q&A generation for interview flow support<br>
-            • Text similarity scoring (Cosine & Jaccard)<br>
-            • Facial Emotion Recognition (FER) for candidate evaluation
-          </p>
+Tools & Technologies:
+Power BI, Data Modeling, KPI Design, Interactive Visuals
 
-          <div class="chips">
-            <span class="chip">ASR</span>
-            <span class="chip">NLP</span>
-            <span class="chip">FER</span>
-            <span class="chip">AI Evaluation</span>
+Key Features:
+- KPI cards for quick performance overview
+- Regional breakdown and comparisons
+- Clear charts for distributions and trends
+- Business-focused layout for decision makers</p>
+
+            <div class="chips">
+              <span class="chip">Power BI</span><span class="chip">KPIs</span><span class="chip">Insights</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/Business-activities-in-various-cities-of-the-Kingdom-of-Saudi-Arabia-Dashbored" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
+        </article>
 
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/InterviewSense" target="_blank" rel="noopener">GitHub</a>
+        <!-- 6) E-Commerce -->
+        <article class="card" id="ecommerce" data-animate="right" class="delay-1">
+          <div class="thumb"><img src="Image/6.png" alt="E-Commerce"></div>
+          <div class="card-body">
+            <h3 data-i18n="p6_title">E-Commerce Customer Behavior Dashboard</h3>
+            <p class="desc" data-i18n="p6_desc">E-Commerce Customer Behavior Dashboard
+A Power BI + Excel dashboard project that analyzes customer behavior in e-commerce. It explores purchasing patterns, satisfaction indicators, and the influence of ads and social media on buying decisions. The dashboard is designed to highlight clear insights using KPI cards and clean visuals.
+
+Tools & Technologies:
+Microsoft Excel, Power BI, Data Cleaning, KPI Design, Interactive Visuals
+
+Key Features:
+- Customer purchasing behavior insights
+- Satisfaction indicators and segmentation
+- Impact analysis for ads and social media
+- Business-friendly visuals for reporting</p>
+
+            <div class="chips">
+              <span class="chip">Excel</span><span class="chip">Power BI</span><span class="chip">KPIs</span><span class="chip">Customer Insights</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/E-Commerce-Customer-Behavior-Dashboard-" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 4) Adidas -->
-      <article class="card" id="adidas">
-        <div class="thumb">
-          <img src="Image/4.png" alt="Adidas Dashboard">
-        </div>
+        <!-- 7) Uber -->
+        <article class="card" id="uber" data-animate="left" class="delay-2">
+          <div class="thumb"><img src="Image/7.png" alt="Uber"></div>
+          <div class="card-body">
+            <h3 data-i18n="p7_title">Uber Data Analysis Dashboard – Power BI</h3>
+            <p class="desc" data-i18n="p7_desc">Uber Data Analysis Dashboard – Power BI
+A complete analysis dashboard that provides insights into Uber booking performance and customer behavior. The project includes data cleaning and processing, KPI reporting, and visuals that summarize booking statuses, payment types, and monthly trends.
 
-        <div class="card-body">
-          <h3>Adidas Sales Dashboard – EDA & Visualization</h3>
-          <p>
-Adidas Sales Dashboard is a data analytics system that analyzes Adidas sales performance through exploratory data analysis and interactive visualizations. It combines data cleaning, statistical analysis, and dashboarding to provide clear and actionable business insights.<br><br>
-            <strong>Key features:</strong><br>
-            • Data cleaning and preprocessing of sales records<br>
-            • Exploratory data analysis (EDA) of sales trends and performance<br>
-            • Interactive dashboard for real-time data exploration<br>
-            • KPI tracking for total sales, profit, units sold, and top products<br>
-            • Visual analysis of regional performance and sales methods
-          </p>
+Tools & Technologies:
+Power BI, Microsoft Excel, Data Cleaning, KPI Design, Data Processing
 
-          <div class="chips">
-            <span class="chip">EDA</span>
-            <span class="chip">Streamlit</span>
-            <span class="chip">Plotly</span>
-            <span class="chip">Python</span>
+Key Features:
+- Booking status breakdown (completed, cancelled, etc.)
+- Payment method analysis and performance insights
+- Monthly and trend-based reporting
+- Clear business-friendly dashboard layout</p>
+
+            <div class="chips">
+              <span class="chip">Power BI</span><span class="chip">Excel</span><span class="chip">KPIs</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/Uber-Data-Analysis-Power-BI" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
+        </article>
 
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Adidas_Sales_EDA" target="_blank" rel="noopener">GitHub</a>
+        <!-- 8) Revenue Tracking -->
+        <article class="card" id="revenue" data-animate="right" class="delay-3">
+          <div class="thumb"><img src="Image/8.png" alt="Revenue Tracking"></div>
+          <div class="card-body">
+            <h3 data-i18n="p8_title">Revenue Tracking Dashboard by Product and Region</h3>
+            <p class="desc" data-i18n="p8_desc">Revenue Tracking Dashboard by Product and Region
+A Power BI dashboard focused on tracking revenue performance across products and regions. It includes a comprehensive overview of revenue distribution, product performance insights, regional comparisons, and trend analysis. The dashboard is designed for reporting and decision making with clear KPIs and visuals.
+
+Tools & Technologies:
+Power BI, Data Cleaning, Data Processing, KPI Cards, Visual Analytics
+
+Key Features:
+- Revenue distribution across product categories
+- Regional performance comparison and breakdown
+- Trend analysis over time
+- Top-performing products and regions summary</p>
+
+            <div class="chips">
+              <span class="chip">Power BI</span><span class="chip">KPIs</span><span class="chip">Analytics</span>
+            </div>
+
+            <div class="card-actions">
+              <a class="iconbtn" href="https://github.com/MawdaALguraafi/Revenue-Tracking-Dashboard-by-Product-and-Region" target="_blank" rel="noopener" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.4-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1.1 1.5 1.1.9 1.6 2.4 1.1 3 .9.1-.7.4-1.1.6-1.4-2.2-.3-4.6-1.2-4.6-5.1 0-1.1.4-2 1-2.7-.1-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.9 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.4 4.8-4.7 5.1.4.3.7.9.7 1.9v2.8c0 .3.2.6.7.5 3.9-1.3 6.8-5.2 6.8-9.7C22 6.6 17.5 2 12 2z" fill="currentColor"/></svg>
+              </a>
+            </div>
           </div>
-        </div>
-      </article>
+        </article>
 
-      <!-- 5) Saudi Business -->
-      <article class="card" id="saudi-business">
-        <div class="thumb">
-          <img src="Image/5.png" alt="Saudi Business Dashboard">
-        </div>
-
-        <div class="card-body">
-          <h3>Saudi Arabia Business Activities Dashboard</h3>
-          <p>
-This dashboard provides an overview of business activities across different regions of Saudi Arabia.It shows the distribution of small, medium, and large businesses with interactive visuals. Users can explore key data, including the total number of businesses, their sizes, and their economic activities.
-<br><br>
-            <strong>Key features:</strong><br>
-            • Regional Distribution: Displays the number of businesses in each region, highlighting major areas like Riyadh and Makkah.<br>
-            • Business Size Analysis: Divides businesses into micro, small, medium, and large categories for a clear view.<br>
-            • Economic Activities: Shows leading activities such as trade, manufacturing, and other key industries.<br>
-            • Map Visualization: Offers a geographical view of business distribution by region.
-          </p>
-
-          <div class="chips">
-            <span class="chip">KPIs</span>
-            <span class="chip">Dashboard</span>
-            <span class="chip">Power BI</span>
-          </div>
-
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Business-activities-in-various-cities-of-the-Kingdom-of-Saudi-Arabia-Dashbored" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 6) E-Commerce -->
-      <article class="card" id="ecommerce">
-        <div class="thumb">
-          <img src="Image/6.png" alt="E-Commerce Dashboard">
-        </div>
-
-        <div class="card-body">
-          <h3>E-Commerce Customer Behavior Dashboard</h3>
-          <p>
-            This dashboard provides an overview of customer purchasing behavior in e-commerce. It highlights sales performance, customer satisfaction, and the impact of ads and social media on buying decisions.<br><br>
-            <strong>Key features:</strong><br>
-            • Sales Performance: Displays total sales, number of customers, and return rate.<br>
-            • Customer Insights: Shows satisfaction by purchase intent and average product rating.<br>
-            • Ad & Social Media Impact: Analyzes sales distribution based on ad engagement and social influence.<br>
-            • Category & Time Analysis: Breaks down sales by product categories and tracks trends by month.
-          </p>
-
-          <div class="chips">
-            <span class="chip">Customer Analytics</span>
-            <span class="chip">Microsoft Excel</span>
-            <span class="chip">Power BI</span>
-          </div>
-
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/E-Commerce-Customer-Behavior-Dashboard-" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 7) Uber -->
-      <article class="card" id="uber">
-        <div class="thumb">
-          <img src="Image/7.png" alt="Uber Dashboard">
-        </div>
-
-        <div class="card-body">
-          <h3>Uber Bookings Overview Dashboard</h3>
-          <p>
-            
-This dashboard provides insights into Uber booking performance and customer behavior. It covers completed, cancelled, and incomplete bookings, along with preferred payment methods and monthly trends.<br><br>
-            <strong>Key features:</strong><br>
-            • Booking Overview: Shows total bookings and breakdown by status.<br>
-            • Payment Analysis: Highlights the most used payment methods.<br>
-            • Trend Monitoring: Displays booking activity by month.<br>
-            • Filtering Options: Allows users to analyze bookings by date and vehicle type.
-          </p>
-
-          <div class="chips">
-            <span class="chip">KPIs</span>
-            <span class="chip">Microsoft Excel</span>
-            <span class="chip">Data Processing</span>
-            <span class="chip">Power BI</span>
-          </div>
-
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Uber-Data-Analysis-Power-BI" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- 8) (Optional) Riyadh Tracking -->
-      <article class="card" id="riyadh-tracking">
-        <div class="thumb">
-          <img src="Image/8.png" alt="Riyadh Tracking Dashboard">
-        </div>
-
-        <div class="card-body">
-          <h3>Revenue Tracking Dashboard by Product and Region</h3>
-          <p>
-            
-This dashboard provides a comprehensive view of revenue distribution across different products and regions in Saudi Arabia. It enables users to analyze sales performance, top products, and regional contributions.<br><br>
-            <strong>Key Features:</strong><br>
-            • Total Revenue: Displays the overall revenue and number of customers.<br>
-            • Geographic Distribution: Interactive map showing revenue by region.<br>
-            • Product Analysis: Compares revenue by product and identifies top-performing items.<br>
-            • Time Trends: Tracks daily revenue trends with clear performance fluctuations.
-          </p>
-
-          <div class="chips">
-            <span class="chip">Power BI</span>
-            <span class="chip">KPIs</span>
-            <span class="chip">Data Cleaning & Processing</span>
-          </div>
-
-          <div class="card-actions">
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi/Revenue-Tracking-Dashboard-by-Product-and-Region" target="_blank" rel="noopener">GitHub</a>
-          </div>
-        </div>
-      </article>
-
+      </div>
     </div>
-  </div>
-</section>
-
-
+  </section>
 
   <!-- FOOTER -->
-  <footer data-animate="up" class="delay-3">
+  <footer data-animate="up" class="delay-2">
     <div class="container">
       <div class="footer-inner">
-
         <div class="foot" data-animate="left" class="delay-2">
           <h4>Mawda Alguraafi</h4>
-          <p>Data & AI | Analytics | Dashboard Development</p>
+          <p data-i18n="footer_tagline">Data & AI | Analytics | Dashboard Development</p>
         </div>
 
         <div class="foot" data-animate="up" class="delay-3">
-          <h4>Quick Links</h4>
+          <h4 data-i18n="footer_quick">Quick Links</h4>
           <ul>
-            <li><a href="index.html#home">Home</a></li>
-            <li><a href="index.html#about">About</a></li>
-            <li><a href="index.html#skills">Skills</a></li>
-            <li><a href="projects.html#home">Projects</a></li>
+            <li><a href="index.html#home" data-i18n="nav_home">Home</a></li>
+            <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+            <li><a href="index.html#skills" data-i18n="nav_skills">Skills</a></li>
+            <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
+
           </ul>
         </div>
 
         <div class="foot" data-animate="right" class="delay-2">
-          <h4>Connect</h4>
+          <h4 data-i18n="footer_connect">Connect</h4>
           <div class="social">
-            <a class="iconbtn" href="mailto:MawdaALguraafi@gmail.com" title="Email">
+            <a class="iconbtn" href="mailto:MawdaALguraafi@gmail.com" title="Email" aria-label="Email">
               <svg viewBox="0 0 24 24">
                 <path d="M4 6h16v12H4z" fill="none" stroke="currentColor" stroke-width="2"/>
                 <path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/>
               </svg>
             </a>
-
-            <a class="iconbtn" href="https://www.linkedin.com/in/mawda-alguraafi/" target="_blank" rel="noopener" title="LinkedIn">
+            <a class="iconbtn" href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
               <svg viewBox="0 0 24 24">
                 <path d="M6 9v11" stroke="currentColor" stroke-width="2"/>
                 <circle cx="7.5" cy="6.5" r="1.5" fill="currentColor"/>
@@ -1157,8 +851,7 @@ This dashboard provides a comprehensive view of revenue distribution across diff
                 <path d="M11 13c0-2 1-4 3.5-4S18 11 18 14.5V20" stroke="currentColor" stroke-width="2"/>
               </svg>
             </a>
-
-            <a class="iconbtn" href="https://github.com/MawdaALguraafi" target="_blank" rel="noopener" title="GitHub">
+            <a class="iconbtn" href="https://github.com/" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">
               <svg viewBox="0 0 24 24">
                 <path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7
                          .5.1.7-.2.7-.5v-1.7
@@ -1187,11 +880,368 @@ This dashboard provides a comprehensive view of revenue distribution across diff
             </a>
           </div>
         </div>
-
       </div>
 
-      <div class="footer-bottom">© 2025 Mawda Alguraafi</div>
+      <div class="footer-bottom">
+        <span data-i18n="footer_copy">© 2025 Mawda Alguraafi</span>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const I18N = {
+      en: {
+        page_title: "Projects | Mawda Alguraafi",
+        nav_home: "Home",
+        nav_about: "About",
+        nav_skills: "Skills",
+        nav_projects: "Projects",
+
+        hero_title: "Featured Projects",
+        hero_desc: "A selection of projects across AI, data analysis, and interactive dashboards.",
+
+        sec_title: "Projects",
+        sec_subhead: "Explore the full details of each project below.",
+
+        btn_view: "View My Project",
+
+        footer_tagline: "Data & AI | Analytics | Dashboard Development",
+        footer_quick: "Quick Links",
+        footer_connect: "Connect",
+        footer_copy: "© 2025 Mawda Alguraafi",
+
+        p1_title: "Nabāhah (نباهة) – Intelligent Laboratory Safety Monitoring System",
+        p1_desc:
+`Nabāhah (نباهة) is an AI-powered laboratory safety monitoring system designed to enhance safety compliance and reduce risks in laboratory environments. It uses computer vision to detect PPE compliance (lab coat, gloves, mask, goggles), red-zone violations, and hazards such as spills, smoke, and fire, and then generates alerts and analytics through a dashboard.
+
+Technologies Used:
+Python, FastAPI, YOLOv8 , Supabase
+
+Key Features:
+- Real-time PPE detection and safety violations monitoring
+- Hazard detection (spill / smoke / fire) with alert logic
+- Dashboard analytics with KPIs, charts, and database viewer
+- Model toggles management (enable/disable models) and logging of detections and alerts
+- Bilingual voice alerts (Arabic/English) using Edge-TTS
+- RAG-based chatbot for laboratory safety queries`,
+
+        p2_title: "InterviewSense – AI Interview Evaluation System",
+        p2_desc:
+`InterviewSense is an AI-powered system that evaluates job applicants by analyzing text, and facial expressions. It combines speech-to-text conversion, text similarity analysis, and facial emotion recognition (FER) to provide objective assessments.
+
+Technologies Used:
+Python, Flask, JavaScript, AssemblyAI, DeepFace, FER Library
+
+Datasets:
+LibriSpeech, FER2013, Customized FER, Modified ARTJI
+
+Key Features:
+- Automatic speech recognition (ASR)
+- Question & answer generation using ChatGPT
+- Text similarity analysis with cosine & Jaccard metrics
+- Facial emotion recognition for candidate evaluation`,
+
+p3_title: "Adidas Sales Dashboard – EDA & Interactive Visualization",
+p3_desc: `
+Adidas Sales Dashboard is a data analytics system designed to analyze Adidas sales performance through exploratory data analysis and interactive visualizations. It integrates data cleaning, statistical analysis, and dashboarding to deliver clear and actionable business insights.
+
+Technologies Used:
+Python, Pandas, Matplotlib, Streamlit, Plotly
+
+Datasets:
+Adidas Sales Dataset (Kaggle)
+
+Key Features:
+- Data cleaning and preprocessing of sales records
+- Exploratory data analysis (EDA) of sales trends and performance
+- Interactive dashboard for real-time data exploration
+- KPI tracking for total sales, profit, units sold, and top-performing products
+- Visual analysis of regional performance and sales methods`,
+
+
+        p4_title: "King County – Housing Sales Dashboard & Price Prediction",
+        p4_desc:
+`King County – Housing Sales Dashboard & Price Prediction
+A complete analytics project for housing sales data. It includes data cleaning, exploratory analysis, feature engineering, and building machine learning models to predict house prices. The project focuses on generating clear insights and supporting decision-making using visualizations and evaluation metrics.
+
+Technologies Used:
+Python, Pandas, NumPy, Matplotlib, Scikit-learn
+
+Key Steps:
+- Data cleaning and handling missing values
+- Feature engineering and correlation analysis
+- Model training and evaluation (regression)
+- Visualizations for trends and important factors impacting price`,
+
+        p5_title: "Business Activities in Saudi Arabia – Dashboard",
+        p5_desc:
+`Business Activities in Saudi Arabia – Dashboard
+A Power BI dashboard project that provides an overview of business activities across different cities/regions of Saudi Arabia. It highlights KPIs, categories, and distributions using interactive visuals to support quick insights and reporting.
+
+Tools & Technologies:
+Power BI, Data Modeling, KPI Design, Interactive Visuals
+
+Key Features:
+- KPI cards for quick performance overview
+- Regional breakdown and comparisons
+- Clear charts for distributions and trends
+- Business-focused layout for decision makers`,
+
+        p6_title: "E-Commerce Customer Behavior Dashboard",
+        p6_desc:
+`E-Commerce Customer Behavior Dashboard
+A Power BI + Excel dashboard project that analyzes customer behavior in e-commerce. It explores purchasing patterns, satisfaction indicators, and the influence of ads and social media on buying decisions. The dashboard is designed to highlight clear insights using KPI cards and clean visuals.
+
+Tools & Technologies:
+Microsoft Excel, Power BI, Data Cleaning, KPI Design, Interactive Visuals
+
+Key Features:
+- Customer purchasing behavior insights
+- Satisfaction indicators and segmentation
+- Impact analysis for ads and social media
+- Business-friendly visuals for reporting`,
+
+        p7_title: "Uber Data Analysis Dashboard – Power BI",
+        p7_desc:
+`Uber Data Analysis Dashboard – Power BI
+A complete analysis dashboard that provides insights into Uber booking performance and customer behavior. The project includes data cleaning and processing, KPI reporting, and visuals that summarize booking statuses, payment types, and monthly trends.
+
+Tools & Technologies:
+Power BI, Microsoft Excel,KPI Design
+
+Key Features:
+- Booking status breakdown (completed, cancelled, etc.)
+- Payment method analysis and performance insights
+- Monthly and trend-based reporting
+- Clear business-friendly dashboard layout`,
+
+        p8_title: "Revenue Tracking Dashboard by Product and Region",
+        p8_desc:
+`Revenue Tracking Dashboard by Product and Region
+A Power BI dashboard focused on tracking revenue performance across products and regions. It includes a comprehensive overview of revenue distribution, product performance insights, regional comparisons, and trend analysis. The dashboard is designed for reporting and decision making with clear KPIs and visuals.
+
+Tools & Technologies:
+Power BI, KPI Cards, Visual Analytics
+
+Key Features:
+- Revenue distribution across product categories
+- Regional performance comparison and breakdown
+- Trend analysis over time
+- Top-performing products and regions summary`
+      },
+
+      ar: {
+        page_title: "المشاريع | مودة القرافي",
+        nav_home: "الرئيسية",
+        nav_about: "نبذة عني",
+        nav_skills: "المهارات",
+        nav_projects: "المشاريع",
+
+        hero_title: "المشاريع المميزة",
+        hero_desc: "مجموعة من المشاريع في الذكاء الاصطناعي، تحليل البيانات، ولوحات المعلومات.",
+
+        sec_title: "المشاريع",
+        sec_subhead: "استعرضي تفاصيل كل مشروع كاملة بالأسفل.",
+
+        btn_view: "عرض مشروعي",
+
+        footer_tagline: "البيانات والذكاء الاصطناعي | التحليلات | تطوير لوحات المعلومات",
+        footer_quick: "روابط سريعة",
+        footer_connect: "تواصل",
+        footer_copy: "© 2025 مودة القرافي",
+
+        p1_title: "نباهة (Nabāhah) – نظام مراقبة سلامة المختبر بالذكاء الاصطناعي",
+        p1_desc:
+`نباهة (Nabāhah) نظام ذكي لمراقبة سلامة المختبرات يهدف لرفع الالتزام بإجراءات السلامة وتقليل المخاطر داخل بيئة المختبر. يعتمد على الرؤية الحاسوبية لاكتشاف الالتزام بمعدات الوقاية (المعطف، القفازات، الكمامة، النظارات)، ورصد تجاوزات المناطق الحمراء، وكذلك اكتشاف المخاطر مثل الانسكابات والدخان والحريق، ثم إنشاء تنبيهات وتحليلات من خلال لوحة معلومات.
+
+التقنيات المستخدمة:
+Python, FastAPI, YOLOv8 , Supabase
+
+أهم المميزات:
+- رصد لحظي للالتزام بمعدات الوقاية ومخالفات السلامة
+- اكتشاف المخاطر (انسكاب / دخان / حريق) مع منطق تنبيهات
+- تحليلات لوحة معلومات تشمل KPIs ورسوم بيانية وعرض قاعدة البيانات
+- Edge-TTS تنبيهات صوتية ثنائية اللغة (العربية / الإنجليزية) باستخدام 
+- روبوت محادثة للإجابة على استفسارات السلامة في المختبر`,
+
+        p2_title: "InterviewSense – نظام تقييم مقابلات التوظيف بالذكاء الاصطناعي",
+        p2_desc:
+`InterviewSense نظام يعتمد على الذكاء الاصطناعي لتقييم المتقدمين للوظائف عبر تحليل الصوت والنص وتعابير الوجه. يجمع بين تحويل الصوت إلى نص، وتحليل تشابه النصوص، والتعرف على المشاعر (FER) لتقديم تقييمات أكثر موضوعية.
+
+التقنيات المستخدمة:
+Python, Flask, JavaScript, AssemblyAI, DeepFace, FER Library
+
+البيانات المستخدمة:
+LibriSpeech, FER2013, Customized FER, Modified ARTJI
+
+أهم المميزات:
+- التعرف الآلي على الكلام (ASR)
+- توليد أسئلة وأجوبة باستخدام ChatGPT
+- تحليل تشابه النصوص باستخدام Cosine وJaccard
+- التعرف على مشاعر الوجه لتقييم المتقدم`,
+
+p3_title: "لوحة مبيعات أديداس – التحليل الاستكشافي للبيانات والتصور التفاعلي",
+p3_desc: `
+لوحة مبيعات أديداس هي نظام تحليل بيانات يهدف إلى تحليل أداء مبيعات أديداس من خلال التحليل الاستكشافي للبيانات (EDA) والتصورات التفاعلية. يجمع النظام بين تنظيف البيانات، التحليل الإحصائي، وبناء لوحات المعلومات لتقديم رؤى واضحة وقابلة للتنفيذ تدعم اتخاذ القرار.
+
+التقنيات المستخدمة:
+Python، Pandas، Matplotlib، Streamlit، Plotly
+
+مصادر البيانات:
+مجموعة بيانات مبيعات أديداس (Kaggle)
+
+الميزات الرئيسية:
+- تنظيف ومعالجة بيانات المبيعات وتحضيرها للتحليل
+- إجراء التحليل الاستكشافي للبيانات (EDA) لاكتشاف اتجاهات وأداء المبيعات
+- لوحة تحكم تفاعلية لاستكشاف البيانات بشكل لحظي
+- تتبع مؤشرات الأداء الرئيسية (KPI) مثل إجمالي المبيعات، الأرباح، الوحدات المباعة، وأفضل المنتجات
+- تحليل بصري للأداء حسب المناطق وقنوات البيع`,
+
+
+        p4_title: "King County – تحليل مبيعات المنازل وتوقع الأسعار",
+        p4_desc:
+`King County – Housing Sales Dashboard & Price Prediction
+مشروع تحليلي متكامل لبيانات مبيعات المنازل يشمل تنظيف البيانات والاستكشاف والتحليل وهندسة الخصائص وبناء نماذج تعلم آلي لتوقع أسعار المنازل. يركز المشروع على استخراج رؤى واضحة لدعم اتخاذ القرار عبر التصورات والمؤشرات.
+
+التقنيات المستخدمة:
+Python, Pandas, NumPy, Matplotlib, Scikit-learn
+
+الخطوات الأساسية:
+- تنظيف البيانات والتعامل مع القيم المفقودة
+- هندسة خصائص وتحليل الارتباط
+- تدريب النماذج وتقييمها (Regression)
+- تصورات للاتجاهات والعوامل الأكثر تأثيرًا على السعر`,
+
+        p5_title: "لوحة أنشطة الأعمال في السعودية – Dashboard",
+        p5_desc:
+`Business Activities in Saudi Arabia – Dashboard
+مشروع لوحة معلومات بـ Power BI يقدم نظرة عامة على أنشطة الأعمال في مدن/مناطق مختلفة داخل المملكة. يبرز مؤشرات الأداء والتصنيفات والتوزيعات عبر رسوم تفاعلية لدعم التقارير واستخلاص الرؤى بسرعة.
+
+الأدوات والتقنيات:
+Power BI, KPI Design, Interactive Visuals
+
+أهم المميزات:
+- بطاقات KPI لعرض نظرة عامة سريعة
+- تفصيل ومقارنة بين المناطق
+- رسوم واضحة للتوزيعات والاتجاهات
+- تصميم مناسب لصنّاع القرار`,
+
+        p6_title: "لوحة سلوك العملاء في التجارة الإلكترونية",
+        p6_desc:
+`E-Commerce Customer Behavior Dashboard
+مشروع لوحة معلومات باستخدام Power BI وExcel لتحليل سلوك العملاء في التجارة الإلكترونية. يستكشف أنماط الشراء ومؤشرات الرضا وتأثير الإعلانات ووسائل التواصل الاجتماعي على قرار الشراء. تم تصميم اللوحة لإبراز الرؤى بشكل واضح من خلال بطاقات KPI ورسوم منظمة.
+
+الأدوات والتقنيات:
+Microsoft Excel, Power BI, Data Cleaning, KPI Design, Interactive Visuals
+
+أهم المميزات:
+- تحليل سلوك الشراء والأنماط
+- مؤشرات الرضا وتقسيم العملاء
+- تحليل تأثير الإعلانات ووسائل التواصل
+- رسوم مناسبة للتقارير وعرض النتائج`,
+
+        p7_title: "Uber – لوحة تحليل البيانات بـ Power BI",
+        p7_desc:
+`Uber Data Analysis Dashboard – Power BI
+لوحة تحليل متكاملة تقدم رؤى حول أداء حجوزات Uber وسلوك العملاء. يشمل المشروع تنظيف البيانات ومعالجتها وعرض KPIs ورسوم تلخص حالات الحجز وطرق الدفع والاتجاهات الشهرية.
+
+الأدوات والتقنيات:
+Power BI, Microsoft Excel, Data Cleaning, KPI Design
+
+أهم المميزات:
+- تفصيل حالات الحجز (مكتمل، ملغي… إلخ)
+- تحليل طرق الدفع ورؤى الأداء
+- تقارير شهرية واتجاهات زمنية
+- تصميم واضح ومناسب للأعمال`,
+
+        p8_title: "لوحة تتبع الإيرادات حسب المنتج والمنطقة",
+        p8_desc:
+`Revenue Tracking Dashboard by Product and Region
+لوحة Power BI مركزة على تتبع الإيرادات عبر المنتجات والمناطق. تتضمن نظرة شاملة لتوزيع الإيرادات ورؤى أداء المنتجات ومقارنات المناطق وتحليل الاتجاهات عبر الزمن. تم تصميم اللوحة للتقارير ودعم اتخاذ القرار عبر KPIs ورسوم واضحة.
+
+الأدوات والتقنيات:
+Power BI, KPI Cards, Visual Analytics
+
+أهم المميزات:
+- توزيع الإيرادات حسب فئات المنتجات
+- مقارنة أداء المناطق وتفصيلها
+- تحليل الاتجاهات عبر الزمن
+- تلخيص أعلى المنتجات والمناطق أداءً`
+      }
+    };
+
+    function applyTranslations(lang){
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        const val = (I18N[lang] && I18N[lang][key]) || (I18N.en[key] || "");
+        el.textContent = val;
+      });
+      document.title = (I18N[lang] && I18N[lang].page_title) ? I18N[lang].page_title : document.title;
+    }
+
+    function setLang(lang){
+      const html = document.documentElement;
+      html.dataset.lang = lang;
+      html.lang = (lang === "ar") ? "ar" : "en";
+      html.dir  = (lang === "ar") ? "rtl" : "ltr";
+
+const langBtn = document.getElementById("langToggle");
+langBtn.dataset.lang = lang;
+
+/* Tooltip فقط */
+langBtn.title = (lang === "ar") ? "English" : "Arabic";
+
+
+      applyTranslations(lang);
+      localStorage.setItem("site_lang", lang);
+    }
+function renderThemeIcon(theme){
+  const icon = document.getElementById("themeIcon");
+  if(!icon) return;
+
+  if(theme === "light"){
+    icon.innerHTML = `
+      <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 20v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M4.93 4.93l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.66 17.66l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M2 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M4.93 19.07l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    `;
+  }else{
+    icon.innerHTML = `
+      <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
+               a7 7 0 1 0 11.5 11.5Z"
+            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    `;
+  }
+}
+function setTheme(theme){
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("site_theme", theme);
+  renderThemeIcon(theme);
+}
+
+const savedTheme = localStorage.getItem("site_theme") || "dark";
+setTheme(savedTheme);
+
+document.getElementById("themeToggle").addEventListener("click", () => {
+  const current = document.documentElement.getAttribute("data-theme") || "dark";
+  setTheme(current === "dark" ? "light" : "dark");
+});
+
+
+    const saved = localStorage.getItem("site_lang") || "en";
+    setLang(saved);
+
+    document.getElementById("langToggle").addEventListener("click", () => {
+      const current = document.documentElement.dataset.lang || "en";
+      setLang(current === "en" ? "ar" : "en");
+    });
+  </script>
+
 </body>
 </html>
