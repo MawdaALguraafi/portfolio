@@ -1560,6 +1560,53 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     transform: translate(-50%, -50%) !important;
   }
 }
+/* =========================================
+   FIX RTL: icons stay same row on mobile
+   (paste at VERY END of CSS)
+   ========================================= */
+@media (max-width: 680px){
+  .nav{ flex-wrap: nowrap !important; }
+
+  .nav-pill{
+    width: auto !important;
+    flex-wrap: nowrap !important;
+    justify-content: space-between !important;
+    order: 0 !important;
+  }
+
+  .lang-switch{
+    width: auto !important;
+    order: 0 !important;
+    margin-top: 0 !important;
+    justify-content: flex-end !important;
+  }
+
+  /* مهم عشان الروابط ما تدفّع الأيقونات */
+  .nav-center{
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-inline: 10px !important; /* يمنع قص أول/آخر شي */
+  }
+}
+/* =========================================
+   FIX: nav interactive bubble position on mobile
+   (paste at VERY END of CSS)
+   ========================================= */
+@media (max-width: 768px){
+  .topbar .nav-center .nav-item{
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  .topbar .nav-center .nav-item::before{
+    top: 50% !important;
+    left: 50% !important;
+    inset: auto !important;
+    transform: translate(-50%, -50%) !important; /* يرجّعها لمكانها */
+  }
+}
 
 
   </style>
