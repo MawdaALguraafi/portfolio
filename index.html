@@ -1656,6 +1656,56 @@ html[data-theme="light"] .icon-toggle:hover{
     flex: 1 1 auto !important;
   }
 }
+/* =========================
+   FINAL MOBILE NAV ALIGNMENT
+   ========================= */
+@media (max-width: 768px){
+
+  /* الشريط */
+  .nav-pill{
+    display:flex !important;
+    align-items:center !important;
+    justify-content: center !important; /* ⬅️ يخلي الكل قريب */
+    gap: 10px !important;
+    padding: 10px 12px !important;
+    height: 60px !important;
+  }
+
+  /* الروابط */
+  .nav-center{
+    position: static !important;
+    transform: none !important;
+
+    display:flex !important;
+    align-items:center !important;
+    justify-content: center !important;
+
+    gap: 10px !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;   /* ⬅️ ما تتمدد */
+  }
+
+  .nav-item{
+    height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* أيقونات اللغة + الثيم */
+  .lang-switch{
+    position: static !important;
+    display:flex !important;
+    align-items:center !important;
+    gap: 6px !important;
+
+    margin-left: 6px !important; /* ⬅️ قربها من الروابط */
+  }
+
+  .icon-toggle{
+    width: 34px !important;
+    height: 34px !important;
+  }
+}
 
   </style>
 </head>
