@@ -1308,6 +1308,42 @@ html[data-theme="dark"] .nav-item[aria-current="page"]::before{
 html[data-theme="dark"] .nav-item.active{
   box-shadow: 0 10px 24px rgba(163,107,255,.16) !important;
 }
+/* =========================
+   FIX NAV PILL SHAPE (DARK) -> OVAL like LIGHT
+   Put at END of CSS
+   ========================= */
+html[data-theme="dark"] .nav-item::before{
+  /* يخليها تتمدد مع النص = بيضاوي */
+  width: calc(100% + 24px);
+  height: 36px !important;              /* نفس ارتفاع nav-item تقريبًا */
+  border-radius: 999px !important;
+
+  /* امنعي أي نفخ يخليها دائرية */
+  transform: translate(-50%, -50%) scale(1) !important;
+}
+/* =========================
+   LIGHT: Bring back purple interactive color
+   ========================= */
+html[data-theme="light"] .nav-item::before{
+  background: rgba(122,99,230,.18) !important;
+  border-color: rgba(122,99,230,.30) !important;
+}
+
+@media (hover:hover) and (pointer:fine){
+  html[data-theme="light"] .nav-item:hover::before{
+    opacity: 1 !important;
+    background: linear-gradient(135deg, #7a63e6, #9a84ff) !important;
+    border-color: rgba(122,99,230,.35) !important;
+  }
+}
+
+/* active */
+html[data-theme="light"] .nav-item.active::before,
+html[data-theme="light"] .nav-item[aria-current="page"]::before{
+  opacity: 1 !important;
+  background: linear-gradient(135deg, #7a63e6, #9a84ff) !important;
+  border-color: rgba(122,99,230,.35) !important;
+}
 
 
   </style>
