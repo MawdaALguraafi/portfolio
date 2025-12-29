@@ -1530,6 +1530,11 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     opacity: 1 !important;
   }
 }
+/* ===== FORCE SHOW INTERACTIVE FOR CURRENT LINK ===== */
+.nav-pill .nav-center .nav-item:hover::before,
+.nav-pill .nav-center .nav-item:focus::before{
+  opacity: 1 !important;
+}
 
   </style>
 </head>
