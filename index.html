@@ -1535,6 +1535,31 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
 .nav-pill .nav-center .nav-item:focus::before{
   opacity: 1 !important;
 }
+/* =====================================
+   FIX: keep circular behavior BUT smaller
+   Mobile Home nav interactive
+   ===================================== */
+@media (max-width: 768px){
+
+  .nav-pill .nav-center .nav-item::before{
+    /* 🔽 صغرنا المقاس شوي */
+    width: calc(100% + 14px) !important; /* كان أكبر ويسبب قص */
+    height: 30px !important;             /* أقل شوي من 34 */
+
+    /* 🔒 نفس السلوك */
+    border-radius: 999px !important;     /* بيضاوي */
+    transform: translate(-50%, -50%) !important;
+
+    /* تأكيد ما فيه نفخ */
+    inset: auto !important;
+  }
+
+  /* لا تكبير ولا scale */
+  .nav-pill .nav-center .nav-item:hover::before,
+  .nav-pill .nav-center .nav-item.active::before{
+    transform: translate(-50%, -50%) !important;
+  }
+}
 
 
   </style>
@@ -2018,7 +2043,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
       nav_about: "About",
       nav_skills: "Skills",
       nav_projects: "Projects",
-      nav_projects_inline: "Projects",
 
       hero_title: 'Hello! I Am <span class="name">Mawda Alguraafi</span>',
       hero_desc: "I create intelligent, data-driven digital solutions that transform complex data into actionable insights. By combining analytics, AI, and business understanding, I help organizations make informed decisions and deliver meaningful real-world impact.",
@@ -2063,10 +2087,9 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
 
     ar: {
       nav_home: "الرئيسية",
-      nav_about: "عني",
+      nav_about: "نبذة عني",
       nav_skills: "المهارات",
-      nav_projects: "المشاريع",
-      nav_projects_inline: "المشاريع",
+      nav_projects: "مشاريعي",
 
       hero_title: 'مرحباً! أنا <span class="name">مودة القرافي</span>',
       hero_desc: "أصمم حلولًا رقمية ذكية تعتمد على البيانات لتحويل التعقيد إلى رؤى واضحة قابلة للتنفيذ. من خلال الجمع بين التحليلات والذكاء الاصطناعي وفهم الأعمال، أساعد الجهات على اتخاذ قرارات أفضل وتحقيق أثر واقعي.",
@@ -2110,6 +2133,25 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     }
   };
 
+  // ✅ ترجمة الهيدر بدون تعديل HTML (fallback by href / text)
+  function translateHeaderNav(lang){
+    const items = document.querySelectorAll(".nav-center .nav-item");
+    items.forEach(a => {
+      const href = (a.getAttribute("href") || "").trim();
+      const t = (a.textContent || "").trim().toLowerCase();
+
+      if (href === "#home" || t === "home" || t === "الرئيسية") {
+        a.textContent = I18N[lang].nav_home;
+      } else if (href === "#about" || t === "about" || t === "نبذة عني") {
+        a.textContent = I18N[lang].nav_about;
+      } else if (href === "#skills" || t === "skills" || t === "المهارات") {
+        a.textContent = I18N[lang].nav_skills;
+      } else if (href.includes("projects.html") || t === "projects" || t === "مشاريعي") {
+        a.textContent = I18N[lang].nav_projects;
+      }
+    });
+  }
+
   function applyTranslations(lang){
     document.querySelectorAll("[data-i18n]").forEach(el=>{
       const key = el.getAttribute("data-i18n");
@@ -2122,86 +2164,94 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
         el.textContent = val;
       }
     });
+
+    // ✅ مهم: الهيدر يتغير حتى بدون data-i18n
+    translateHeaderNav(lang);
   }
 
-function setLang(lang){
-  const html = document.documentElement;
-  html.dataset.lang = lang;
-  html.lang = (lang === "ar") ? "ar" : "en";
-  html.dir  = (lang === "ar") ? "rtl" : "ltr";
+  function setLang(lang){
+    const html = document.documentElement;
+    html.dataset.lang = lang;
+    html.lang = (lang === "ar") ? "ar" : "en";
+    html.dir  = (lang === "ar") ? "rtl" : "ltr";
 
-  // زر اللغة (أيقونة)
-  const langBtn = document.getElementById("langToggle");
-  langBtn.dataset.lang = lang;
+    // زر اللغة (أيقونة)
+    const langBtn = document.getElementById("langToggle");
+    if (langBtn){
+      langBtn.dataset.lang = lang;
+      langBtn.title = (lang === "ar") ? "English" : "Arabic";
+    }
 
-  // ✅ هذا السطر اللي تسألين عنه
-  langBtn.title = (lang === "ar") ? "English" : "Arabic";
-
-  applyTranslations(lang);
-  localStorage.setItem("site_lang", lang);
-}
-
-
-  // Init
-  const saved = localStorage.getItem("site_lang") || "en";
-  setLang(saved);
-
-  // Toggle
-  document.getElementById("langToggle").addEventListener("click", () => {
-    const current = document.documentElement.dataset.lang || "en";
-    setLang(current === "en" ? "ar" : "en");
-  });
-// 1️⃣ دالة تغيير أيقونة الثيم (شمس / قمر)
-function renderThemeIcon(theme){
-  const icon = document.getElementById("themeIcon");
-  if(!icon) return;
-
-  if(theme === "light"){
-    // Sun
-    icon.innerHTML = `
-      <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
-      <path d="M12 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M12 20v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M4.93 4.93l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M17.66 17.66l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M2 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M20 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M4.93 19.07l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    `;
-  }else{
-    // Moon
-    icon.innerHTML = `
-      <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
-               a7 7 0 1 0 11.5 11.5Z"
-            stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-    `;
+    applyTranslations(lang);
+    localStorage.setItem("site_lang", lang);
   }
-}
 
-// =========================
-// Theme (Dark/Light)
-// =========================
-function setTheme(theme){
-  document.documentElement.setAttribute("data-theme", theme);
-  localStorage.setItem("site_theme", theme);
+  // Init Lang
+  const savedLang = localStorage.getItem("site_lang") || "en";
+  setLang(savedLang);
 
-  // ✅ هنا ننادي الدالة
-  renderThemeIcon(theme);
-}
+  // Toggle Lang
+  const langToggle = document.getElementById("langToggle");
+  if (langToggle){
+    langToggle.addEventListener("click", () => {
+      const current = document.documentElement.dataset.lang || "en";
+      setLang(current === "en" ? "ar" : "en");
+    });
+  }
 
+  // =========================
+  // Theme Icon (Sun/Moon)
+  // =========================
+  function renderThemeIcon(theme){
+    const icon = document.getElementById("themeIcon");
+    if(!icon) return;
 
-// Init theme
-const savedTheme = localStorage.getItem("site_theme") || "dark";
-setTheme(savedTheme);
+    if(theme === "light"){
+      // Sun
+      icon.innerHTML = `
+        <path d="M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 20v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M4.93 4.93l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M17.66 17.66l1.41 1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M2 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M20 12h2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M4.93 19.07l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      `;
+    } else {
+      // Moon
+      icon.innerHTML = `
+        <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
+                 a7 7 0 1 0 11.5 11.5Z"
+              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      `;
+    }
+  }
 
-// Toggle theme
-document.getElementById("themeToggle").addEventListener("click", () => {
-  const current = document.documentElement.getAttribute("data-theme") || "dark";
-  setTheme(current === "dark" ? "light" : "dark");
-});
+  // =========================
+  // Theme (Dark/Light)
+  // =========================
+  function setTheme(theme){
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("site_theme", theme);
+    renderThemeIcon(theme);
+  }
 
+  // Init Theme
+  const savedTheme = localStorage.getItem("site_theme") || "dark";
+  setTheme(savedTheme);
+
+  // Toggle Theme
+  const themeToggle = document.getElementById("themeToggle");
+  if (themeToggle){
+    themeToggle.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || "dark";
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+  }
 </script>
+
 
 </body>
 
