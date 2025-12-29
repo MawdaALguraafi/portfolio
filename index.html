@@ -1535,71 +1535,18 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
 .nav-pill .nav-center .nav-item:focus::before{
   opacity: 1 !important;
 }
-/* FIX: nav pill gets clipped (Home half hidden) */
+/* FIX: prevent clipping without changing nav-item size */
 .topbar,
 .nav-pill,
 .nav-center{
   overflow: visible !important;
 }
 
-.nav-center .nav-item{
-  padding-left: 12px !important;
-  padding-right: 12px !important;
+.nav-center{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
-/* =========================================================
-   MOBILE HEADER: links + icons same level (no drop / no overlap)
-   Put at END of CSS
-   ========================================================= */
-@media (max-width: 768px){
 
-  /* صف واحد ثابت */
-  .nav-pill{
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 10px !important;
-    height: 62px !important;
-    padding: 10px 12px !important;
-  }
-
-  /* الروابط: سكرول أفقي بدل ما تدفع الأيقونات */
-  .nav-center{
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    white-space: nowrap !important;
-
-    overflow-x: auto !important;
-    overflow-y: visible !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .nav-center::-webkit-scrollbar{ display:none; }
-
-  /* الأيقونات ثابتة يمين */
-  .lang-switch{
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    flex: 0 0 auto !important;
-    margin: 0 !important;
-  }
-
-  /* عشان ما ينقص الـ pill */
-  .topbar, .nav-pill, .nav-center{ overflow: visible !important; }
-
-  /* حجم ثابت للأيقونات */
-  .icon-toggle{
-    width: 38px !important;
-    height: 38px !important;
-    border-radius: 999px !important;
-    display: grid !important;
-    place-items: center !important;
-  }
-}
 
   </style>
 </head>
