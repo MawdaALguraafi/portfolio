@@ -1535,6 +1535,17 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
 .nav-pill .nav-center .nav-item:focus::before{
   opacity: 1 !important;
 }
+/* FIX: nav pill gets clipped (Home half hidden) */
+.topbar,
+.nav-pill,
+.nav-center{
+  overflow: visible !important;
+}
+
+.nav-center .nav-item{
+  padding-left: 12px !important;
+  padding-right: 12px !important;
+}
 
   </style>
 </head>
