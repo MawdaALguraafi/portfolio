@@ -1560,6 +1560,68 @@ html[data-theme="light"] .icon-toggle:hover{
     height: 15px !important;
   }
 }
+/* =========================
+   MOBILE NAV – keep in one row, no cutoff
+   ========================= */
+@media (max-width: 768px){
+
+  /* صف واحد ثابت */
+  .nav-pill{
+    display:flex !important;
+    align-items:center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+    height: 62px !important;
+    overflow: hidden !important; /* يمنع خروج العناصر */
+  }
+
+  /* الروابط في المنتصف: نخليها سكرول أفقي بدل ما تنقص */
+  .nav-center{
+    position: static !important;
+    transform: none !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    flex: 1 1 auto !important;
+    gap: 10px !important;
+    white-space: nowrap !important;
+
+    overflow-x: auto !important;       /* ✅ سكرول */
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;             /* يخفي السكرول */
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  /* كل رابط ما ينكمش */
+  .nav-item{
+    flex: 0 0 auto !important;
+    height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* الأيقونات ثابتة يمين */
+  .lang-switch{
+    position: static !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+
+  .icon-toggle{
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  /* مهم جداً: لا تقلب الترتيب وتقص */
+  html[dir="rtl"] .nav-pill{ direction: rtl; }
+  html[dir="rtl"] .nav-center{ direction: rtl; }
+}
 
   </style>
 </head>
