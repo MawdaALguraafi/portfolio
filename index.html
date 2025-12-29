@@ -1439,6 +1439,53 @@ html[data-theme="light"] .icon-toggle:hover{
     text-align: center !important;
   }
 }
+/* =========================
+   DARK ONLY: Fix nav interactive circle (active/hover)
+   ========================= */
+
+/* الدارك فقط */
+html[data-theme="dark"] .nav-item{
+  position: relative;
+  isolation: isolate;
+}
+
+/* الدائرة الخلفية (pseudo element) */
+html[data-theme="dark"] .nav-item::before{
+  content:"";
+  position:absolute;
+  inset: -6px;                 /* حجم الدائرة حول النص */
+  border-radius: 999px;
+
+  background: rgba(163,107,255,.12);   /* أهدى */
+  border: 1px solid rgba(163,107,255,.20);
+
+  opacity: 0;
+  transform: none;             /* ✅ بدون تكبير مزعج */
+  transition: opacity .18s ease, background .18s ease, border-color .18s ease;
+  z-index: -1;
+}
+
+/* hover (للكمبيوتر فقط) */
+@media (hover: hover) and (pointer: fine){
+  html[data-theme="dark"] .nav-item:hover::before{
+    opacity: .85;
+    background: rgba(163,107,255,.14);
+    border-color: rgba(163,107,255,.24);
+  }
+}
+
+/* active */
+html[data-theme="dark"] .nav-item.active::before,
+html[data-theme="dark"] .nav-item[aria-current="page"]::before{
+  opacity: 1;
+  background: rgba(163,107,255,.18);
+  border-color: rgba(163,107,255,.28);
+}
+
+/* خففي الوهج الزايد (موجود عندك غالبًا) */
+html[data-theme="dark"] .nav-item.active{
+  box-shadow: 0 10px 24px rgba(163,107,255,.16) !important;
+}
 
 
   </style>
