@@ -1342,230 +1342,48 @@ html[data-theme="light"] .icon-toggle:hover{
   }
 }
 
-/* --- FOOTER: ensure clean stacking on mobile (override any forced horizontal flex) --- */
-@media (max-width: 680px){
 
-  footer .footer-inner{
-    display: grid !important;
-    grid-template-columns: 1fr !important;
-    gap: 18px !important;
-    text-align: center !important;
-  }
+/* Icon buttons (Language + Theme) */
+.icon-toggle{
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(163,107,255,.18);
+  background: rgba(163,107,255,.10);
+  color: rgba(236,231,255,.92);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+}
 
-  footer .foot{
-    text-align: center !important;
-  }
+.icon-toggle:hover{
+  transform: translateY(-1px);
+  background: rgba(163,107,255,.14);
+  box-shadow: 0 10px 24px rgba(163,107,255,.22);
+}
 
-  footer .social{
-    justify-content: center !important;
-    gap: 12px !important;
-  }
+.icon-toggle svg{
+  width: 18px;
+  height: 18px;
+}
+
+/* Light theme: make icons visible */
+html[data-theme="light"] .icon-toggle{
+  border: 1px solid rgba(122,99,230,.22);
+  background: rgba(122,99,230,.10);
+  color: rgba(31,27,46,.92);
+  box-shadow: 0 10px 24px rgba(122,99,230,.14);
+}
+html[data-theme="light"] .icon-toggle:hover{
+  background: rgba(122,99,230,.14);
 }
 /* =========================
-   FINAL MOBILE HEADER FIX
-   Break absolute layout safely
+   MOBILE NAV (FINAL) – one row, no overlap
    ========================= */
 @media (max-width: 768px){
 
-  /* الحاوية الرئيسية */
-  .topbar .nav{
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 12px !important;
-    padding: 10px 12px 14px !important;
-  }
-
-  /* قائمة الروابط (Home / About / Skills / Projects) */
-  .nav-center{
-    position: relative !important;   /* ❗ يكسر absolute */
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-    transform: none !important;
-
-    display: flex !important;
-    justify-content: center !important;
-    flex-wrap: wrap !important;
-    gap: 10px !important;
-
-    width: 100% !important;
-    order: 1 !important;
-    white-space: normal !important;
-  }
-
-  /* أزرار اللغة + الثيم */
-  .lang-switch{
-    position: relative !important;   /* ❗ يكسر absolute */
-    right: auto !important;
-    left: auto !important;
-    top: auto !important;
-    transform: none !important;
-
-    display: flex !important;
-    justify-content: center !important;
-    gap: 10px !important;
-
-    width: 100% !important;
-    order: 2 !important;
-    margin: 0 !important;
-  }
-
-  /* تصغير بسيط للعناصر */
-  .nav-item{
-    height: 38px !important;
-    padding: 8px 14px !important;
-    font-size: 13px !important;
-  }
-
-  .icon-toggle{
-    width: 40px !important;
-    height: 40px !important;
-  }
-}
-/* =========================
-   MOBILE: keep everything in ONE ROW + closer spacing
-   (No menu, no layout change on desktop)
-   ========================= */
-@media (max-width: 768px){
-
-  /* الشريط نفسه صف واحد */
-  .nav-pill{
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-    padding: 10px 10px !important;
-    height: 62px !important;
-  }
-
-  /* نكسر absolute عشان ما يصير تداخل */
-  .nav-center{
-    position: static !important;
-    transform: none !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    flex: 1 1 auto !important;
-    gap: 14px !important;          /* قرب الروابط */
-    white-space: nowrap !important; /* لا ينزل سطر */
-    overflow: hidden !important;
-  }
-
-  /* الروابط تصغر شوي */
-  .nav-item{
-    height: 36px !important;
-    padding: 6px 8px !important;
-    font-size: 12.5px !important;
-  }
-
-  /* الأيقونات يمين في نفس الصف */
-  .lang-switch{
-    position: static !important;
-    transform: none !important;
-    margin: 0 !important;
-
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;           /* قرب الأيقونات */
-    flex: 0 0 auto !important;
-  }
-
-  .icon-toggle{
-    width: 36px !important;
-    height: 36px !important;
-  }
-
-  .icon-toggle svg{
-    width: 16px !important;
-    height: 16px !important;
-  }
-}
-@media (max-width: 768px){
-  .nav-center{ gap: 10px !important; }
-  .nav-item{ font-size: 12px !important; padding: 6px 7px !important; }
-}
-/* =========================
-   MOBILE HEADER – ONE ROW ONLY
-   Language + Theme + Links
-   ========================= */
-@media (max-width: 768px){
-
-  /* الشريط كامل صف واحد */
-  .topbar .nav{
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    gap: 8px !important;
-    padding: 10px 10px !important;
-  }
-
-  /* اسم الموقع (يسار) */
-  .brand{
-    flex: 0 0 auto !important;
-    font-size: 20px !important;
-    white-space: nowrap !important;
-  }
-
-  /* روابط الهيدر (وسط) */
-  .nav-center{
-    position: static !important;     /* ❗ يكسر absolute */
-    transform: none !important;
-    left: auto !important;
-    right: auto !important;
-    top: auto !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    gap: 10px !important;            /* قرب الروابط */
-    flex: 1 1 auto !important;
-    white-space: nowrap !important;  /* يمنع نزول سطر */
-    overflow: hidden !important;
-  }
-
-  .nav-item{
-    height: 34px !important;
-    padding: 6px 8px !important;
-    font-size: 12px !important;
-  }
-
-  /* أزرار اللغة + الثيم (يمين) */
-  .lang-switch{
-    position: static !important;     /* ❗ يكسر absolute */
-    transform: none !important;
-    margin: 0 !important;
-
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;             /* قربهم */
-    flex: 0 0 auto !important;
-    white-space: nowrap !important;
-  }
-
-  .icon-toggle{
-    width: 34px !important;
-    height: 34px !important;
-  }
-
-  .icon-toggle svg{
-    width: 15px !important;
-    height: 15px !important;
-  }
-}
-/* =========================
-   MOBILE NAV – keep in one row, no cutoff
-   ========================= */
-@media (max-width: 768px){
-
-  /* صف واحد ثابت */
+  /* nav container stays one line */
   .nav-pill{
     display:flex !important;
     align-items:center !important;
@@ -1573,29 +1391,32 @@ html[data-theme="light"] .icon-toggle:hover{
     gap: 8px !important;
     padding: 10px 10px !important;
     height: 62px !important;
-    overflow: hidden !important; /* يمنع خروج العناصر */
+    overflow: visible !important;
   }
 
-  /* الروابط في المنتصف: نخليها سكرول أفقي بدل ما تنقص */
+  /* center links: horizontal scroll if space is tight (no wrap, no pushing icons out) */
   .nav-center{
     position: static !important;
     transform: none !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
 
-    display: flex !important;
-    align-items: center !important;
+    display:flex !important;
+    align-items:center !important;
+    gap: 10px !important;
 
     flex: 1 1 auto !important;
-    gap: 10px !important;
+    min-width: 0 !important;
     white-space: nowrap !important;
 
-    overflow-x: auto !important;       /* ✅ سكرول */
+    overflow-x: auto !important;
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;             /* يخفي السكرول */
+    scrollbar-width: none;
   }
   .nav-center::-webkit-scrollbar{ display:none; }
 
-  /* كل رابط ما ينكمش */
   .nav-item{
     flex: 0 0 auto !important;
     height: 34px !important;
@@ -1603,108 +1424,31 @@ html[data-theme="light"] .icon-toggle:hover{
     font-size: 12px !important;
   }
 
-  /* الأيقونات ثابتة يمين */
+  /* icons always visible on the edge */
   .lang-switch{
     position: static !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    flex: 0 0 auto !important;
+    transform: none !important;
     margin: 0 !important;
-  }
 
-  .icon-toggle{
-    width: 34px !important;
-    height: 34px !important;
-  }
-
-  /* مهم جداً: لا تقلب الترتيب وتقص */
-  html[dir="rtl"] .nav-pill{ direction: rtl; }
-  html[dir="rtl"] .nav-center{ direction: rtl; }
-}
-/* =========================
-   PATCH: icons disappeared on mobile
-   ========================= */
-@media (max-width: 768px){
-
-  /* لا تقص الأيقونات */
-  .nav-pill{ overflow: visible !important; }
-
-  /* ثبّت حاوية الأيقونات */
-  .lang-switch{
     display:flex !important;
     align-items:center !important;
     gap: 6px !important;
     flex: 0 0 auto !important;
-
-    position: relative !important;
     z-index: 300 !important;
   }
 
   .icon-toggle{
-    display: grid !important;
-    place-items: center !important;
-    width: 34px !important;
-    height: 34px !important;
-    opacity: 1 !important;
-    visibility: visible !important;
-  }
-
-  /* نخلي الروابط ما تدفع الأيقونات برا */
-  .nav-center{
-    min-width: 0 !important;     /* مهم */
-    flex: 1 1 auto !important;
-  }
-}
-/* =========================
-   FINAL MOBILE NAV ALIGNMENT
-   ========================= */
-@media (max-width: 768px){
-
-  /* الشريط */
-  .nav-pill{
-    display:flex !important;
-    align-items:center !important;
-    justify-content: center !important; /* ⬅️ يخلي الكل قريب */
-    gap: 10px !important;
-    padding: 10px 12px !important;
-    height: 60px !important;
-  }
-
-  /* الروابط */
-  .nav-center{
-    position: static !important;
-    transform: none !important;
-
-    display:flex !important;
-    align-items:center !important;
-    justify-content: center !important;
-
-    gap: 10px !important;
-    white-space: nowrap !important;
-    flex: 0 0 auto !important;   /* ⬅️ ما تتمدد */
-  }
-
-  .nav-item{
-    height: 34px !important;
-    padding: 6px 8px !important;
-    font-size: 12px !important;
-  }
-
-  /* أيقونات اللغة + الثيم */
-  .lang-switch{
-    position: static !important;
-    display:flex !important;
-    align-items:center !important;
-    gap: 6px !important;
-
-    margin-left: 6px !important; /* ⬅️ قربها من الروابط */
-  }
-
-  .icon-toggle{
     width: 34px !important;
     height: 34px !important;
   }
+  .icon-toggle svg{
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  /* RTL safety */
+  html[dir="rtl"] .nav-pill{ direction: rtl; }
+  html[dir="rtl"] .nav-center{ direction: rtl; }
 }
 
   </style>
@@ -1726,22 +1470,19 @@ html[data-theme="light"] .icon-toggle:hover{
 
       </div>
 
-<div class="lang-switch" aria-label="Language Switch">
 <div class="lang-switch" aria-label="Language & Theme Switch">
   <!-- Language: globe icon -->
-  <button type="button" id="langToggle" class="icon-toggle" aria-label="Toggle Language" title="Language">
-    <!-- Globe -->
-    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <button type="button" id="langToggle" class="icon-toggle" aria-label="Toggle Language" title="Arabic / English">
+    <svg id="langIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" stroke="currentColor" stroke-width="2"/>
       <path d="M2 12h20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      <path d="M12 2c3 3.5 3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
       <path d="M12 2c-3 3.5-3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 2c3 3.5 3 16.5 0 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </button>
 
   <!-- Theme: sun/moon icon -->
   <button type="button" id="themeToggle" class="icon-toggle" aria-label="Toggle Theme" title="Theme">
-    <!-- (راح نبدّلها بالـ JS) -->
     <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <!-- Moon default -->
       <path d="M21 14.5A8.5 8.5 0 0 1 9.5 3
@@ -1750,6 +1491,7 @@ html[data-theme="light"] .icon-toggle:hover{
     </svg>
   </button>
 </div>
+
 
 </div>
 
