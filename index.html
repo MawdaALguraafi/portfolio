@@ -1622,6 +1622,40 @@ html[data-theme="light"] .icon-toggle:hover{
   html[dir="rtl"] .nav-pill{ direction: rtl; }
   html[dir="rtl"] .nav-center{ direction: rtl; }
 }
+/* =========================
+   PATCH: icons disappeared on mobile
+   ========================= */
+@media (max-width: 768px){
+
+  /* لا تقص الأيقونات */
+  .nav-pill{ overflow: visible !important; }
+
+  /* ثبّت حاوية الأيقونات */
+  .lang-switch{
+    display:flex !important;
+    align-items:center !important;
+    gap: 6px !important;
+    flex: 0 0 auto !important;
+
+    position: relative !important;
+    z-index: 300 !important;
+  }
+
+  .icon-toggle{
+    display: grid !important;
+    place-items: center !important;
+    width: 34px !important;
+    height: 34px !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  /* نخلي الروابط ما تدفع الأيقونات برا */
+  .nav-center{
+    min-width: 0 !important;     /* مهم */
+    flex: 1 1 auto !important;
+  }
+}
 
   </style>
 </head>
