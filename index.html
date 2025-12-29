@@ -1546,6 +1546,57 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
   padding-left: 10px !important;
   padding-right: 10px !important;
 }
+/* =========================================================
+   MOBILE HEADER – FORCE ONE ROW (links + icons)
+   ========================================================= */
+@media (max-width: 768px){
+
+  /* الهيدر صف واحد فقط */
+  .nav-pill{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    flex-wrap: nowrap !important;   /* ⛔ يمنع النزول لسطر ثاني */
+    gap: 10px !important;
+    height: 60px !important;
+    padding: 10px 12px !important;
+  }
+
+  /* روابط الهيدر */
+  .nav-center{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+
+    overflow-x: auto !important;   /* ✅ سكرول بدل كسر */
+    overflow-y: visible !important;
+
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  /* أيقونات اللغة + الدارك */
+  .lang-switch{
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+
+    flex: 0 0 auto !important;     /* ⛔ لا تنكمش ولا تنزل */
+    margin: 0 !important;
+  }
+
+  /* أمان: لا قص للـ pill */
+  .topbar,
+  .nav-pill,
+  .nav-center{
+    overflow: visible !important;
+  }
+}
 
 
   </style>
