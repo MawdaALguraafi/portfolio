@@ -1491,6 +1491,75 @@ html[data-theme="light"] .icon-toggle:hover{
   .nav-center{ gap: 10px !important; }
   .nav-item{ font-size: 12px !important; padding: 6px 7px !important; }
 }
+/* =========================
+   MOBILE HEADER – ONE ROW ONLY
+   Language + Theme + Links
+   ========================= */
+@media (max-width: 768px){
+
+  /* الشريط كامل صف واحد */
+  .topbar .nav{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+  }
+
+  /* اسم الموقع (يسار) */
+  .brand{
+    flex: 0 0 auto !important;
+    font-size: 20px !important;
+    white-space: nowrap !important;
+  }
+
+  /* روابط الهيدر (وسط) */
+  .nav-center{
+    position: static !important;     /* ❗ يكسر absolute */
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    gap: 10px !important;            /* قرب الروابط */
+    flex: 1 1 auto !important;
+    white-space: nowrap !important;  /* يمنع نزول سطر */
+    overflow: hidden !important;
+  }
+
+  .nav-item{
+    height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* أزرار اللغة + الثيم (يمين) */
+  .lang-switch{
+    position: static !important;     /* ❗ يكسر absolute */
+    transform: none !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;             /* قربهم */
+    flex: 0 0 auto !important;
+    white-space: nowrap !important;
+  }
+
+  .icon-toggle{
+    width: 34px !important;
+    height: 34px !important;
+  }
+
+  .icon-toggle svg{
+    width: 15px !important;
+    height: 15px !important;
+  }
+}
 
   </style>
 </head>
