@@ -1609,47 +1609,30 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
 }
 
 /* =========================================================
-   FINAL FIX (Paste at VERY END of CSS)
-   - RTL header spacing + keep icons same row
-   - Fix nav interactive bubble position (no cut, no flying)
+   FINAL RTL MOBILE HEADER FIX
+   1) Language buttons NOT above Projects
+   2) Reduce spacing between header links
+   3) Fix interactive bubble position (centered)
+   Paste at VERY END of CSS
    ========================================================= */
 
-/* 1) Always keep nav items as positioning context */
-.topbar .nav-center .nav-item{
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* 2) Mobile header: one row + tighter spacing (Arabic too) */
 @media (max-width: 768px){
-  .topbar .nav{
-    display:flex !important;
-    align-items:center !important;
-  }
 
+  /* 1) منع النزول لسطر ثاني */
   .topbar .nav-pill{
-    display:flex !important;
-    align-items:center !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
     justify-content: space-between !important;
     gap: 6px !important;
-    padding: 10px 10px !important;
     height: 62px !important;
-    flex-wrap: nowrap !important;
-    overflow: visible !important;
   }
 
-  /* links row */
+  /* 2) الروابط: تقليل المسافة + سكرول بدون ما يدف الأيقونات */
   .topbar .nav-center{
-    position: static !important;
-    transform: none !important;
-    left:auto !important; right:auto !important; top:auto !important;
-
     display:flex !important;
     align-items:center !important;
 
-    /* ✅ قللنا المسافة بين الكلمات */
-    gap: 8px !important;
-
+    gap: 6px !important;            /* ✅ قربنا المسافة بين الكلمات */
     flex: 1 1 auto !important;
     min-width: 0 !important;
     white-space: nowrap !important;
@@ -1658,14 +1641,16 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-inline: 8px !important; /* يمنع قص أول/آخر عنصر */
+    padding-inline: 10px !important; /* ✅ يمنع قص أول/آخر عنصر */
   }
   .topbar .nav-center::-webkit-scrollbar{ display:none; }
 
-  /* icons group */
+  /* 3) الأيقونات: تثبيت بنفس السطر (لا عرض 100% ولا order ينزلها) */
   .topbar .lang-switch{
     position: static !important;
     transform: none !important;
+    width: auto !important;        /* ✅ يمنع نزولها كسطر */
+    order: 0 !important;
     margin: 0 !important;
 
     display:flex !important;
@@ -1675,43 +1660,41 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     z-index: 300 !important;
   }
 
-  /* RTL: نفس الصف + ما يطلع فوق "مشاريعي" */
-  html[dir="rtl"] .topbar .nav-pill{ direction: rtl; }
-  html[dir="rtl"] .topbar .nav-center{ direction: rtl; }
-}
+  /* 4) تصغير شوي لشكل الروابط عشان ما تزحم */
+  .topbar .nav-center .nav-item{
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+    height: 34px !important;
+    line-height: 34px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    position: relative !important;
+    z-index: 1 !important;
+  }
 
-/* 3) FIX: interactive bubble EXACT center on mobile
-      (this overrides your old "transform:none" that broke it) */
-@media (max-width: 768px){
+  /* =====================================================
+     FIX الدائرة/الانتراكتف: يرجع لمكانه (الوسط)
+     عندك كود سابق يخليه transform:none فيخربه
+     ===================================================== */
+
   .topbar .nav-center .nav-item::before{
-    content: "" !important;
-    position: absolute !important;
-
-    /* ✅ رجعها بالمنتصف */
+    /* ✅ تثبيت التمركز */
     top: 50% !important;
     left: 50% !important;
     inset: auto !important;
 
-    /* ✅ خففنا العرض عشان ما ينقص */
-    width: calc(100% + 14px) !important;
-    height: 30px !important;
-
-    /* ✅ بيضاوي */
-    border-radius: 999px !important;
-
-    /* ✅ لا تخليه none */
+    /* ✅ رجّع الترنسفورم (هذا أهم شيء) */
     transform: translate(-50%, -50%) !important;
 
-    opacity: 0 !important;
-    z-index: -1 !important;
-    transition: opacity .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+    /* ✅ نفس البيضاوي بس بدون قص */
+    width: calc(100% + 14px) !important;
+    height: 30px !important;
+    border-radius: 999px !important;
   }
 
-  /* show bubble on active/current */
-  .topbar .nav-center .nav-item.active::before,
-  .topbar .nav-center .nav-item[aria-current="page"]::before{
-    opacity: 1 !important;
-  }
+  /* RTL ترتيب طبيعي بدون ما يقفز */
+  html[dir="rtl"] .topbar .nav-pill{ direction: rtl; }
+  html[dir="rtl"] .topbar .nav-center{ direction: rtl; }
 }
 
   </style>
