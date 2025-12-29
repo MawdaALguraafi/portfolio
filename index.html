@@ -1438,6 +1438,98 @@ html[data-theme="dark"] .nav-item.active{
     box-shadow: 0 12px 24px rgba(122,99,230,.18) !important;
   }
 }
+/* =========================================================
+   NAV INTERACTIVE = SAME AS PROJECTS (ALL PAGES)
+   Dark + Light | Desktop + Mobile
+   Put at VERY END of CSS
+   ========================================================= */
+
+/* 1) Always make the interactive background come from ::before (not nav-item itself) */
+.nav-pill .nav-center .nav-item,
+.nav-pill .nav-center .nav-item.active,
+.nav-pill .nav-center .nav-item[aria-current="page"]{
+  background: transparent !important;
+  box-shadow: none !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+
+/* 2) Default pill shape (DESKTOP) */
+@media (min-width: 769px){
+  .nav-pill .nav-center .nav-item::before{
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+
+    width: calc(100% + 26px) !important;
+    height: 40px !important;                 /* pill */
+    border-radius: 999px !important;
+
+    transform: translate(-50%, -50%) !important;
+    opacity: 0 !important;
+    z-index: -1 !important;
+
+    transition: opacity .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+  }
+}
+
+/* 3) Mobile pill shape (same as Projects look) */
+@media (max-width: 768px){
+  .nav-pill .nav-center .nav-item::before{
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+
+    width: calc(100% + 18px) !important;
+    height: 34px !important;                 /* pill */
+    border-radius: 999px !important;
+
+    transform: translate(-50%, -50%) !important; /* no scale => never circle */
+    opacity: 0 !important;
+    z-index: -1 !important;
+
+    transition: opacity .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease !important;
+  }
+}
+
+/* 4) DARK colors = same behavior everywhere */
+html[data-theme="dark"] .nav-pill .nav-center .nav-item::before{
+  background: rgba(163,107,255,.14) !important;
+  border: 1px solid rgba(163,107,255,.22) !important;
+  box-shadow: 0 10px 22px rgba(124,60,255,.22) !important;
+}
+
+html[data-theme="dark"] .nav-pill .nav-center .nav-item.active::before,
+html[data-theme="dark"] .nav-pill .nav-center .nav-item[aria-current="page"]::before{
+  opacity: 1 !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+  border-color: rgba(255,255,255,.14) !important;
+  box-shadow: 0 12px 26px rgba(124,60,255,.28) !important;
+}
+
+/* 5) LIGHT colors = same behavior everywhere (مثل Projects لايت) */
+html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
+  background: rgba(122,99,230,.16) !important;
+  border: 1px solid rgba(122,99,230,.26) !important;
+  box-shadow: 0 10px 22px rgba(122,99,230,.12) !important;
+}
+
+html[data-theme="light"] .nav-pill .nav-center .nav-item.active::before,
+html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::before{
+  opacity: 1 !important;
+  background: linear-gradient(135deg, #7a63e6, #9a84ff) !important;
+  border-color: rgba(122,99,230,.34) !important;
+  box-shadow: 0 12px 24px rgba(122,99,230,.18) !important;
+}
+
+/* 6) Hover (desktop فقط) */
+@media (hover:hover) and (pointer:fine){
+  .nav-pill .nav-center .nav-item:hover::before{
+    opacity: 1 !important;
+  }
+}
 
   </style>
 </head>
