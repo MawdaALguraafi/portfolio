@@ -1424,7 +1424,73 @@ html[data-theme="light"] .icon-toggle:hover{
     height: 40px !important;
   }
 }
+/* =========================
+   MOBILE: keep everything in ONE ROW + closer spacing
+   (No menu, no layout change on desktop)
+   ========================= */
+@media (max-width: 768px){
 
+  /* الشريط نفسه صف واحد */
+  .nav-pill{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+    height: 62px !important;
+  }
+
+  /* نكسر absolute عشان ما يصير تداخل */
+  .nav-center{
+    position: static !important;
+    transform: none !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    flex: 1 1 auto !important;
+    gap: 14px !important;          /* قرب الروابط */
+    white-space: nowrap !important; /* لا ينزل سطر */
+    overflow: hidden !important;
+  }
+
+  /* الروابط تصغر شوي */
+  .nav-item{
+    height: 36px !important;
+    padding: 6px 8px !important;
+    font-size: 12.5px !important;
+  }
+
+  /* الأيقونات يمين في نفس الصف */
+  .lang-switch{
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;           /* قرب الأيقونات */
+    flex: 0 0 auto !important;
+  }
+
+  .icon-toggle{
+    width: 36px !important;
+    height: 36px !important;
+  }
+
+  .icon-toggle svg{
+    width: 16px !important;
+    height: 16px !important;
+  }
+}
+@media (max-width: 768px){
+  .nav-center{ gap: 10px !important; }
+  .nav-item{ font-size: 12px !important; padding: 6px 7px !important; }
+}
 
   </style>
 </head>
