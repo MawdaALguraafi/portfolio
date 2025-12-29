@@ -1317,6 +1317,129 @@ html[data-theme="light"] .icon-toggle:hover{
   html[dir="rtl"] .nav-pill{ direction: rtl; }
   html[dir="rtl"] .nav-center{ direction: rtl; }
 }
+/* =========================
+   MOBILE: Header alignment (links + icons same level)
+   ========================= */
+@media (max-width: 768px){
+
+  .nav-pill{
+    align-items: center !important;
+  }
+
+  .nav-center{
+    align-items: center !important;
+  }
+
+  .lang-switch{
+    align-items: center !important;
+    margin-top: 0 !important;
+  }
+
+  .nav-item{
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 34px !important;
+    line-height: 34px !important;
+  }
+
+  .icon-toggle{
+    display: grid !important;
+    place-items: center !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+}
+/* =========================
+   FIX: Hover/Active behavior (Dark) – cleaner on mobile
+   ========================= */
+
+/* hover effects only on devices that actually hover */
+@media (hover: hover) and (pointer: fine){
+  .nav-item:hover{
+    transform: translateY(-1px);
+  }
+  .icon-toggle:hover{
+    transform: translateY(-1px);
+  }
+}
+
+/* mobile: reduce "active" bubble & remove sticky hover look */
+@media (max-width: 768px){
+  .nav-item::before{
+    opacity: .12 !important;     /* كان قوي ويسوي فقاعة كبيرة */
+    transform: none !important;
+  }
+
+  .nav-item.active::before{
+    opacity: .18 !important;
+  }
+
+  .nav-item.active{
+    box-shadow: none !important; /* خففي الوهج الزايد */
+  }
+}
+/* =========================
+   MOBILE: Footer tidy + smaller
+   ========================= */
+@media (max-width: 768px){
+
+  footer{
+    padding: 26px 0 14px !important;
+  }
+
+  /* أي Grid/أعمدة بالفوتر -> عمود واحد */
+  .footer-inner,
+  .foot-grid,
+  .footer-grid{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  .foot h4{
+    font-size: 14px !important;
+    margin: 0 0 8px !important;
+  }
+
+  .foot p,
+  .foot a,
+  .foot li{
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+  }
+
+  /* روابط quick links */
+  .foot ul{
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+  }
+  .foot ul li{ margin: 6px 0 !important; }
+
+  /* أيقونات التواصل */
+  .social,
+  .connect,
+  .foot .social{
+    justify-content: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+  }
+
+  footer .iconbtn,
+  footer .social .iconbtn{
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .footer-bottom{
+    margin-top: 14px !important;
+    font-size: 12px !important;
+    text-align: center !important;
+  }
+}
+
 
   </style>
 </head>
