@@ -1590,76 +1590,7 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     padding-inline: 10px !important; /* يمنع قص أول/آخر شي */
   }
 }
-/* =========================================
-   FIX: nav interactive bubble position on mobile
-   (paste at VERY END of CSS)
-   ========================================= */
-@media (max-width: 768px){
-  .topbar .nav-center .nav-item{
-    position: relative !important;
-    z-index: 1 !important;
-  }
 
-  .topbar .nav-center .nav-item::before{
-    top: 50% !important;
-    left: 50% !important;
-    inset: auto !important;
-    transform: translate(-50%, -50%) !important; /* يرجّعها لمكانها */
-  }
-}
-
-/* =========================================
-   FINAL: Fix Nav Interactive Bubble (Mobile)
-   Paste at VERY END of CSS
-   ========================================= */
-@media (max-width: 768px){
-
-  /* خلي الرابط نفسه مرجع ثابت */
-  .topbar .nav-center .nav-item{
-    position: relative !important;
-    overflow: visible !important;
-    z-index: 2 !important;
-    isolation: isolate !important;
-  }
-
-  /* Reset كامل للـ ::before (هذا اللي يرجّعها لمكانها) */
-  .topbar .nav-center .nav-item::before{
-    content: "" !important;
-    display: block !important;
-    position: absolute !important;
-
-    /* ✅ تثبيت التمركز */
-    top: 50% !important;
-    left: 50% !important;
-    right: auto !important;
-    bottom: auto !important;
-    inset: auto !important;
-
-    transform: translate(-50%, -50%) !important;
-
-    /* ✅ نفس شكل الانتراكتف (بيضاوي) */
-    width: calc(100% + 16px) !important;
-    height: 32px !important;
-    border-radius: 999px !important;
-
-    /* ✅ منع أي كود ثاني يتحكم فيه */
-    margin: 0 !important;
-    padding: 0 !important;
-
-    opacity: 0 !important;
-    pointer-events: none !important;
-    z-index: -1 !important;
-  }
-
-  /* ظهور الانتراكتف */
-  @media (hover:hover) and (pointer:fine){
-    .topbar .nav-center .nav-item:hover::before{ opacity: 1 !important; }
-  }
-  .topbar .nav-center .nav-item.active::before,
-  .topbar .nav-center .nav-item[aria-current="page"]::before{
-    opacity: 1 !important;
-  }
-}
 
   </style>
 </head>
