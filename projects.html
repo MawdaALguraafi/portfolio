@@ -991,6 +991,56 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
   border-color: rgba(91,71,255,.18) !important;
   box-shadow: 0 10px 22px rgba(91,71,255,.18) !important;
 }
+/* =====================================================
+   FIX: Header overlap (Projects page) -> match Index
+   No deletions. Paste at VERY END.
+   ===================================================== */
+
+/* اجعل الهيدر يحجز مكان للأيقونات حتى لا تغطي الروابط */
+.topbar .nav-pill{ position: relative; }
+
+/* الأيقونات ثابتة يمين مثل الإندكس */
+.topbar .lang-switch{
+  position: absolute !important;
+  right: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 5 !important;
+}
+
+/* RTL: الأيقونات يسار */
+html[dir="rtl"] .topbar .lang-switch{
+  right: auto !important;
+  left: 0 !important;
+}
+
+/* nav-center يأخذ مساحة ويترك مكان للأيقونات (هذا هو الحل) */
+.topbar .nav-center{
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-right: 96px !important;  /* مساحة للأيقونات يمين */
+  padding-left: 12px !important;
+  min-width: 0 !important;
+  z-index: 2 !important;
+}
+
+/* RTL: اترك مساحة للأيقونات يسار بدل يمين */
+html[dir="rtl"] .topbar .nav-center{
+  padding-right: 12px !important;
+  padding-left: 96px !important;
+}
+
+/* للجوال: نفس فكرة الإندكس + سكرول للروابط بدون ما تدخل على الأيقونات */
+@media (max-width: 768px){
+  .topbar .nav-center{
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap !important;
+  }
+  .topbar .nav-center::-webkit-scrollbar{ display:none; }
+}
 
   </style>
 </head>
