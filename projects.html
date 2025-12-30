@@ -987,67 +987,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 14px !important;
   }
 }
-/* ===================================================
-   MOBILE ONLY – match INDEX exactly (sizes from code)
-   =================================================== */
-@media (max-width: 768px){
-
-  /* 1️⃣ نزّل المحتوى شوي (نفس إحساس الإندكس) */
-  .hero{
-    padding-top: 110px !important; /* كان 100 – نزول بسيط */
-  }
-
-  /* 2️⃣ الهيدر نفس السطر */
-  .nav-pill{
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    height: auto !important;
-    padding: 10px 10px !important; /* نفس الروح */
-    gap: 8px !important;
-  }
-
-  /* 3️⃣ قرب روابط الهيدر (بدون تغيير حجمها) */
-  .nav-center{
-    display: flex !important;
-    align-items: center !important;
-    gap: 12px !important; /* أقرب من الديسكتوب */
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    white-space: nowrap !important;
-  }
-
-  /* ⛔ لا نغيّر حجم النص */
-  .nav-item{
-    padding: 8px 16px !important;  /* نفس الكود */
-    font-size: 13px !important;    /* نفس الكود */
-  }
-
-  /* 4️⃣ الأيقونات بنفس مقاس الإندكس */
-  .icon-toggle{
-    width: 40px !important;
-    height: 40px !important;
-  }
-
-  .icon-toggle svg{
-    width: 18px !important;
-    height: 18px !important;
-  }
-
-  .lang-switch{
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    flex: 0 0 auto !important;
-  }
-
-  /* 5️⃣ البيضاوي التفاعلي مطابق */
-  .nav-item::before{
-    height: 34px !important;
-    width: calc(100% + 18px) !important;
-    border-radius: 999px !important;
-  }
-}
 
   </style>
 </head>
