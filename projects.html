@@ -557,6 +557,274 @@ html[data-theme="light"] .icon-toggle:hover{
 
 #projects{ position: relative; z-index: 1; }
 
+/* ==============================
+   HEADER (same look as screenshot)
+   ============================== */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.nav-pill{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+}
+
+.nav-center{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 18px;
+  margin: 0 auto;
+}
+
+.nav-item{
+  position: relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  height: 40px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+/* البيضاوي التفاعلي */
+.nav-item::before{
+  content:"";
+  position:absolute;
+  inset: -6px -10px;
+  border-radius: 999px;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity .18s ease, transform .18s ease;
+  transform: scale(.98);
+}
+.nav-item:hover::before,
+.nav-item.active::before{
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* أيقونات اللغة/الثيم */
+.lang-switch{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+/* ==============================
+   MOBILE NAV (same row + scroll)
+   ============================== */
+@media (max-width: 768px){
+  .nav-pill{ padding: 10px 10px; }
+  .nav-center{
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    white-space: nowrap;
+    flex: 1 1 auto;
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+  .nav-item{ height: 34px; padding: 6px 10px; font-size: 12px; flex: 0 0 auto; }
+}
+
+/* ==============================
+   FOOTER (same look as screenshot)
+   ============================== */
+footer{
+  padding: 34px 0 18px;
+  border-top: 1px solid rgba(163,107,255,.14);
+}
+
+.footer-inner{
+  text-align:center;
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+footer .foot ul{
+  list-style:none;
+  padding:0;
+  margin: 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+footer .social{
+  display:flex;
+  justify-content:center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.footer-bottom{
+  margin-top: 18px;
+  text-align:center;
+}
+
+/* ==============================
+   LIGHT THEME safety
+   ============================== */
+html[data-theme="light"] .topbar{
+  background: rgba(255,255,255,.88);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+/* =====================================
+   FOOTER — MOBILE ONLY (like screenshot)
+   ===================================== */
+@media (max-width: 768px){
+
+  footer{
+    padding: 34px 0 18px !important;
+  }
+
+  /* يخليه كله بالوسط */
+  footer .footer-inner{
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+    text-align: center !important;
+    align-items: center !important;
+  }
+
+  /* Quick Links أفقي */
+  footer .foot ul{
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important; /* لو زادت الروابط */
+  }
+
+  footer .foot ul li{ margin: 0 !important; }
+
+  footer .foot ul a{
+    white-space: nowrap !important;
+    padding: 6px 12px !important;
+    font-size: 12px !important;
+  }
+
+  /* Connect icons بالوسط */
+  footer .social{
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    margin-top: 10px !important;
+  }
+
+  footer .footer-bottom{
+    margin-top: 18px !important;
+    text-align: center !important;
+  }
+}
+/* =====================================
+   DESKTOP FOOTER — RESET (KEEP ORIGINAL)
+   ===================================== */
+@media (min-width: 769px){
+
+  footer .footer-inner{
+    display: grid !important;
+    grid-template-columns: 1.2fr 1fr 1fr !important; /* نفس اللاب */
+    text-align: left !important;
+    align-items: start !important;
+  }
+
+  html[dir="rtl"] footer .footer-inner{
+    text-align: right !important;
+  }
+
+  footer .foot ul{
+    display: grid !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+
+  footer .social{
+    justify-content: flex-start !important;
+  }
+}
+/* =====================================
+   NAV INTERACTIVE – OVAL (DESKTOP + MOBILE)
+   ===================================== */
+
+/* الأساس */
+.nav-pill .nav-center .nav-item{
+  position: relative;
+  z-index: 1;
+}
+
+/* البيضاوي */
+.nav-pill .nav-center .nav-item::before{
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /* 🔑 شكل بيضاوي مرتب */
+  width: calc(100% + 14px);
+  height: 36px;
+  border-radius: 999px;
+
+  transform: translate(-50%, -50%) scale(0.96);
+  opacity: 0;
+  z-index: -1;
+
+  background: rgba(163,107,255,0.14);
+  border: 1px solid rgba(163,107,255,0.25);
+  box-shadow: 0 8px 24px rgba(163,107,255,0.25);
+
+  transition:
+    opacity .2s ease,
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+}
+
+/* Hover + Active */
+.nav-pill .nav-center .nav-item:hover::before,
+.nav-pill .nav-center .nav-item.active::before,
+.nav-pill .nav-center .nav-item[aria-current="page"]::before{
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* =========================
+   MOBILE TUNING
+   ========================= */
+@media (max-width: 768px){
+  .nav-pill .nav-center .nav-item::before{
+    height: 28px;                 /* أصغر للجوال */
+    width: calc(100% + 12px);
+    box-shadow: 0 6px 16px rgba(163,107,255,0.22);
+  }
+}
+
+/* =========================
+   LIGHT THEME
+   ========================= */
+html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
+  background: rgba(91,71,255,0.10);
+  border-color: rgba(91,71,255,0.18);
+  box-shadow: 0 8px 22px rgba(91,71,255,0.20);
+}
 
   </style>
 </head>
@@ -572,7 +840,7 @@ html[data-theme="light"] .icon-toggle:hover{
           <a class="nav-item" href="index.html#home" data-i18n="nav_home">Home</a>
           <a class="nav-item" href="index.html#about" data-i18n="nav_about">About</a>
           <a class="nav-item" href="index.html#skills" data-i18n="nav_skills">Skills</a>
- <a class="nav-item" href="projects.html">Projects</a>
+          <a class="nav-item" href="projects.html" data-i18n="nav_projects">Projects</a>
 
         </div>
 <div class="lang-switch" aria-label="Language & Theme Switch">
@@ -894,7 +1162,7 @@ Key Features:
           </ul>
         </div>
 
-        <div class="foot" data-animate="right" class="delay-2">
+        <div class="foot delay-3" data-animate="up">
           <h4 data-i18n="footer_connect">Connect</h4>
           <div class="social">
             <a class="iconbtn" href="mailto:MawdaALguraafi@gmail.com" title="Email" aria-label="Email">
@@ -956,6 +1224,7 @@ Key Features:
         nav_about: "About",
         nav_skills: "Skills",
         nav_projects: "Projects",
+
 
         hero_title: "Featured Projects",
         hero_desc: "A selection of projects across AI, data analysis, and interactive dashboards.",
@@ -1095,7 +1364,7 @@ Key Features:
         nav_home: "الرئيسية",
         nav_about: "نبذة عني",
         nav_skills: "المهارات",
-        nav_projects: "المشاريع",
+        nav_projects: "مشاريعي",
 
         hero_title: "المشاريع المميزة",
         hero_desc: "مجموعة من المشاريع في الذكاء الاصطناعي، تحليل البيانات، ولوحات المعلومات.",
