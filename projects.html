@@ -1306,26 +1306,91 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin: 0 !important;
   }
 }
+/* ================================
+   FINAL FIX: NAV INTERACTIVE (RTL/LTR)
+   Mobile + Desktop — no clipping
+   Paste at VERY END of CSS
+=================================== */
+
+/* 1) امنع قصّ البيضاوي بسبب overflow */
+.topbar,
+.topbar .nav-pill,
+.topbar .nav-center{
+  overflow: visible !important;
+}
 @media (max-width: 768px){
-
-  /* الحاوية */
-  html[dir="rtl"] .topbar .nav-item{
-    position: relative;
-    padding: 6px 10px !important;   /* حجم البيضاوي */
-    border-radius: 999px !important;
-    transition: all .25s ease;
+  .topbar .nav-center{
+    overflow-x: auto !important;
+    overflow-y: visible !important; /* 🔑 مهم عشان ما يقص الانتراكتف */
   }
+}
 
-  /* العنصر النشط */
-  html[dir="rtl"] .topbar .nav-item.active,
-  html[dir="rtl"] .topbar .nav-item[aria-current="page"]{
-    background: rgba(138, 92, 255, 0.25); /* بنفسجي ناعم */
-    box-shadow: 0 0 18px rgba(138, 92, 255, 0.35);
+/* 2) ألغِ كل تعريفات ::before القديمة للهيدر */
+.topbar .nav-item::before{
+  content: none !important;
+  display: none !important;
+}
+
+/* 3) اجعل الزر نفسه “حامل” للانتراكتف */
+.topbar .nav-item{
+  position: relative !important;
+  z-index: 1 !important;
+  isolation: isolate !important;
+  border-radius: 999px !important;
+}
+
+/* 4) انتراكتف موحّد على ::after (RTL/LTR) */
+.topbar .nav-item::after{
+  content:"";
+  position:absolute;
+  inset: -4px;                 /* يكبر البيضاوي بدون ما ينقص */
+  border-radius: 999px;
+  opacity: 0;
+  transform: scale(.98);
+  z-index: -1;
+  pointer-events:none;
+  transition: opacity .18s ease, transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+
+  /* Dark default */
+  background: rgba(163,107,255,.14);
+  border: 1px solid rgba(163,107,255,.25);
+  box-shadow: 0 8px 22px rgba(163,107,255,.20);
+}
+
+.topbar .nav-item:hover::after,
+.topbar .nav-item.active::after,
+.topbar .nav-item[aria-current="page"]::after{
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 5) Light theme */
+html[data-theme="light"] .topbar .nav-item::after{
+  background: rgba(91,71,255,.10);
+  border-color: rgba(91,71,255,.18);
+  box-shadow: 0 8px 22px rgba(91,71,255,.18);
+}
+
+/* 6) Mobile sizing (يمنع شكل الدائرة) */
+@media (max-width: 768px){
+  .topbar .nav-item::after{
+    inset: -3px;
   }
+}
 
-  /* hover (لمسة خفيفة) */
-  html[dir="rtl"] .topbar .nav-item:hover{
-    background: rgba(138, 92, 255, 0.15);
+/* 7) ألغي قاعدة النجمة اللي تقلل gap لكل شيء (خليها بس على الحاويات) */
+@media (max-width: 768px){
+  html[dir="rtl"] .topbar *{
+    gap: unset !important;
+    column-gap: unset !important;
+  }
+  html[dir="rtl"] .topbar .nav-center{ gap: 8px !important; }
+  html[dir="rtl"] .topbar .lang-switch{ gap: 6px !important; }
+
+  html[dir="rtl"] .topbar .nav-item,
+  html[dir="rtl"] .topbar a{
+    padding: 6px 8px !important;
+    margin: 0 !important;
   }
 }
 
