@@ -883,163 +883,81 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
   html[dir="rtl"] .nav-center{ direction: rtl !important; }
 }
 /* =========================================================
-   FINAL PATCH – DO NOT DELETE ANYTHING
-   Fix: mobile header alignment (AR/EN same level)
-   Fix: oval interactive (desktop+mobile)
+   FIX (MOBILE ONLY): Header same as index (1 row, no overlap)
+   Paste at VERY END of projects.html CSS
    ========================================================= */
-
-/* 1) NAV layers isolation (prevents weird overlaps) */
-.nav-pill, .nav-center, .lang-switch { position: relative; }
-.nav-pill { isolation: isolate; }
-
-/* 2) Keep same row on mobile (NO RESIZE: uses your existing sizes) */
 @media (max-width: 768px){
+
+  /* 1) keep everything in one row */
   .nav-pill{
-    display:flex !important;
-    align-items:center !important;
+    display: flex !important;
+    align-items: center !important;
     justify-content: space-between !important;
-    flex-wrap: nowrap !important;        /* يمنع نزول صف ثاني */
-    gap: 8px !important;
+    gap: 10px !important;
+    /* خليه نفس مستوى index */
+    padding: 12px 0 !important;
   }
 
+  /* 2) break any old absolute centering (this is the overlap source) */
   .nav-center{
-    display:flex !important;
-    align-items:center !important;
+    position: static !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    transform: none !important;
+
+    display: flex !important;
+    align-items: center !important;
+
     flex: 1 1 auto !important;
     min-width: 0 !important;
-    white-space: nowrap !important;
 
+    margin: 0 !important;
+    gap: 18px !important;            /* نفس احساس الصورة */
+    white-space: nowrap !important;
     overflow-x: auto !important;
     overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
   }
-  .nav-center::-webkit-scrollbar{ display:none; }
+  .nav-center::-webkit-scrollbar{ display: none !important; }
 
+  /* 3) icons stay at the far end (no floating/absolute) */
   .lang-switch{
-    flex: 0 0 auto !important;          /* الأيقونات ما تنضغط */
-    display:flex !important;
-    align-items:center !important;
-    white-space: nowrap !important;
+    position: static !important;
+    transform: none !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
   }
 
-  /* توحيد مستوى AR/EN بدون تغيير أحجام */
-  .nav-item,
+  /* 4) keep your existing sizes (no resize) */
+  .nav-item{
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
   .icon-toggle{
-    display:inline-flex !important;
-    align-items:center !important;
-    justify-content:center !important;
-    vertical-align: middle !important;
+    display: grid !important;
+    place-items: center !important;
   }
 
-  /* تثبيت اتجاه الحاوية: يمنع اختلاف المستوى بين RTL/LTR */
-  html[dir="rtl"] .nav-pill{ direction: rtl !important; }
-  html[dir="ltr"] .nav-pill{ direction: ltr !important; }
-
-  html[dir="rtl"] .nav-center{ direction: rtl !important; }
-  html[dir="ltr"] .nav-center{ direction: ltr !important; }
-}
-
-/* 3) OVAL interactive – clean & consistent (desktop + mobile) */
-.nav-pill .nav-center .nav-item{ z-index: 1; }
-.nav-pill .nav-center .nav-item::before{
-  content:"" !important;
-  position:absolute !important;
-  top:50% !important;
-  left:50% !important;
-  transform: translate(-50%,-50%) scale(.96) !important;
-  opacity: 0 !important;
-  z-index: -1 !important;
-  border-radius: 999px !important;
-  transition: opacity .18s ease, transform .18s ease, background .18s ease, box-shadow .18s ease, border-color .18s ease !important;
-}
-
-/* Desktop oval size (uses your base padding/height, just wraps nicely) */
-@media (min-width: 769px){
+  /* 5) interactive oval on mobile (clean + not "دوائر فوق") */
   .nav-pill .nav-center .nav-item::before{
     width: calc(100% + 14px) !important;
-    height: 38px !important;
+    height: 30px !important;
+    border-radius: 999px !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
   }
-}
 
-/* Mobile oval size */
-@media (max-width: 768px){
-  .nav-pill .nav-center .nav-item::before{
-    width: calc(100% + 12px) !important;
-    height: 28px !important;
+  /* 6) RTL: keep same level + push links toward the right side nicely */
+  html[dir="rtl"] .nav-center{
+    justify-content: flex-end !important;
   }
-}
-
-/* Active/Hover */
-.nav-pill .nav-center .nav-item:hover::before,
-.nav-pill .nav-center .nav-item.active::before,
-.nav-pill .nav-center .nav-item[aria-current="page"]::before{
-  opacity: 1 !important;
-  transform: translate(-50%,-50%) scale(1) !important;
-}
-
-/* Dark theme colors */
-.nav-pill .nav-center .nav-item::before{
-  background: rgba(163,107,255,.14) !important;
-  border: 1px solid rgba(163,107,255,.22) !important;
-  box-shadow: 0 10px 26px rgba(163,107,255,.22) !important;
-}
-
-/* Light theme colors */
-html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
-  background: rgba(91,71,255,.10) !important;
-  border-color: rgba(91,71,255,.18) !important;
-  box-shadow: 0 10px 22px rgba(91,71,255,.18) !important;
-}
-/* =====================================================
-   FIX: Header overlap (Projects page) -> match Index
-   No deletions. Paste at VERY END.
-   ===================================================== */
-
-/* اجعل الهيدر يحجز مكان للأيقونات حتى لا تغطي الروابط */
-.topbar .nav-pill{ position: relative; }
-
-/* الأيقونات ثابتة يمين مثل الإندكس */
-.topbar .lang-switch{
-  position: absolute !important;
-  right: 0 !important;
-  top: 50% !important;
-  transform: translateY(-50%) !important;
-  z-index: 5 !important;
-}
-
-/* RTL: الأيقونات يسار */
-html[dir="rtl"] .topbar .lang-switch{
-  right: auto !important;
-  left: 0 !important;
-}
-
-/* nav-center يأخذ مساحة ويترك مكان للأيقونات (هذا هو الحل) */
-.topbar .nav-center{
-  margin-left: auto !important;
-  margin-right: auto !important;
-  padding-right: 96px !important;  /* مساحة للأيقونات يمين */
-  padding-left: 12px !important;
-  min-width: 0 !important;
-  z-index: 2 !important;
-}
-
-/* RTL: اترك مساحة للأيقونات يسار بدل يمين */
-html[dir="rtl"] .topbar .nav-center{
-  padding-right: 12px !important;
-  padding-left: 96px !important;
-}
-
-/* للجوال: نفس فكرة الإندكس + سكرول للروابط بدون ما تدخل على الأيقونات */
-@media (max-width: 768px){
-  .topbar .nav-center{
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    white-space: nowrap !important;
-  }
-  .topbar .nav-center::-webkit-scrollbar{ display:none; }
 }
 
   </style>
