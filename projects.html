@@ -1274,6 +1274,16 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin-right: 0 !important;
   }
 }
+/* MOBILE + AR only: tighten header name gaps */
+@media (max-width: 768px){
+  html[dir="rtl"] .nav-center{
+    gap: 6px !important;          /* قرب القاب بين الأسماء */
+  }
+
+  html[dir="rtl"] .nav-item{
+    padding: 6px 7px !important;  /* قرب داخل كل اسم */
+  }
+}
 
   </style>
 </head>
