@@ -825,6 +825,47 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
   border-color: rgba(91,71,255,0.18);
   box-shadow: 0 8px 22px rgba(91,71,255,0.20);
 }
+/* =====================================
+   MOBILE HEADER TUNING (SPACE FOR ICONS)
+   ===================================== */
+@media (max-width: 768px){
+
+  /* الهيدر كامل */
+  .nav-pill{
+    padding: 10px 8px !important;
+    gap: 6px !important;
+  }
+
+  /* نزحف الروابط شوي لليسار */
+  .nav-center{
+    justify-content: flex-start !important;
+    margin-right: 6px !important;   /* يترك مكان للأيقونات */
+    gap: 8px !important;
+  }
+
+  /* تصغير عناصر التنقل */
+  .nav-item{
+    height: 32px !important;
+    padding: 5px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* الأيقونات (لغة + ثيم) */
+  .lang-switch{
+    gap: 6px !important;
+  }
+
+  .icon-toggle{
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+  }
+
+  .icon-toggle svg{
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
 
   </style>
 </head>
