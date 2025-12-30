@@ -1168,6 +1168,53 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 15px !important;
   }
 }
+/* =========================================
+   FIX RTL (AR) NAV INTERACTIVE CLIPPING
+   Mobile only | Dark + Light
+   Put at VERY END
+   ========================================= */
+@media (max-width: 768px){
+
+  /* 1) RTL فقط: أوقف ::before اللي يسبب القص */
+  html[dir="rtl"] .topbar .nav-center .nav-item::before{
+    content: none !important;
+    display: none !important;
+  }
+
+  /* 2) RTL فقط: خلي الانتراكتف على نفس الزر (ما ينقص) */
+  html[dir="rtl"] .topbar .nav-center .nav-item{
+    border-radius: 999px !important;        /* بيضاوي/دائري حسب الطول */
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 1px solid transparent !important;
+    isolation: isolate !important;
+  }
+
+  /* 3) ACTIVE – DARK */
+  html[dir="rtl"][data-theme="dark"] .topbar .nav-center .nav-item.active,
+  html[dir="rtl"][data-theme="dark"] .topbar .nav-center .nav-item[aria-current="page"]{
+    background: linear-gradient(135deg, var(--accent), var(--accent2)) !important;
+    border-color: rgba(255,255,255,.14) !important;
+    box-shadow: 0 10px 22px rgba(124,60,255,.22) !important;
+  }
+
+  /* 4) ACTIVE – LIGHT */
+  html[dir="rtl"][data-theme="light"] .topbar .nav-center .nav-item.active,
+  html[dir="rtl"][data-theme="light"] .topbar .nav-center .nav-item[aria-current="page"]{
+    background: linear-gradient(135deg, #7a63e6, #9a84ff) !important;
+    border-color: rgba(122,99,230,.34) !important;
+    box-shadow: 0 10px 22px rgba(122,99,230,.14) !important;
+  }
+
+  /* 5) امنع أي قص من الحاوية (RTL فقط) */
+  html[dir="rtl"] .topbar .nav-pill{ overflow: visible !important; }
+  html[dir="rtl"] .topbar .nav-center{
+    overflow-x: auto !important;
+    overflow-y: visible !important;         /* مهم عشان ما يقص البيضاوي */
+    padding-right: 6px !important;          /* مساحة نفسية عند بداية RTL */
+    padding-left: 6px !important;
+  }
+}
 
   </style>
 </head>
