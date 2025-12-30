@@ -987,65 +987,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 14px !important;
   }
 }
-/* =====================================================
-   FINAL FIX — Projects Mobile Header = Index Mobile Header
-   No resize, no spacing changes, no desktop impact
-   ===================================================== */
-@media (max-width: 768px){
-
-  /* رجّعي الهيدر لسلوك الإندكس */
-  .topbar{
-    padding: 0 !important;
-  }
-
-  .nav-pill{
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    height: auto !important;          /* نفس الإندكس */
-    padding: 12px 0 !important;       /* نفس الإندكس */
-    gap: 18px !important;             /* نفس الإندكس */
-  }
-
-  /* نفس تمركز الروابط */
-  .nav-center{
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 18px !important;             /* نفس المسافة */
-    margin: 0 auto !important;
-    padding: 0 !important;
-
-    overflow: visible !important;     /* بدون سكرول */
-    white-space: nowrap !important;
-  }
-
-  /* بدون أي تغيير أحجام */
-  .nav-item{
-    font-size: inherit !important;
-    padding: inherit !important;
-    height: inherit !important;
-  }
-
-  /* الأيقونات بنفس مكان وحجم الإندكس */
-  .lang-switch{
-    position: relative !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    margin: 0 !important;
-  }
-
-  .icon-toggle{
-    width: inherit !important;
-    height: inherit !important;
-  }
-
-  /* RTL نفس الإندكس */
-  html[dir="rtl"] .nav-pill{ direction: rtl !important; }
-  html[dir="rtl"] .nav-center{ direction: rtl !important; }
-}
 
   </style>
 </head>
