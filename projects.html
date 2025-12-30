@@ -959,6 +959,34 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     justify-content: flex-end !important;
   }
 }
+/* =====================================
+   MOBILE HEADER – tighter links + smaller icons
+   (does NOT affect desktop)
+   ===================================== */
+@media (max-width: 768px){
+
+  /* قرب الكلمات من بعض */
+  .nav-center{
+    gap: 10px !important;          /* كان 18 -> صار أقرب مثل الصورة */
+  }
+
+  /* صغر الأيقونات */
+  .lang-switch{
+    gap: 6px !important;
+  }
+
+  .icon-toggle{
+    width: 32px !important;
+    height: 32px !important;
+    padding: 0 !important;
+    border-radius: 999px !important;
+  }
+
+  .icon-toggle svg{
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
 
   </style>
 </head>
