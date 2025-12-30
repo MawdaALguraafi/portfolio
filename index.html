@@ -1591,6 +1591,71 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
   }
 }
 
+/* =========================
+   MOBILE RTL ONLY – FIX NAV ALIGNMENT
+   ========================= */
+@media (max-width: 768px){
+
+  html[dir="rtl"] .nav-pill{
+    justify-content: space-between !important;
+    padding-right: 8px !important;
+  }
+
+  html[dir="rtl"] .nav-center{
+    justify-content: flex-start !important; /* RTL = يمين */
+    gap: 6px !important;                    /* قرب الكلمات */
+    padding-right: 6px !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  html[dir="rtl"] .nav-item{
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* تأكيد إن الروابط تبدأ من اليمين */
+  html[dir="rtl"] .nav-center{
+    direction: rtl;
+    text-align: right;
+  }
+}
+/* =====================================
+   MOBILE – OVAL INTERACTIVE NAV (FINAL)
+   ===================================== */
+@media (max-width: 768px){
+
+  /* الأساس */
+  .nav-pill .nav-center .nav-item{
+    position: relative !important;
+    z-index: 1 !important;
+  }
+
+  /* البيضاوي نفسه */
+  .nav-pill .nav-center .nav-item::before{
+    content: "" !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+
+    /* 🔑 هنا الزبط */
+    width: calc(100% + 12px) !important;   /* أصغر = أقرب للكلمة */
+    height: 28px !important;               /* يمنع شكل الدائرة */
+    border-radius: 999px !important;
+
+    transform: translate(-50%, -50%) !important;
+    opacity: 0 !important;
+    z-index: -1 !important;
+
+    transition: opacity .18s ease, background .18s ease, box-shadow .18s ease !important;
+  }
+
+  /* ACTIVE + CURRENT */
+  .nav-pill .nav-center .nav-item.active::before,
+  .nav-pill .nav-center .nav-item[aria-current="page"]::before{
+    opacity: 1 !important;
+  }
+}
 
   </style>
 </head>
