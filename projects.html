@@ -1077,6 +1077,34 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 16px !important;
   }
 }
+/* =====================================
+   MOBILE – Nav gap like reference
+   (subtle, clean, same level)
+   ===================================== */
+@media (max-width: 768px){
+
+  /* المسافة بين الكلمات */
+  .nav-center{
+    gap: 6px !important;   /* المرجع تقريبًا */
+  }
+
+  /* المسافة داخل كل كلمة (pill) */
+  .nav-item{
+    padding: 6px 6px !important;  /* كان أوسع */
+  }
+
+  /* المسافة بين الأيقونات وبعض + قربها للكلمات */
+  .lang-switch{
+    gap: 5px !important;
+    margin-left: -4px !important; /* يقربهم شوي بدون تزاحم */
+  }
+
+  /* RTL دعم */
+  html[dir="rtl"] .lang-switch{
+    margin-left: 0 !important;
+    margin-right: -4px !important;
+  }
+}
 
   </style>
 </head>
