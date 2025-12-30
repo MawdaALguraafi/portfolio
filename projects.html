@@ -1420,6 +1420,102 @@ html[data-theme="light"] .topbar{
   border-bottom: 1px solid rgba(0,0,0,.08) !important;
   border-radius: 0 !important;              /* مستطيل */
 }
+/* =========================
+   MOBILE NAV (FINAL) – one row, no overlap
+   (COPY TO projects.css at the VERY END)
+   ========================= */
+@media (max-width: 768px){
+
+  /* nav container stays one line */
+  .nav-pill{
+    display:flex !important;
+    align-items:center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 10px !important;
+    height: 62px !important;
+    overflow: visible !important;
+  }
+
+  /* center links: horizontal scroll if space is tight */
+  .nav-center{
+    position: static !important;
+    transform: none !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+
+    display:flex !important;
+    align-items:center !important;
+    gap: 10px !important;
+
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  .nav-item{
+    flex: 0 0 auto !important;
+    height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+  }
+
+  /* icons always visible on the edge */
+  .lang-switch{
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+
+    display:flex !important;
+    align-items:center !important;
+    gap: 6px !important;
+    flex: 0 0 auto !important;
+    z-index: 300 !important;
+  }
+
+  .icon-toggle{
+    width: 34px !important;
+    height: 34px !important;
+  }
+  .icon-toggle svg{
+    width: 15px !important;
+    height: 15px !important;
+  }
+
+  /* RTL safety */
+  html[dir="rtl"] .nav-pill{ direction: rtl; }
+  html[dir="rtl"] .nav-center{ direction: rtl; }
+}
+@media (max-width: 768px){
+  .nav-pill{ align-items: center !important; }
+  .nav-center{ align-items: center !important; }
+
+  .lang-switch{
+    align-items: center !important;
+    margin-top: 0 !important;
+  }
+
+  .nav-item{
+    display: inline-flex !important;
+    align-items: center !important;
+    height: 34px !important;
+    line-height: 34px !important;
+  }
+
+  .icon-toggle{
+    display: grid !important;
+    place-items: center !important;
+    height: 34px !important;
+    width: 34px !important;
+  }
+}
 
   </style>
 </head>
