@@ -1043,6 +1043,23 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 14px !important;
   }
 }
+/* =====================================
+   MOBILE: Move icons closer to nav (LEFT)
+   Horizontal only – no vertical change
+   ===================================== */
+@media (max-width: 768px){
+
+  /* قرّب الأيقونات لليسار */
+  .lang-switch{
+    margin-left: -6px !important;   /* LTR */
+  }
+
+  /* لو الصفحة عربي (RTL) */
+  html[dir="rtl"] .lang-switch{
+    margin-left: 0 !important;
+    margin-right: -6px !important;
+  }
+}
 
   </style>
 </head>
