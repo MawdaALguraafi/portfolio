@@ -1009,6 +1009,40 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     padding-top: 110px !important;  /* فرق واضح مثل الصورة */
   }
 }
+/* =====================================
+   MOBILE HEADER – tighter spacing
+   Home / Skills / Projects + Icons
+   (NO desktop impact)
+   ===================================== */
+@media (max-width: 768px){
+
+  /* قرب عناصر الهيدر من بعض */
+  .nav-center{
+    gap: 8px !important;          /* كان أكبر – الآن أقرب مثل الصورة */
+  }
+
+  /* تصغير المسافة داخل زر الرابط */
+  .nav-item{
+    padding: 6px 10px !important; /* إحساس أنعم */
+    font-size: 12px !important;
+  }
+
+  /* الأيقونات (لغة + ثيم) */
+  .lang-switch{
+    gap: 6px !important;          /* قربهم من بعض */
+  }
+
+  .icon-toggle{
+    width: 32px !important;       /* أصغر */
+    height: 32px !important;
+    border-radius: 999px !important;
+  }
+
+  .icon-toggle svg{
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
 
   </style>
 </head>
