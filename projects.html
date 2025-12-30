@@ -987,6 +987,28 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 14px !important;
   }
 }
+/* ===============================
+   MOBILE HEADER SPACING FIX
+   (Only Mobile – No Desktop Change)
+   =============================== */
+@media (max-width: 768px){
+
+  /* نزّل الهيدر شوي من فوق */
+  .topbar{
+    top: 8px !important;          /* نفس إحساس الصورة */
+  }
+
+  /* زود المسافة العمودية داخل الهيدر */
+  .nav-pill{
+    padding-top: 16px !important;
+    padding-bottom: 12px !important;
+  }
+
+  /* خليه ما يكون لازق بالهيدر */
+  .hero{
+    padding-top: 110px !important;  /* فرق واضح مثل الصورة */
+  }
+}
 
   </style>
 </head>
