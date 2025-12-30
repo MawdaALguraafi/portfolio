@@ -1284,6 +1284,19 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     padding: 6px 7px !important;  /* قرب داخل كل اسم */
   }
 }
+/* MOBILE + AR: fixed gap exactly like HOME */
+@media (max-width: 768px){
+
+  /* القاب بين أسماء الهيدر */
+  html[dir="rtl"] .nav-center{
+    gap: 10px !important;        /* نفس الهوم */
+  }
+
+  /* المسافة داخل كل اسم */
+  html[dir="rtl"] .nav-item{
+    padding: 6px 10px !important;
+  }
+}
 
   </style>
 </head>
