@@ -1315,15 +1315,17 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
 /* 1) امنع قصّ البيضاوي بسبب overflow */
 .topbar,
 .topbar .nav-pill,
-.topbar .nav-center{
-  overflow: visible !important;
+.topbar .nav-item::after{
+  inset: -2px -10px;   /* top/bottom أقل — left/right أكبر = بيضاوي */
+  border-radius: 999px;
 }
+
 @media (max-width: 768px){
-  .topbar .nav-center{
-    overflow-x: auto !important;
-    overflow-y: visible !important; /* 🔑 مهم عشان ما يقص الانتراكتف */
+  .topbar .nav-item::after{
+    inset: -2px -8px;  /* للموبايل */
   }
 }
+
 
 /* 2) ألغِ كل تعريفات ::before القديمة للهيدر */
 .topbar .nav-item::before{
