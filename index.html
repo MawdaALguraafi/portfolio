@@ -1656,6 +1656,33 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     opacity: 1 !important;
   }
 }
+/* =====================================
+   MOBILE – FOOTER QUICK LINKS HORIZONTAL
+   ===================================== */
+@media (max-width: 768px){
+
+  /* استهداف Quick Links فقط */
+  footer .foot ul{
+    display: flex !important;
+    flex-direction: row !important;   /* أفقي */
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    padding: 0 !important;
+    margin: 6px 0 0 !important;
+  }
+
+  footer .foot ul li{
+    margin: 0 !important;             /* نشيل الفراغات الرأسية */
+  }
+
+  footer .foot ul a{
+    padding: 6px 12px !important;     /* نفس إحساس الهيدر */
+    white-space: nowrap !important;   /* يمنع النزول لسطر */
+    font-size: 12px !important;
+  }
+}
 
   </style>
 </head>
@@ -2049,10 +2076,7 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
           <li><a href="#home" data-i18n="nav_home">Home</a></li>
           <li><a href="#about" data-i18n="nav_about">About</a></li>
           <li><a href="#skills" data-i18n="nav_skills">Skills</a></li>
-          <li>
-  <a href="projects.html" data-i18n="nav_projects_inline">Projects</a>
-</li>
-
+          <li><a href="projects.html" data-i18n="nav_projects">Projects</a></li>
         </ul>
       </div>
 
