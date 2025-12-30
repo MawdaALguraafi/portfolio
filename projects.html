@@ -987,58 +987,64 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 14px !important;
   }
 }
-/* =========================================
-   MOBILE HEADER = like your screenshot
-   - push content down a bit
-   - tighter nav links
-   - smaller icons
-   (NO desktop changes)
-   ========================================= */
+/* ===================================================
+   MOBILE ONLY – match INDEX exactly (sizes from code)
+   =================================================== */
 @media (max-width: 768px){
 
-  /* 1) نزّل الهيدر + المحتوى شوي تحت */
-  .topbar{
-    margin-top: 10px !important;     /* نزول بسيط مثل الصورة */
+  /* 1️⃣ نزّل المحتوى شوي (نفس إحساس الإندكس) */
+  .hero{
+    padding-top: 110px !important; /* كان 100 – نزول بسيط */
   }
 
-  /* 2) ترتيب نفس السطر */
+  /* 2️⃣ الهيدر نفس السطر */
   .nav-pill{
-    padding: 12px 10px !important;
-    gap: 8px !important;
+    display: flex !important;
     align-items: center !important;
-  }
-
-  /* 3) قرب الكلمات من بعض */
-  .nav-center{
-    gap: 12px !important;            /* أقرب من قبل */
-  }
-
-  /* 4) صغّر الأيقونات مثل الصورة */
-  .lang-switch{
+    justify-content: space-between !important;
+    height: auto !important;
+    padding: 10px 10px !important; /* نفس الروح */
     gap: 8px !important;
   }
 
+  /* 3️⃣ قرب روابط الهيدر (بدون تغيير حجمها) */
+  .nav-center{
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important; /* أقرب من الديسكتوب */
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    white-space: nowrap !important;
+  }
+
+  /* ⛔ لا نغيّر حجم النص */
+  .nav-item{
+    padding: 8px 16px !important;  /* نفس الكود */
+    font-size: 13px !important;    /* نفس الكود */
+  }
+
+  /* 4️⃣ الأيقونات بنفس مقاس الإندكس */
   .icon-toggle{
-    width: 34px !important;
-    height: 34px !important;
-    padding: 0 !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .icon-toggle svg{
-    width: 15px !important;
-    height: 15px !important;
+    width: 18px !important;
+    height: 18px !important;
   }
 
-  /* 5) خفّف حجم الرابط شوي بدون ما يكسّر */
-  .nav-item{
-    padding: 7px 12px !important;
-    font-size: 13px !important;
+  .lang-switch{
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex: 0 0 auto !important;
   }
 
-  /* 6) البيضاوي التفاعلي يكون مرتب مع المقاس الجديد */
-  .nav-pill .nav-center .nav-item::before{
-    height: 30px !important;
-    width: calc(100% + 14px) !important;
+  /* 5️⃣ البيضاوي التفاعلي مطابق */
+  .nav-item::before{
+    height: 34px !important;
+    width: calc(100% + 18px) !important;
     border-radius: 999px !important;
   }
 }
