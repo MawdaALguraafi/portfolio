@@ -806,16 +806,6 @@ html[data-theme="light"] .topbar{
   transform: translate(-50%, -50%) scale(1);
 }
 
-/* =========================
-   MOBILE TUNING
-   ========================= */
-@media (max-width: 768px){
-  .nav-pill .nav-center .nav-item::before{
-    height: 28px;                 /* أصغر للجوال */
-    width: calc(100% + 12px);
-    box-shadow: 0 6px 16px rgba(163,107,255,0.22);
-  }
-}
 
 /* =========================
    LIGHT THEME
@@ -830,12 +820,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
    ===================================== */
 @media (max-width: 768px){
 
-  /* الهيدر كامل */
-  .nav-pill{
-    padding: 10px 8px !important;
-    gap: 6px !important;
-  }
-
   /* نزحف الروابط شوي لليسار */
   .nav-center{
     justify-content: flex-start !important;
@@ -843,23 +827,12 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     gap: 8px !important;
   }
 
-  /* تصغير عناصر التنقل */
-  .nav-item{
-    height: 32px !important;
-    padding: 5px 8px !important;
-    font-size: 12px !important;
-  }
 
   /* الأيقونات (لغة + ثيم) */
   .lang-switch{
     gap: 6px !important;
   }
 
-  .icon-toggle{
-    width: 32px !important;
-    height: 32px !important;
-    padding: 0 !important;
-  }
 
   .icon-toggle svg{
     width: 14px !important;
@@ -870,16 +843,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
    MOBILE HEADER – SAME LEVEL (AR & EN)
    ===================================== */
 @media (max-width: 768px){
-
-  /* الهيدر نفسه */
-  .nav-pill{
-    height: 56px !important;
-    padding: 8px 10px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-  }
-
   /* روابط التنقل */
   .nav-center{
     display: flex !important;
@@ -899,16 +862,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
 
   .nav-center::-webkit-scrollbar{ display:none; }
 
-  /* نفس المقاس بالعربي والانقليزي */
-  .nav-item{
-    height: 32px !important;
-    padding: 6px 10px !important;
-    font-size: 12px !important;
-    line-height: 1 !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
 
   /* الأيقونات */
   .lang-switch{
@@ -918,13 +871,6 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin: 0 !important;
   }
 
-  .icon-toggle{
-    width: 32px !important;
-    height: 32px !important;
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
 
   /* 🔑 توحيد RTL و LTR */
   html[dir="rtl"] .nav-pill,
@@ -939,6 +885,63 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
   html[dir="ltr"] .nav-center{
     direction: ltr !important;
   }
+}
+/* =========================================
+   MOBILE HEADER – USE ORIGINAL SIZES
+   SAME LEVEL (AR / EN) – NO RESIZE
+   ========================================= */
+@media (max-width: 768px){
+
+  /* الحاوية */
+  .nav-pill{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px !important; /* موجود عندك أصلاً */
+  }
+
+  /* روابط الهيدر */
+  .nav-center{
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  /* لا نغيّر مقاس nav-item */
+  .nav-item{
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* أزرار اللغة والثيم */
+  .lang-switch{
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    flex: 0 0 auto !important;
+  }
+
+  .icon-toggle{
+    display: grid !important;
+    place-items: center !important;
+  }
+
+  /* توحيد المستوى بين عربي وإنجليزي */
+  html[dir="ltr"] .nav-pill{ direction: ltr !important; }
+  html[dir="rtl"] .nav-pill{ direction: rtl !important; }
+
+  html[dir="ltr"] .nav-center{ direction: ltr !important; }
+  html[dir="rtl"] .nav-center{ direction: rtl !important; }
 }
 
   </style>
