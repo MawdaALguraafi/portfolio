@@ -1294,6 +1294,18 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin-right: 0 !important;
   }
 }
+@media (max-width: 768px){
+  html[dir="rtl"] .topbar *{
+    gap: 2px !important;          /* ← القاب أقل شي */
+    column-gap: 2px !important;
+  }
+
+  html[dir="rtl"] .topbar .nav-item,
+  html[dir="rtl"] .topbar a{
+    padding: 3px 4px !important;  /* يقلل الفراغ بين الكلمات */
+    margin: 0 !important;
+  }
+}
 
   </style>
 </head>
