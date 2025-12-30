@@ -1306,6 +1306,28 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin: 0 !important;
   }
 }
+@media (max-width: 768px){
+
+  /* الحاوية */
+  html[dir="rtl"] .topbar .nav-item{
+    position: relative;
+    padding: 6px 10px !important;   /* حجم البيضاوي */
+    border-radius: 999px !important;
+    transition: all .25s ease;
+  }
+
+  /* العنصر النشط */
+  html[dir="rtl"] .topbar .nav-item.active,
+  html[dir="rtl"] .topbar .nav-item[aria-current="page"]{
+    background: rgba(138, 92, 255, 0.25); /* بنفسجي ناعم */
+    box-shadow: 0 0 18px rgba(138, 92, 255, 0.35);
+  }
+
+  /* hover (لمسة خفيفة) */
+  html[dir="rtl"] .topbar .nav-item:hover{
+    background: rgba(138, 92, 255, 0.15);
+  }
+}
 
   </style>
 </head>
