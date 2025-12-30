@@ -1244,54 +1244,34 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin-right: 0 !important;
   }
 }
-/* =====================================
-   MOBILE RTL (AR) – smaller gap + shift right
-   PUT AT VERY END
-   ===================================== */
 @media (max-width: 768px){
 
-  /* قلل القاب العام داخل الهيدر */
-  html[dir="rtl"] .topbar .nav-pill{
-    gap: 8px !important;            /* أقل */
-    padding-right: 16px !important; /* ✅ الهيدر يمين شوي */
-    padding-left: 10px !important;
+  /* الهيدر كامل */
+  html[dir="rtl"] .nav-pill{
+    padding-right: 10px !important;   /* كان 12 */
+    padding-left: 6px !important;
   }
 
-  /* قلل القاب بين الكلمات */
-  html[dir="rtl"] .topbar .nav-center{
-    gap: 8px !important;            /* ✅ أقل بين الروابط */
-    padding-right: 10px !important; /* ✅ يمين شوي */
-    padding-left: 4px !important;
-  }
-
-  /* داخل كل كلمة (خفيف) */
-  html[dir="rtl"] .topbar .nav-item{
-    padding: 6px 7px !important;
-  }
-
-  /* لو تبين الأيقونات ما تتحرك، ثبتيها */
-  html[dir="rtl"] .topbar .lang-switch{
-    margin-right: 0 !important;
-  }
-}
-/* MOBILE + AR only: tighten header name gaps */
-@media (max-width: 768px){
+  /* روابط الهيدر (الرئيسية، نبذة، المهارات..) */
   html[dir="rtl"] .nav-center{
-    gap: 6px !important;          /* قرب القاب بين الأسماء */
+    justify-content: flex-start !important;
+    gap: 5px !important;              /* كان 6 */
+    padding-right: 6px !important;    /* كان 8 */
+    padding-left: 0 !important;
+    margin-right: 4px !important;     /* كان 6 */
   }
 
+  /* عناصر الروابط نفسها */
   html[dir="rtl"] .nav-item{
-    padding: 6px 7px !important;  /* قرب داخل كل اسم */
-  }
-}
-/* MOBILE + AR: fixed gap exactly like HOME */
-@media (max-width: 768px){
-  html[dir="rtl"] .nav-center{
-    gap: 8px !important;      /* كان 10 → صار أقرب شوي */
+    padding: 6px 7px !important;      /* كان 6 8 */
+    font-size: 12px !important;
   }
 
-  html[dir="rtl"] .nav-item{
-    padding: 6px 8px !important;
+  /* أيقونات اللغة + الثيم */
+  html[dir="rtl"] .lang-switch{
+    margin-right: 4px !important;     /* كان 6 */
+    gap: 5px !important;              /* كان 6 */
+    flex-shrink: 0 !important;
   }
 }
 

@@ -1683,6 +1683,40 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     font-size: 12px !important;
   }
 }
+/* =========================
+   MOBILE RTL – FIX HEADER SPACING
+   ========================= */
+@media (max-width: 768px){
+
+  /* الهيدر كامل */
+  html[dir="rtl"] .nav-pill{
+    padding-right: 10px !important;   /* كان 12 */
+    padding-left: 6px !important;
+  }
+
+  /* روابط الهيدر (الرئيسية، نبذة، المهارات..) */
+  html[dir="rtl"] .nav-center{
+    justify-content: flex-start !important;
+    gap: 5px !important;              /* كان 6 */
+    padding-right: 6px !important;    /* كان 8 */
+    padding-left: 0 !important;
+    margin-right: 4px !important;     /* كان 6 */
+  }
+
+  /* عناصر الروابط نفسها */
+  html[dir="rtl"] .nav-item{
+    padding: 6px 7px !important;      /* كان 6 8 */
+    font-size: 12px !important;
+  }
+
+  /* أيقونات اللغة + الثيم */
+  html[dir="rtl"] .lang-switch{
+    margin-right: 4px !important;     /* كان 6 */
+    gap: 5px !important;              /* كان 6 */
+    flex-shrink: 0 !important;
+  }
+}
+
 
   </style>
 </head>
