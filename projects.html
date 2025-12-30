@@ -1215,6 +1215,35 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     padding-left: 6px !important;
   }
 }
+/* =====================================
+   MOBILE RTL (AR) – Match Projects header gaps
+   Put at VERY END
+   ===================================== */
+@media (max-width: 768px){
+
+  /* عربي فقط */
+  html[dir="rtl"] .topbar .nav-pill{
+    gap: 10px !important;          /* نفس إحساس الصفحة الثانية */
+    padding: 10px 12px !important; /* نفس الهوامش */
+  }
+
+  /* الروابط (الكلمات) */
+  html[dir="rtl"] .topbar .nav-center{
+    gap: 12px !important;          /* ✅ القاب بين الكلمات */
+    padding-inline: 6px !important;
+  }
+
+  /* داخل كل كلمة */
+  html[dir="rtl"] .topbar .nav-item{
+    padding: 6px 8px !important;   /* ✅ نفس تباعد الثانية */
+  }
+
+  /* الأيقونات */
+  html[dir="rtl"] .topbar .lang-switch{
+    gap: 8px !important;           /* ✅ القاب بين الأيقونتين */
+    margin-right: 0 !important;
+  }
+}
 
   </style>
 </head>
