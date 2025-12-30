@@ -1244,64 +1244,54 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin-right: 0 !important;
   }
 }
+/* =====================================
+   MOBILE RTL (AR) – smaller gap + shift right
+   PUT AT VERY END
+   ===================================== */
 @media (max-width: 768px){
 
-  /* الهيدر كامل */
-  html[dir="rtl"] .nav-pill{
-    padding-right: 8px !important;    /* كان 10 */
-    padding-left: 6px !important;
+  /* قلل القاب العام داخل الهيدر */
+  html[dir="rtl"] .topbar .nav-pill{
+    gap: 8px !important;            /* أقل */
+    padding-right: 16px !important; /* ✅ الهيدر يمين شوي */
+    padding-left: 10px !important;
   }
 
-  /* روابط الهيدر */
-  html[dir="rtl"] .nav-center{
-    justify-content: flex-start !important;
-    gap: 4px !important;              /* كان 5 → أقرب */
-    padding-right: 4px !important;    /* كان 6 */
-    padding-left: 0 !important;
-    margin-right: 3px !important;     /* كان 4 */
+  /* قلل القاب بين الكلمات */
+  html[dir="rtl"] .topbar .nav-center{
+    gap: 8px !important;            /* ✅ أقل بين الروابط */
+    padding-right: 10px !important; /* ✅ يمين شوي */
+    padding-left: 4px !important;
   }
 
-  /* عناصر الروابط نفسها */
-  html[dir="rtl"] .nav-item{
-    padding: 6px 6px !important;      /* كان 6 7 */
-    font-size: 12px !important;
+  /* داخل كل كلمة (خفيف) */
+  html[dir="rtl"] .topbar .nav-item{
+    padding: 6px 7px !important;
   }
 
-  /* أيقونات اللغة + الثيم */
-  html[dir="rtl"] .lang-switch{
-    margin-right: 3px !important;     /* كان 4 */
-    gap: 4px !important;              /* كان 5 */
-    flex-shrink: 0 !important;
+  /* لو تبين الأيقونات ما تتحرك، ثبتيها */
+  html[dir="rtl"] .topbar .lang-switch{
+    margin-right: 0 !important;
   }
 }
-
+/* ✅ FINAL — Mobile Arabic header gaps like reference (mobile only) */
 @media (max-width: 768px){
 
-  /* الهيدر كامل */
-  html[dir="rtl"] .nav-pill{
-    padding-right: 8px !important;
-    padding-left: 6px !important;
+  /* عربي فقط */
+  html[dir="rtl"] .topbar .nav-center{
+    gap: 12px !important;          /* نفس القاب بالصورة */
+    justify-content: flex-end !important; /* يخلي الروابط تبدأ من اليمين */
+    padding-right: 6px !important;
+    margin-right: 0 !important;
   }
 
-  /* روابط الهيدر */
-  html[dir="rtl"] .nav-center{
-    justify-content: flex-start !important;
-    gap: 4px !important;          /* 👈 هذا السطر */
-    padding-right: 4px !important;
-    padding-left: 0 !important;
-    margin-right: 3px !important;
+  html[dir="rtl"] .topbar .nav-item{
+    padding: 6px 8px !important;   /* نفس إحساس الهوم */
   }
 
-  /* عناصر الروابط نفسها */
-  html[dir="rtl"] .nav-item{
-    padding: 6px 6px !important;
-  }
-
-  /* أيقونات اللغة + الثيم */
-  html[dir="rtl"] .lang-switch{
-    margin-right: 3px !important;
-    gap: 4px !important;
-    flex-shrink: 0 !important;
+  html[dir="rtl"] .topbar .lang-switch{
+    gap: 8px !important;           /* القاب بين الأيقونات */
+    margin-right: 0 !important;
   }
 }
 
