@@ -1105,28 +1105,29 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     margin-right: -4px !important;
   }
 }
-/* =========================================
-   MOBILE HEADER – UNIFY (INDEX + PROJECTS)
-   put at VERY END in BOTH pages
-   ========================================= */
+/* =========================
+   MOBILE NAV – match HOME spacing EXACTLY
+   (paste at VERY END of projects CSS)
+   ========================= */
 @media (max-width: 768px){
 
-  /* نفس صف الهيدر */
-  .topbar .nav-pill{
+  .nav-pill{
     display:flex !important;
     align-items:center !important;
     justify-content: space-between !important;
-    height: 62px !important;
-    padding: 10px 10px !important;
     gap: 8px !important;
+    padding: 10px 10px !important;
+    height: 62px !important;
     overflow: visible !important;
   }
 
-  /* الكلمات (Home/About/Skills/Projects) */
-  .topbar .nav-center{
+  .nav-center{
+    position: static !important;
+    transform: none !important;
+
     display:flex !important;
     align-items:center !important;
-    gap: 6px !important;              /* يخليها نفس الهوم */
+    gap: 10px !important;            /* ✅ نفس الهوم */
     flex: 1 1 auto !important;
     min-width: 0 !important;
     white-space: nowrap !important;
@@ -1135,43 +1136,36 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    padding-inline: 6px !important;   /* ثبات بداية/نهاية السطر */
   }
-  .topbar .nav-center::-webkit-scrollbar{ display:none; }
+  .nav-center::-webkit-scrollbar{ display:none; }
 
-  .topbar .nav-item{
+  .nav-item{
     flex: 0 0 auto !important;
     height: 34px !important;
     line-height: 34px !important;
-    padding: 6px 6px !important;      /* قريب شوي بدون زحمة */
+    padding: 6px 8px !important;     /* ✅ نفس الهوم */
     font-size: 12px !important;
   }
 
-  /* الأيقونات + قربها من الكلمات */
-  .topbar .lang-switch{
+  .lang-switch{
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+
     display:flex !important;
     align-items:center !important;
-    gap: 5px !important;
+    gap: 6px !important;             /* ✅ نفس الهوم */
     flex: 0 0 auto !important;
-
-    margin-left: -4px !important;     /* يقربها لليسار شوي */
-  }
-  html[dir="rtl"] .topbar .lang-switch{
-    margin-left: 0 !important;
-    margin-right: -4px !important;
+    z-index: 300 !important;
   }
 
-  /* حجم الأيقونات (زي الهوم اللي ضبطتيه) */
-  .topbar .icon-toggle{
-    width: 36px !important;
-    height: 36px !important;
-    border-radius: 999px !important;
-    display:grid !important;
-    place-items:center !important;
+  .icon-toggle{
+    width: 34px !important;          /* ✅ نفس الهوم */
+    height: 34px !important;
   }
-  .topbar .icon-toggle svg{
-    width: 16px !important;
-    height: 16px !important;
+  .icon-toggle svg{
+    width: 15px !important;          /* ✅ نفس الهوم */
+    height: 15px !important;
   }
 }
 
