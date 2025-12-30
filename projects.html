@@ -866,6 +866,80 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
     height: 14px !important;
   }
 }
+/* =====================================
+   MOBILE HEADER – SAME LEVEL (AR & EN)
+   ===================================== */
+@media (max-width: 768px){
+
+  /* الهيدر نفسه */
+  .nav-pill{
+    height: 56px !important;
+    padding: 8px 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  /* روابط التنقل */
+  .nav-center{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    flex: 1 1 auto !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: none;
+  }
+
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  /* نفس المقاس بالعربي والانقليزي */
+  .nav-item{
+    height: 32px !important;
+    padding: 6px 10px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* الأيقونات */
+  .lang-switch{
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+  }
+
+  .icon-toggle{
+    width: 32px !important;
+    height: 32px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* 🔑 توحيد RTL و LTR */
+  html[dir="rtl"] .nav-pill,
+  html[dir="ltr"] .nav-pill{
+    direction: ltr !important; /* نفس المستوى */
+  }
+
+  html[dir="rtl"] .nav-center{
+    direction: rtl !important; /* ترتيب الكلمات عربي */
+  }
+
+  html[dir="ltr"] .nav-center{
+    direction: ltr !important;
+  }
+}
 
   </style>
 </head>
