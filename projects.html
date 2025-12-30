@@ -1295,44 +1295,17 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item::before{
   }
 }
 @media (max-width: 768px){
-
-  /* 1) القاب بين أسماء الهيدر (الروابط فقط) */
-  html[dir="rtl"] .topbar .nav-center{
-    gap: 1px !important;
-    column-gap: 1px !important;
+  html[dir="rtl"] .topbar *{
+    gap: 1px !important;          /* ← القاب أقل شي */
+    column-gap: 2px !important;
   }
 
-  html[dir="rtl"] .topbar .nav-item{
-    padding: 2px 3px !important;
+  html[dir="rtl"] .topbar .nav-item,
+  html[dir="rtl"] .topbar a{
+    padding: 2px 3px !important;  /* يقلل الفراغ بين الكلمات */
     margin: 0 !important;
   }
-
-  /* 2) ضبط الانتراكتف (الدوائر) على مقاس الهيدر */
-  html[dir="rtl"] .topbar .lang-switch,
-  html[dir="rtl"] .topbar .theme-toggle{
-    display: flex;
-    align-items: center;
-    height: 100%;
-    gap: 6px !important; /* مسافة بسيطة بين الأيقونات */
-  }
-
-  html[dir="rtl"] .topbar .icon-toggle{
-    width: 32px !important;
-    height: 32px !important;
-    padding: 0 !important;
-    border-radius: 999px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: visible !important; /* يمنع القص */
-  }
-
-  html[dir="rtl"] .topbar .icon-toggle svg{
-    width: 18px !important;
-    height: 18px !important;
-  }
 }
-
 
   </style>
 </head>
