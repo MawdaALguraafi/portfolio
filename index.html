@@ -1825,6 +1825,36 @@ html[data-theme="light"] .nav-pill .nav-center .nav-item[aria-current="page"]::b
     box-shadow: 0 10px 22px rgba(122,99,230,.14) !important;
   }
 }
+/* =====================================
+   MOBILE RTL (AR) – smaller gap + shift right
+   PUT AT VERY END
+   ===================================== */
+@media (max-width: 768px){
+
+  /* قلل القاب العام داخل الهيدر */
+  html[dir="rtl"] .topbar .nav-pill{
+    gap: 8px !important;            /* أقل */
+    padding-right: 16px !important; /* ✅ الهيدر يمين شوي */
+    padding-left: 10px !important;
+  }
+
+  /* قلل القاب بين الكلمات */
+  html[dir="rtl"] .topbar .nav-center{
+    gap: 8px !important;            /* ✅ أقل بين الروابط */
+    padding-right: 10px !important; /* ✅ يمين شوي */
+    padding-left: 4px !important;
+  }
+
+  /* داخل كل كلمة (خفيف) */
+  html[dir="rtl"] .topbar .nav-item{
+    padding: 6px 7px !important;
+  }
+
+  /* لو تبين الأيقونات ما تتحرك، ثبتيها */
+  html[dir="rtl"] .topbar .lang-switch{
+    margin-right: 0 !important;
+  }
+}
 
   </style>
 </head>
