@@ -1396,6 +1396,30 @@ html[data-theme="light"] .topbar .nav-item::after{
     margin: 0 !important;
   }
 }
+/* =========================
+   FULL-WIDTH HEADER BAR
+   (Desktop + Mobile)
+   ========================= */
+
+/* الشريط الكامل ورا الهيدر */
+.topbar{
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: rgba(8, 4, 18, .72);          /* Dark */
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(163,107,255,.14);
+  border-radius: 0 !important;              /* مستطيل */
+}
+
+/* لايت */
+html[data-theme="light"] .topbar{
+  background: rgba(255,255,255,.92) !important;
+  border-bottom: 1px solid rgba(0,0,0,.08) !important;
+  border-radius: 0 !important;              /* مستطيل */
+}
 
   </style>
 </head>
