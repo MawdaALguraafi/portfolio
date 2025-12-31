@@ -1108,6 +1108,118 @@
 
   /* Focus for keyboard */
   .nav-pill .nav-center .nav-item:focus::before{ opacity: 1 !important; }
+  /* ✅ MOBILE HEADER FIX: Horizontal alignment — Nav + Language/Theme in one row */
+@media (max-width: 768px) {
+  .nav-pill {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0 !important;
+    padding: 12px 16px !important;
+    height: auto !important;
+    flex-wrap: nowrap !important;
+  }
+
+  /* Flex container for nav items — scrollable */
+  .nav-center {
+    display: flex !important;
+    align-items: center !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 8px !important; /* مسافة يمين/يسار بين القائمة والأزرار */
+    white-space: nowrap !important;
+    padding: 0 !important;
+  }
+
+  .nav-center::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Nav items: smaller & tighter */
+  .nav-item {
+    flex: 0 0 auto !important;
+    padding: 6px 10px !important;
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+    min-width: max-content !important;
+    text-align: center !important;
+  }
+
+  /* Language/Theme buttons: grouped & aligned */
+  .lang-switch {
+    display: flex !important;
+    gap: 6px !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+    align-items: center !important;
+  }
+
+  .icon-toggle {
+    width: 36px !important;
+    height: 36px !important;
+    display: grid !important;
+    place-items: center !important;
+  }
+
+  .icon-toggle svg {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* ✅ RTL support — reverse order + spacing */
+  html[dir="rtl"] .nav-pill {
+    flex-direction: row-reverse !important;
+  }
+
+  html[dir="rtl"] .nav-center {
+    margin: 0 8px 0 0 !important;
+  }
+
+  html[dir="rtl"] .lang-switch {
+    margin: 0 0 0 8px !important;
+  }
+}
+/* ✅ تنزيل الهيدر 20px من الأعلى — مع الحفاظ على الشفافية */
+.nav-pill {
+  top: 20px !important;
+  z-index: 1000;
+}
+
+/* ✅ تعديل padding-top للمحتوى حسب الحالة */
+main {
+  padding-top: calc(60px + 20px + 16px) !important; /* ارتفاع الهيدر + المسافة + هامش إضافي */
+}
+
+/* ✅ في الجوال: نضبط المسافة حسب الحجم الجديد */
+@media (max-width: 768px) {
+  .nav-pill {
+    top: 16px !important;
+    height: auto !important;
+    padding: 10px 16px !important; /* ارتفاع فعلي ≈ 50px */
+  }
+  main {
+    padding-top: calc(50px + 16px + 12px) !important; /* ≈ 78px */
+  }
+}
+html[data-theme="light"] .topbar {
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30,20,70,.10);
+
+  padding: 0px 0 22px 0; /* top | right | bottom | left */
+}
+html[data-theme="light"] .topbar > .container {
+  transform: translateY(-6px); /* عدلي الرقم حسب الذوق */
+}
+html[data-theme="dark"] .topbar > .container {
+  transform: translateY(-6px);
+}
+
+
 </style>
 
 </head>
