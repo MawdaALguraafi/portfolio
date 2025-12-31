@@ -655,28 +655,61 @@ section{ padding: 55px 0; }
   }
 }
 /* =========================
-   MOBILE HEADER – LANGUAGE BASED ALIGNMENT
+   MOBILE HEADER – SAME AS PAGE 2
    ========================= */
 @media (max-width: 768px){
 
-  /* الأساس */
+  .nav-pill{
+    height: 64px;
+    padding: 12px 8px;
+  }
+
   .nav-center{
-    justify-content: flex-start !important;
-    margin: 0 !important;
+    position: static;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: 4px !important;        /* نفس القاب الصفحة الثانية */
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  .nav-item{
+    height: 32px;
+    padding: 4px 6px !important; /* نفس المسافة */
+    font-size: 11.5px !important;/* نفس الخط */
+    font-weight: 600;
+    line-height: 1;
   }
 
-  /* 🇬🇧 English (LTR) → من اليسار */
+  .nav-item::before{
+    height: 26px;
+    width: calc(100% + 10px);
+  }
+
+  .lang-switch{
+    position: static;
+    transform: none;
+    gap: 6px;
+  }
+
+  .icon-toggle{
+    width: 32px;
+    height: 32px;
+  }
+}
+@media (max-width: 768px){
+  /* English */
   html[dir="ltr"] .nav-center{
-    justify-content: flex-start !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
+    justify-content: flex-start;
+    margin-right: auto;
   }
 
-  /* 🇸🇦 Arabic (RTL) → من اليمين */
+  /* Arabic */
   html[dir="rtl"] .nav-center{
-    justify-content: flex-start !important;
-    margin-right: 0 !important;
-    margin-left: auto !important;
+    justify-content: flex-start;
+    margin-left: auto;
   }
 }
 
