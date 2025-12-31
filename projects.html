@@ -662,74 +662,6 @@ section{ padding: 55px 0; }
     justify-content: space-between;
   }
 
-  /* روابط الهيدر */
-  .nav-center{
-    position: static;
-    transform: none;
-    display: flex;
-    align-items: center;
-    gap: 6px;              /* نفس القاب الاندكس */
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .nav-item{
-    height: 34px;
-    padding: 6px 8px;
-    font-size: 12px;
-    line-height: 1;
-  }
-
-  .nav-item::before{
-    height: 28px;
-    width: calc(100% + 12px);
-  }
-
-  /* أزرار اللغة + الثيم */
-  .lang-switch{
-    position: static;
-    transform: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .icon-toggle{
-    width: 34px;
-    height: 34px;
-  }
-
-  /* ---------- English (LTR) ---------- */
-  html[dir="ltr"] .nav-pill{
-    flex-direction: row;
-  }
-
-  html[dir="ltr"] .nav-center{
-    margin-right: auto;
-  }
-
-  /* ---------- Arabic (RTL) ---------- */
-  html[dir="rtl"] .nav-pill{
-    flex-direction: row-reverse;
-  }
-
-  html[dir="rtl"] .nav-center{
-    margin-left: auto;
-  }
-}
-/* =========================
-   MOBILE HEADER – SAME AS INDEX
-   ========================= */
-@media (max-width: 768px){
-
-  .nav-pill{
-    height: 68px;
-    padding: 12px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   .nav-center{
     position: static;
     transform: none;
@@ -779,11 +711,14 @@ section{ padding: 55px 0; }
     margin-left: auto;
   }
 }
-/* ✅ FIX: RTL (Arabic) icons go LEFT on mobile */
+/* =========================
+   MOBILE HEADER – FINAL (ONE BLOCK ONLY)
+   ========================= */
 @media (max-width: 768px){
 
-  /* خلك على نفس ترتيب DOM + استخدمي auto margins للدفع */
   .nav-pill{
+    height: 68px !important;
+    padding: 12px 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: flex-start !important;
@@ -791,37 +726,47 @@ section{ padding: 55px 0; }
   }
 
   .nav-center{
+    position: static !important;
+    transform: none !important;
     display: flex !important;
     align-items: center !important;
+    gap: 6px !important;              /* نفس الاندكس */
     white-space: nowrap !important;
+    overflow: hidden !important;
+  }
+
+  .nav-item{
+    height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+  }
+
+  .nav-item::before{
+    height: 28px !important;
+    width: calc(100% + 12px) !important;
   }
 
   .lang-switch{
+    position: static !important;
+    transform: none !important;
     display: flex !important;
     align-items: center !important;
+    gap: 8px !important;
   }
 
-  /* LTR: الروابط يسار + الايقونات يمين */
-  html[dir="ltr"] .nav-center{
-    margin-right: auto !important;
-    margin-left: 0 !important;
-  }
-  html[dir="ltr"] .lang-switch{
-    margin-left: auto !important;
-    margin-right: 0 !important;
+  .icon-toggle{
+    width: 34px !important;
+    height: 34px !important;
   }
 
-  /* RTL: الروابط يمين + الايقونات يسار */
-  html[dir="rtl"] .nav-center{
-    margin-left: auto !important;
-    margin-right: 0 !important;
-  }
-  html[dir="rtl"] .lang-switch{
-    margin-right: auto !important;
-    margin-left: 0 !important;
-  }
+  /* ✅ لا تستخدم row-reverse هنا نهائيًا */
+  html[dir="ltr"] .nav-center{ margin-right: auto !important; margin-left: 0 !important; }
+  html[dir="ltr"] .lang-switch{ margin-left: auto !important; margin-right: 0 !important; }
+
+  html[dir="rtl"] .nav-center{ margin-left: auto !important; margin-right: 0 !important; }
+  html[dir="rtl"] .lang-switch{ margin-right: auto !important; margin-left: 0 !important; }
 }
-
 
 </style>
 
