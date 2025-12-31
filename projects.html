@@ -650,13 +650,84 @@ section{ padding: 55px 0; }
 }
 
 /* =========================
-   MOBILE HEADER – SAME AS PAGE 2
+   MOBILE HEADER – SAME AS INDEX
    ========================= */
 @media (max-width: 768px){
 
   .nav-pill{
-    height: 64px;
-    padding: 12px 8px;
+    height: 68px;
+    padding: 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* روابط الهيدر */
+  .nav-center{
+    position: static;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;              /* نفس القاب الاندكس */
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .nav-item{
+    height: 34px;
+    padding: 6px 8px;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .nav-item::before{
+    height: 28px;
+    width: calc(100% + 12px);
+  }
+
+  /* أزرار اللغة + الثيم */
+  .lang-switch{
+    position: static;
+    transform: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .icon-toggle{
+    width: 34px;
+    height: 34px;
+  }
+
+  /* ---------- English (LTR) ---------- */
+  html[dir="ltr"] .nav-pill{
+    flex-direction: row;
+  }
+
+  html[dir="ltr"] .nav-center{
+    margin-right: auto;
+  }
+
+  /* ---------- Arabic (RTL) ---------- */
+  html[dir="rtl"] .nav-pill{
+    flex-direction: row-reverse;
+  }
+
+  html[dir="rtl"] .nav-center{
+    margin-left: auto;
+  }
+}
+/* =========================
+   MOBILE HEADER – SAME AS INDEX
+   ========================= */
+@media (max-width: 768px){
+
+  .nav-pill{
+    height: 68px;
+    padding: 12px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .nav-center{
@@ -664,142 +735,48 @@ section{ padding: 55px 0; }
     transform: none;
     display: flex;
     align-items: center;
-    gap: 4px !important;        /* نفس القاب الصفحة الثانية */
-    overflow-x: auto;
-    scrollbar-width: none;
+    gap: 6px;              /* نفس القاب الاندكس */
+    white-space: nowrap;
   }
-  .nav-center::-webkit-scrollbar{ display:none; }
 
   .nav-item{
-    height: 32px;
-    padding: 4px 6px !important; /* نفس المسافة */
-    font-size: 11.5px !important;/* نفس الخط */
-    font-weight: 600;
+    height: 34px;
+    padding: 6px 8px;
     line-height: 1;
   }
 
   .nav-item::before{
-    height: 26px;
-    width: calc(100% + 10px);
+    height: 28px;
+    width: calc(100% + 12px);
   }
 
   .lang-switch{
     position: static;
     transform: none;
-    gap: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .icon-toggle{
-    width: 32px;
-    height: 32px;
+    width: 34px;
+    height: 34px;
   }
-}
-@media (max-width: 768px){
+
   /* English */
+  html[dir="ltr"] .nav-pill{
+    flex-direction: row;
+  }
   html[dir="ltr"] .nav-center{
-    justify-content: flex-start;
     margin-right: auto;
   }
 
   /* Arabic */
-  html[dir="rtl"] .nav-center{
-    justify-content: flex-start;
-    margin-left: auto;
-  }
-}
-/* =========================
-   MOBILE HEADER – EXACT LIKE SCREENSHOT
-   ========================= */
-@media (max-width: 768px){
-
-  /* نفس توزيع الصورة: روابط يسار + أزرار يمين */
-  .nav-pill{
-    height: 70px !important;
-    padding: 14px 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-  }
-
-  /* روابط الهيدر */
-  .nav-center{
-    position: static !important;
-    transform: none !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;  /* مهم: مو وسط */
-    gap: 14px !important;                    /* نفس القاب بالصورة */
-    margin: 0 !important;
-    overflow: visible !important;            /* لا سكرول */
-  }
-
-  .nav-item{
-    height: 42px !important;
-    padding: 10px 14px !important;
-    font-size: 12px !important;              /* نفس حجم الخط بالصورة */
-    font-weight: 600 !important;
-    line-height: 1 !important;
-  }
-
-  /* أزرار اللغة/الثيم */
-  .lang-switch{
-    position: static !important;
-    transform: none !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    margin: 0 !important;
-  }
-
-  .icon-toggle{
-    width: 42px !important;
-    height: 42px !important;
-  }
-}
-
-/* RTL: نفس الفكرة لكن يبدأ من اليمين */
-@media (max-width: 768px){
-  html[dir="rtl"] .nav-pill{ flex-direction: row-reverse !important; }
-  html[dir="rtl"] .nav-center{ justify-content: flex-start !important; }
-}
-
-@media (max-width: 768px){
-  .nav-center{ gap: 10px !important; }
-  .nav-item{ padding: 8px 10px !important; }
-}
-/* =========================
-   MOBILE HEADER – FIX RTL ICON POSITION
-   ========================= */
-@media (max-width: 768px){
-
-  /* الوضع الطبيعي (English - LTR)
-     روابط يسار + أيقونات يمين */
-  html[dir="ltr"] .nav-pill{
-    flex-direction: row !important;
-  }
-
-  html[dir="ltr"] .nav-center{
-    justify-content: flex-start !important;
-  }
-
-  html[dir="ltr"] .lang-switch{
-    margin-left: auto !important;
-    margin-right: 0 !important;
-  }
-
-  /* الوضع العربي (RTL)
-     روابط يمين + أيقونات يسار */
   html[dir="rtl"] .nav-pill{
-    flex-direction: row-reverse !important;
+    flex-direction: row-reverse;
   }
-
   html[dir="rtl"] .nav-center{
-    justify-content: flex-start !important;
-  }
-
-  html[dir="rtl"] .lang-switch{
-    margin-right: auto !important;
-    margin-left: 0 !important;
+    margin-left: auto;
   }
 }
 
