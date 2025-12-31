@@ -711,61 +711,45 @@ section{ padding: 55px 0; }
     margin-left: auto;
   }
 }
-/* =========================
-   MOBILE HEADER – FINAL (ONE BLOCK ONLY)
-   ========================= */
+/* ✅ MOBILE: RTL header same as index (icons LEFT) */
 @media (max-width: 768px){
 
+  /* أساس الجوال */
   .nav-pill{
-    height: 68px !important;
-    padding: 12px 12px !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 10px !important;
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    height:68px !important;
+    padding:12px 12px !important;
+    gap:10px !important;
   }
 
   .nav-center{
-    position: static !important;
-    transform: none !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;              /* نفس الاندكس */
-    white-space: nowrap !important;
-    overflow: hidden !important;
-  }
-
-  .nav-item{
-    height: 34px !important;
-    padding: 6px 8px !important;
-    font-size: 12px !important;
-    line-height: 1 !important;
-  }
-
-  .nav-item::before{
-    height: 28px !important;
-    width: calc(100% + 12px) !important;
+    position:static !important;
+    transform:none !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:6px !important;
+    white-space:nowrap !important;
   }
 
   .lang-switch{
-    position: static !important;
-    transform: none !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 8px !important;
+    position:static !important;
+    transform:none !important;
+    display:flex !important;
+    align-items:center !important;
+    gap:8px !important;
   }
 
-  .icon-toggle{
-    width: 34px !important;
-    height: 34px !important;
+  /* ✅ English: normal (icons RIGHT) */
+  html[dir="ltr"] .nav-pill{
+    flex-direction:row !important;
   }
 
-  /* ✅ لا تستخدم row-reverse هنا نهائيًا */
-  html[dir="ltr"] .nav-center{ margin-right: auto !important; margin-left: 0 !important; }
-  html[dir="ltr"] .lang-switch{ margin-left: auto !important; margin-right: 0 !important; }
-
-  html[dir="rtl"] .nav-center{ margin-left: auto !important; margin-right: 0 !important; }
-  html[dir="rtl"] .lang-switch{ margin-right: auto !important; margin-left: 0 !important; }
+  /* ✅ Arabic: flip the whole header (icons LEFT) */
+  html[dir="rtl"] .nav-pill{
+    flex-direction:row-reverse !important;
+  }
 }
 
 </style>
