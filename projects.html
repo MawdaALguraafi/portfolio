@@ -628,17 +628,7 @@ section{ padding: 55px 0; }
   }
   .footer-bottom{ text-align: center !important; }
 }
-/* 📱 تقليل المسافات بين عناصر الهيدر – الجوال فقط */
-@media (max-width: 768px){
-  .nav-center{
-    gap: 4px !important;        /* كان 10px */
-  }
 
-  .nav-item{
-    padding: 4px 6px !important; /* يقلل الفراغ داخل الزر */
-    margin: 0 !important;
-  }
-}
 /* 📱 Quick Links أفقي في الجوال */
 @media (max-width: 680px){
   .foot ul{
@@ -658,24 +648,19 @@ section{ padding: 55px 0; }
     white-space: nowrap;
   }
 }
-/* 📱 توسيط عناصر الهيدر في الجوال */
 @media (max-width: 768px){
-  .nav-pill{
-    justify-content: center !important;
-  }
-
-  .nav-center{
-    margin: 0 auto !important;
-    justify-content: center !important;
-    text-align: center;
+  html[dir="rtl"] .nav-center{
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 @media (max-width: 768px){
   html[dir="rtl"] .nav-center{
-    margin-left: auto !important;
-    margin-right: auto !important;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+
 
 </style>
 
