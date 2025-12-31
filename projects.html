@@ -703,53 +703,36 @@ section{ padding: 55px 0; }
     margin-right: auto;
   }
 
-  /* Arabic */
-  html[dir="rtl"] .nav-pill{
-    flex-direction: row-reverse;
-  }
   html[dir="rtl"] .nav-center{
     margin-left: auto;
   }
 }
-/* ✅ MOBILE: RTL header same as index (icons LEFT) */
+/* ✅ FINAL FIX — Mobile: icons move side based on dir */
 @media (max-width: 768px){
 
-  /* أساس الجوال */
+  /* 1) فك التثبيت القديم (absolute right/left) */
+  .lang-switch{
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    left: auto !important;
+    transform: none !important;
+  }
+
+  /* 2) خلي الهيدر flex طبيعي */
   .nav-pill{
     display:flex !important;
     align-items:center !important;
     justify-content:space-between !important;
-    height:68px !important;
-    padding:12px 12px !important;
-    gap:10px !important;
   }
 
-  .nav-center{
-    position:static !important;
-    transform:none !important;
-    display:flex !important;
-    align-items:center !important;
-    gap:6px !important;
-    white-space:nowrap !important;
-  }
+  /* 3) LTR: الروابط يسار + الأيقونات يمين */
+  html[dir="ltr"] .nav-center{ margin-right: auto !important; margin-left: 0 !important; }
+  html[dir="ltr"] .lang-switch{ margin-left: auto !important; margin-right: 0 !important; }
 
-  .lang-switch{
-    position:static !important;
-    transform:none !important;
-    display:flex !important;
-    align-items:center !important;
-    gap:8px !important;
-  }
-
-  /* ✅ English: normal (icons RIGHT) */
-  html[dir="ltr"] .nav-pill{
-    flex-direction:row !important;
-  }
-
-  /* ✅ Arabic: flip the whole header (icons LEFT) */
-  html[dir="rtl"] .nav-pill{
-    flex-direction:row-reverse !important;
-  }
+  /* 4) RTL: الروابط يمين + الأيقونات يسار */
+  html[dir="rtl"] .nav-center{ margin-left: auto !important; margin-right: 0 !important; }
+  html[dir="rtl"] .lang-switch{ margin-right: auto !important; margin-left: 0 !important; }
 }
 
 </style>
