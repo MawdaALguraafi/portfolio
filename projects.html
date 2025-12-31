@@ -658,6 +658,24 @@ section{ padding: 55px 0; }
     white-space: nowrap;
   }
 }
+/* 📱 توسيط عناصر الهيدر في الجوال */
+@media (max-width: 768px){
+  .nav-pill{
+    justify-content: center !important;
+  }
+
+  .nav-center{
+    margin: 0 auto !important;
+    justify-content: center !important;
+    text-align: center;
+  }
+}
+@media (max-width: 768px){
+  html[dir="rtl"] .nav-center{
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
 
 </style>
 
