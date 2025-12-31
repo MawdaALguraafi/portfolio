@@ -990,6 +990,35 @@ footer{
   box-shadow: 0 12px 24px rgba(124,60,255,.35) !important;
   color: #fff !important;
 }
+/* =========================
+   MOBILE RTL HEADER GAP FIX
+   ========================= */
+@media (max-width: 768px){
+  html[dir="rtl"] .nav-center{
+    gap: 4px !important;   /* تصغير القاب بين العناصر */
+  }
+
+  html[dir="rtl"] .nav-item{
+    padding: 4px 6px !important; /* تقارب الكلمات */
+    font-size: 11.5px !important;
+  }
+}
+/* =========================
+   MOBILE FOOTER QUICK LINKS – HORIZONTAL
+   ========================= */
+@media (max-width: 900px){
+  .foot ul{
+    display: flex !important;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .foot ul a{
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+}
 
 
 </style>
