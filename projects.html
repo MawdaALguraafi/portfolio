@@ -712,6 +712,41 @@ section{ padding: 55px 0; }
     margin-left: auto;
   }
 }
+/* =========================
+   MOBILE HEADER – CENTERED (SAME AS PAGE 2)
+   ========================= */
+@media (max-width: 768px){
+
+  .nav-pill{
+    justify-content: center !important;
+  }
+
+  .nav-center{
+    position: static;
+    transform: none;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    gap: 4px !important;        /* نفس القاب الصفحة الثانية */
+    margin: 0 auto !important;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-center::-webkit-scrollbar{ display:none; }
+
+  .nav-item{
+    height: 32px;
+    padding: 4px 6px !important;
+    font-size: 11.5px !important;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .nav-item::before{
+    height: 26px;
+    width: calc(100% + 10px);
+  }
+}
 
 
 </style>
