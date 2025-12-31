@@ -654,10 +654,29 @@ section{ padding: 55px 0; }
     margin-right: auto;
   }
 }
+/* =========================
+   MOBILE HEADER – LANGUAGE BASED ALIGNMENT
+   ========================= */
 @media (max-width: 768px){
+
+  /* الأساس */
+  .nav-center{
+    justify-content: flex-start !important;
+    margin: 0 !important;
+  }
+
+  /* 🇬🇧 English (LTR) → من اليسار */
+  html[dir="ltr"] .nav-center{
+    justify-content: flex-start !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* 🇸🇦 Arabic (RTL) → من اليمين */
   html[dir="rtl"] .nav-center{
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: flex-start !important;
+    margin-right: 0 !important;
+    margin-left: auto !important;
   }
 }
 
