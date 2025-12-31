@@ -1035,7 +1035,7 @@ footer{
       <div class="nav-center">
         <a class="nav-item active" href="#home" data-i18n="nav_home" aria-current="page">Home</a>
         <a class="nav-item" href="#about" data-i18n="nav_about">About</a>
-        <a class="nav-item" href="#skills" data-i18n="nav_skills">Skills</a>
+        <a class="nav-item" href="#connect" data-i18n="nav_connect">Connect</a>
         <a class="nav-item" href="projects.html" data-i18n="nav_projects">Projects</a>
       </div>
 
@@ -1506,8 +1506,10 @@ footer{
     en: {
       nav_home: "Home",
       nav_about: "About",
-      nav_skills: "Skills",
+      nav_connect: "Connect",
       nav_projects: "Projects",
+      nav_skills: "Skills",
+
 
       hero_title: 'Hello! I Am <span class="name">Mawda Alguraafi</span>',
       hero_desc: "I create intelligent, data-driven digital solutions that transform complex data into actionable insights. By combining analytics, AI, and business understanding, I help organizations make informed decisions and deliver meaningful real-world impact.",
@@ -1553,8 +1555,10 @@ footer{
     ar: {
       nav_home: "الرئيسية",
       nav_about: "نبذة عني",
-      nav_skills: "المهارات",
+      nav_connect: "تواصل",
       nav_projects: "مشاريعي",
+      nav_skills: "المهارات",
+
 
       hero_title: 'مرحباً! أنا <span class="name">مودة القرافي</span>',
       hero_desc: "أصمم حلولًا رقمية ذكية تعتمد على البيانات لتحويل التعقيد إلى رؤى واضحة قابلة للتنفيذ. من خلال الجمع بين التحليلات والذكاء الاصطناعي وفهم الأعمال، أساعد الجهات على اتخاذ قرارات أفضل وتحقيق أثر واقعي.",
@@ -1715,6 +1719,17 @@ footer{
       setTheme(current === "dark" ? "light" : "dark");
     });
   }
+
+  document.querySelectorAll('a[href="#connect"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+  });
+
 </script>
 
 

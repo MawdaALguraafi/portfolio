@@ -760,7 +760,7 @@ section{ padding: 55px 0; }
       <div class="nav-center">
         <a class="nav-item" href="index.html#home" data-i18n="nav_home">Home</a>
         <a class="nav-item" href="index.html#about" data-i18n="nav_about">About</a>
-        <a class="nav-item" href="index.html#skills" data-i18n="nav_skills">Skills</a>
+        <a class="nav-item" href="#connect" data-i18n="nav_connect">Connect</a>
         <a class="nav-item" href="projects.html" data-i18n="nav_projects" aria-current="page">Projects</a>
       </div>
 
@@ -1115,6 +1115,7 @@ en: {
 page_title: "Projects | Mawda Alguraafi",
 nav_home: "Home",
 nav_about: "About",
+nav_connect: "Connect",
 nav_skills: "Skills",
 nav_projects: "Projects",
 hero_title: "Featured Projects",
@@ -1223,6 +1224,7 @@ ar: {
 page_title: "المشاريع | مودة القرافي",
 nav_home: "الرئيسية",
 nav_about: "نبذة عني",
+nav_connect: "تواصل",
 nav_skills: "المهارات",
 nav_projects: "مشاريعي",
 hero_title: "المشاريع المميزة",
@@ -1386,6 +1388,16 @@ document.getElementById("langToggle").addEventListener("click", () => {
 const current = document.documentElement.dataset.lang || "en";
 setLang(current === "en" ? "ar" : "en");
 });
+  document.querySelectorAll('a[href="#connect"]').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    });
+  });
+
 </script>
 </body>
 </html>
