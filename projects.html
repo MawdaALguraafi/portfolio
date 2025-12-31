@@ -734,6 +734,19 @@ section{ padding: 55px 0; }
   html[dir="rtl"] .nav-center{ margin-left: auto !important; margin-right: 0 !important; }
   html[dir="rtl"] .lang-switch{ margin-right: auto !important; margin-left: 0 !important; }
 }
+/* ✅ Arabic only (RTL) — match Index mobile gap + size */
+@media (max-width: 768px){
+  html[dir="rtl"] .nav-center{
+    gap: 6px !important;            /* نفس الاندكس */
+  }
+
+  html[dir="rtl"] .nav-item{
+    height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 12px !important;
+    line-height: 1 !important;
+  }
+}
 
 </style>
 
