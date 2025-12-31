@@ -772,6 +772,41 @@ section{ padding: 55px 0; }
   .nav-center{ gap: 10px !important; }
   .nav-item{ padding: 8px 10px !important; }
 }
+/* =========================
+   MOBILE HEADER – FIX RTL ICON POSITION
+   ========================= */
+@media (max-width: 768px){
+
+  /* الوضع الطبيعي (English - LTR)
+     روابط يسار + أيقونات يمين */
+  html[dir="ltr"] .nav-pill{
+    flex-direction: row !important;
+  }
+
+  html[dir="ltr"] .nav-center{
+    justify-content: flex-start !important;
+  }
+
+  html[dir="ltr"] .lang-switch{
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+
+  /* الوضع العربي (RTL)
+     روابط يمين + أيقونات يسار */
+  html[dir="rtl"] .nav-pill{
+    flex-direction: row-reverse !important;
+  }
+
+  html[dir="rtl"] .nav-center{
+    justify-content: flex-start !important;
+  }
+
+  html[dir="rtl"] .lang-switch{
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+}
 
 
 </style>
