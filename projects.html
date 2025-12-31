@@ -713,12 +713,13 @@ section{ padding: 55px 0; }
   }
 }
 /* =========================
-   MOBILE HEADER – CENTERED (SAME AS PAGE 2)
+   MOBILE HEADER – EXACT ALIGNMENT AS PAGE 2
    ========================= */
 @media (max-width: 768px){
 
   .nav-pill{
     justify-content: center !important;
+    padding: 10px 4px !important; /* ⬅️ هذا السر */
   }
 
   .nav-center{
@@ -727,7 +728,7 @@ section{ padding: 55px 0; }
     display: flex;
     justify-content: center !important;
     align-items: center;
-    gap: 4px !important;        /* نفس القاب الصفحة الثانية */
+    gap: 4px !important;          /* نفس القاب */
     margin: 0 auto !important;
     overflow-x: auto;
     scrollbar-width: none;
@@ -747,6 +748,7 @@ section{ padding: 55px 0; }
     width: calc(100% + 10px);
   }
 }
+
 
 
 </style>
