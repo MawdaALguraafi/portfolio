@@ -628,6 +628,37 @@ section{ padding: 55px 0; }
   }
   .footer-bottom{ text-align: center !important; }
 }
+/* 📱 تقليل المسافات بين عناصر الهيدر – الجوال فقط */
+@media (max-width: 768px){
+  .nav-center{
+    gap: 4px !important;        /* كان 10px */
+  }
+
+  .nav-item{
+    padding: 4px 6px !important; /* يقلل الفراغ داخل الزر */
+    margin: 0 !important;
+  }
+}
+/* 📱 Quick Links أفقي في الجوال */
+@media (max-width: 680px){
+  .foot ul{
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+
+  .foot ul li{
+    margin: 0 !important;
+  }
+
+  .foot ul a{
+    padding: 6px 12px !important;
+    white-space: nowrap;
+  }
+}
+
 </style>
 
 
