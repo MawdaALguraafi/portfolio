@@ -779,6 +779,48 @@ section{ padding: 55px 0; }
     margin-left: auto;
   }
 }
+/* ✅ FIX: RTL (Arabic) icons go LEFT on mobile */
+@media (max-width: 768px){
+
+  /* خلك على نفس ترتيب DOM + استخدمي auto margins للدفع */
+  .nav-pill{
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .nav-center{
+    display: flex !important;
+    align-items: center !important;
+    white-space: nowrap !important;
+  }
+
+  .lang-switch{
+    display: flex !important;
+    align-items: center !important;
+  }
+
+  /* LTR: الروابط يسار + الايقونات يمين */
+  html[dir="ltr"] .nav-center{
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+  html[dir="ltr"] .lang-switch{
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+
+  /* RTL: الروابط يمين + الايقونات يسار */
+  html[dir="rtl"] .nav-center{
+    margin-left: auto !important;
+    margin-right: 0 !important;
+  }
+  html[dir="rtl"] .lang-switch{
+    margin-right: auto !important;
+    margin-left: 0 !important;
+  }
+}
 
 
 </style>
