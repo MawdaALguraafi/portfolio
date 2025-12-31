@@ -752,7 +752,7 @@ section{ padding: 55px 0; }
     transform: none !important;
     display: flex !important;
     align-items: center !important;
-    gap: 12px !important;
+    gap: 10px !important;
     margin: 0 !important;
   }
 
@@ -768,6 +768,10 @@ section{ padding: 55px 0; }
   html[dir="rtl"] .nav-center{ justify-content: flex-start !important; }
 }
 
+@media (max-width: 768px){
+  .nav-center{ gap: 10px !important; }
+  .nav-item{ padding: 8px 10px !important; }
+}
 
 
 </style>
