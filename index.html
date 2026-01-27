@@ -1058,6 +1058,60 @@ html[data-theme="light"] .iconbtn:hover{
 html[data-theme="light"] .footer-bottom{
   color: rgba(20,18,37,.55);
 }
+/* =========================
+   MORE PROJECTS CTA
+   ========================= */
+.more-projects-wrap{
+  margin-top: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.more-projects-wrap .divider{
+  width: 120px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+  opacity: .55;
+}
+
+.more-projects-btn{
+  min-width: 220px;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 800;
+  gap: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--purple-g-1),
+    var(--purple-g-3),
+    var(--purple-g-5)
+  );
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 18px 38px rgba(56,18,109,.28);
+}
+
+.more-projects-btn svg{
+  width: 16px;
+  height: 16px;
+  transition: transform .25s ease;
+}
+
+.more-projects-btn:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 26px 54px rgba(56,18,109,.40);
+}
+
+.more-projects-btn:hover svg{
+  transform: translateX(4px);
+}
 
 
 </style>
@@ -1422,6 +1476,23 @@ html[data-theme="light"] .footer-bottom{
 
     </div>
   </div>
+<div class="more-projects-wrap" data-animate="up" class="delay-2">
+  <span class="divider"></span>
+
+  <a href="projects.html" class="btn more-projects-btn">
+    <span data-i18n="btn_more_projects">View All Projects</span>
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M5 12h14M13 6l6 6-6 6"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>
+
+
 </section>
 
 <!-- FOOTER -->
@@ -1584,11 +1655,13 @@ html[data-theme="light"] .footer-bottom{
 
       p3_title: "E-Commerce Customer Behavior Dashboard",
       p3_desc: "An interactive dashboard designed to analyze customer purchasing behavior in e-commerce, exploring sales performance, satisfaction, and social influence.",
+      btn_more_projects: "View All Projects",
 
       footer_tagline: "Data & AI | Analytics | Dashboard Development",
       footer_quick: "Quick Links",
       footer_connect: "Connect",
       footer_copy: "© 2025 Mawda Alguraafi"
+
     },
 
     ar: {
@@ -1633,6 +1706,7 @@ html[data-theme="light"] .footer-bottom{
 
       p3_title: "لوحة سلوك عملاء التجارة الإلكترونية",
       p3_desc: "لوحة تفاعلية لتحليل سلوك الشراء في التجارة الإلكترونية واستكشاف الأداء والرضا والتأثير الاجتماعي.",
+      btn_more_projects: "عرض جميع المشاريع",
 
       footer_tagline: "البيانات والذكاء الاصطناعي | التحليلات | تطوير لوحات المعلومات",
       footer_quick: "روابط سريعة",
