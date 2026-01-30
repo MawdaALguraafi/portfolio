@@ -1113,6 +1113,62 @@ html[data-theme="light"] .footer-bottom{
   transform: translateX(4px);
 }
 
+/* Center single skill card */
+.skill-center{
+  grid-column: 1 / -1;   /* ياخذ عرض الشبكة كامل */
+  max-width: 520px;
+  margin: 0 auto;
+}
+/* =========================
+   IMPACT / ACHIEVEMENTS
+   ========================= */
+#impact{
+  padding: 60px 0;
+}
+
+.impact-grid{
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.impact-card{
+  border-radius: 18px;
+  border: 1px solid rgba(163,107,255,.18);
+  background: linear-gradient(180deg, rgba(24,9,40,.75), rgba(14,5,26,.75));
+  box-shadow: var(--shadow2);
+  padding: 26px 16px;
+  text-align: center;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.impact-card:hover{
+  transform: translateY(-6px);
+  border-color: rgba(163,107,255,.35);
+  box-shadow: 0 22px 44px rgba(0,0,0,.45);
+}
+
+.impact-card h3{
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: rgba(236,231,255,.98);
+  letter-spacing: -.3px;
+}
+
+.impact-card p{
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Responsive */
+@media (max-width: 768px){
+  .impact-grid{
+    grid-template-columns: 1fr;
+  }
+}
 
 </style>
 
@@ -1181,14 +1237,11 @@ html[data-theme="light"] .footer-bottom{
            download="MawdaAlguraafi_CV.pdf">
           <span data-i18n="btn_download_cv">Download My CV</span>
         </a>
+<a class="btn primary" href="mailto:MawdaALguraafi@gmail.com">
+  Connect Me
+</a>
 
-        <a class="btn primary"
-           href="https://github.com/MawdaALguraafi"
-           target="_blank"
-           rel="noopener">
-          GitHub
-        </a>
-      </div>
+
 
       <div class="orbit-image-wrap" aria-hidden="true" data-animate="up" class="delay-4">
         <img src="Image/Skills.png" alt="" class="orbit-image">
@@ -1214,6 +1267,7 @@ html[data-theme="light"] .footer-bottom{
     </div>
   </div>
 </section>
+
 
 <!-- SKILLS -->
 <section id="skills">
@@ -1244,7 +1298,7 @@ html[data-theme="light"] .footer-bottom{
           <div>
             <h4 data-i18n="skill_data_title">Data Analysis & Visualization</h4>
             <small data-i18n="skill_data_desc">
-              Data Cleaning, Exploratory Data Analysis (EDA), Power BI, Streamlit, FastAPI
+              Data Cleaning, Exploratory Data Analysis (EDA), Power BI, Streamlit, FastAPI,Tableau
             </small>
           </div>
         </div>
@@ -1301,6 +1355,20 @@ html[data-theme="light"] .footer-bottom{
           </div>
         </div>
       </div>
+<div class="skill skill-center" data-animate="up" class="delay-3">
+  <div class="skill-top">
+    <div class="ico">
+      <img src="Image/109.png" alt="Reporting Tools">
+    </div>
+    <div>
+      <h4 data-i18n="skill_report_title">Reporting Tools</h4>
+      <small data-i18n="skill_report_desc">
+        SAP Information Design Tool (IDT), Web Intelligence (WebI)
+      </small>
+    </div>
+  </div>
+</div>
+
 
     </div>
   </div>
@@ -1473,6 +1541,62 @@ html[data-theme="light"] .footer-bottom{
           </div>
         </div>
       </article>
+<!-- Card 4 -->
+<article class="card" data-animate="up" class="delay-2">
+  <div class="thumb">
+    <img src="Image/7.png" alt="Uber Data Analysis Dashboard">
+  </div>
+
+  <h3 data-i18n="uber_title">
+    Uber Data Analysis Dashboard – Power BI
+  </h3>
+
+  <p data-i18n="uber_desc">
+    A Power BI dashboard that analyzes Uber booking performance and customer behavior,
+    including booking status, payment methods, and monthly trends.
+  </p>
+
+  <div class="card-actions">
+    <a class="btn mini primary" href="projects.html#uber">
+      <span data-i18n="btn_view_project">View My Project</span>
+    </a>
+
+    <div class="icons">
+      <a class="iconbtn"
+         href="https://github.com/MawdaALguraafi/Uber-Data-Analysis-Power-BI"
+         target="_blank"
+         rel="noopener"
+         title="GitHub">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2C6.5 2 2 6.6 2 12.3c0 4.5 2.9 8.4 6.8 9.7
+            .5.1.7-.2.7-.5v-1.7
+            c-2.8.6-3.4-1.4-3.4-1.4
+            -.4-1.2-1.1-1.5-1.1-1.5
+            -.9-.6.1-.6.1-.6
+            1 .1 1.5 1.1 1.5 1.1
+            .9 1.6 2.4 1.1 3 .9
+            .1-.7.4-1.1.6-1.4
+            -2.2-.3-4.6-1.2-4.6-5.1
+            0-1.1.4-2 1-2.7
+            -.1-.3-.4-1.3.1-2.7
+            0 0 .8-.3 2.7 1
+            .8-.2 1.7-.3 2.5-.3
+            .9 0 1.7.1 2.5.3
+            1.9-1.3 2.7-1 2.7-1
+            .5 1.4.2 2.4.1 2.7
+            .6.7 1 1.6 1 2.7
+            0 3.9-2.4 4.8-4.7 5.1
+            .4.3.7.9.7 1.9v2.8
+            c0 .3.2.6.7.5
+            3.9-1.3 6.8-5.2 6.8-9.7
+            C22 6.6 17.5 2 12 2z"
+            fill="currentColor"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</article>
+
 
     </div>
   </div>
@@ -1560,7 +1684,7 @@ html[data-theme="light"] .footer-bottom{
 
           <!-- GitHub -->
           <a class="iconbtn"
-             href="https://github.com/"
+             href="https://github.com/MawdaALguraafi"
              target="_blank"
              rel="noopener"
              title="GitHub"
@@ -1643,6 +1767,9 @@ html[data-theme="light"] .footer-bottom{
       skill_front_desc: "HTML, CSS",
       skill_design_title: "Design",
       skill_design_desc: "Figma, Canva",
+      skill_report_title: "Reporting Tools",
+skill_report_desc: "SAP Information Design Tool (IDT), Web Intelligence (WebI)",
+
 
       projects_title: "Featured Projects",
       projects_subhead: "A selection of projects across AI, data analysis, and interactive dashboards.",
@@ -1656,6 +1783,8 @@ html[data-theme="light"] .footer-bottom{
       p3_title: "E-Commerce Customer Behavior Dashboard",
       p3_desc: "An interactive dashboard designed to analyze customer purchasing behavior in e-commerce, exploring sales performance, satisfaction, and social influence.",
       btn_more_projects: "View All Projects",
+uber_title: "Uber Data Analysis Dashboard – Power BI",
+uber_desc: "A Power BI dashboard that analyzes Uber booking performance and customer behavior, including booking status, payment methods, and monthly trends.",
 
       footer_tagline: "Data & AI | Analytics | Dashboard Development",
       footer_quick: "Quick Links",
@@ -1694,6 +1823,8 @@ html[data-theme="light"] .footer-bottom{
       skill_front_desc: "HTML، CSS",
       skill_design_title: "التصميم",
       skill_design_desc: "Figma، Canva",
+skill_report_title: "أدوات التقارير",
+skill_report_desc: "SAP Information Design Tool (IDT)، Web Intelligence (WebI)",
 
       projects_title: "أبرز المشاريع",
       projects_subhead: "مجموعة مختارة من المشاريع في الذكاء الاصطناعي وتحليل البيانات ولوحات المعلومات التفاعلية.",
@@ -1707,6 +1838,8 @@ html[data-theme="light"] .footer-bottom{
       p3_title: "لوحة سلوك عملاء التجارة الإلكترونية",
       p3_desc: "لوحة تفاعلية لتحليل سلوك الشراء في التجارة الإلكترونية واستكشاف الأداء والرضا والتأثير الاجتماعي.",
       btn_more_projects: "عرض جميع المشاريع",
+uber_title: "لوحة تحليل بيانات أوبر – Power BI",
+uber_desc: "لوحة معلومات باستخدام Power BI لتحليل أداء حجوزات أوبر وسلوك العملاء، بما يشمل حالة الحجوزات وطرق الدفع والاتجاهات الشهرية.",
 
       footer_tagline: "البيانات والذكاء الاصطناعي | التحليلات | تطوير لوحات المعلومات",
       footer_quick: "روابط سريعة",
