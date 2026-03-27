@@ -171,6 +171,13 @@ def get_custom_answer(question: str, lang: str):
         "education", "bachelor", "degree", "academic background", "qualification", "qualifications"
     ]
 
+    skills_terms_ar = [
+        "مهارات", "المهارات", "مهاراتها", "المهارات التقنية", "المهارات التقنيه"
+    ]
+    skills_terms_en = [
+        "skills", "technical skills"
+    ]
+
     nabahah_terms = [
         "نباهه", "نباهة", "nabahah", "lab safety", "laboratory safety"
     ]
@@ -186,6 +193,23 @@ def get_custom_answer(question: str, lang: str):
 
     if any(term in q for term in [normalize_text(x) for x in education_terms_en]):
         return "Mawda holds a Bachelor’s degree in Computer Science from Taibah University with a GPA of 4.88 and First Class Honors."
+
+    if any(term in q for term in [normalize_text(x) for x in skills_terms_ar]):
+        return (
+            "تمتلك مودة مهارات في Java وPython وSQL، وتحليل البيانات وتصورها باستخدام "
+            "Data Cleaning وEDA وPower BI وStreamlit وFastAPI وTableau، بالإضافة إلى "
+            "مهارات تعلم الآلة مثل Scikit-learn وModel Training وModel Evaluation، "
+            "وأدوات مثل Excel وWord وFigma وCanva وSAP Web Intelligence (WebI) وIDT."
+        )
+
+    if any(term in q for term in [normalize_text(x) for x in skills_terms_en]):
+        return (
+            "Mawda has skills in Java, Python, and SQL, as well as data analysis and "
+            "visualization using Data Cleaning, EDA, Power BI, Streamlit, FastAPI, and Tableau. "
+            "She also has machine learning skills in Scikit-learn, Model Training, and "
+            "Model Evaluation, in addition to tools such as Excel, Word, Figma, Canva, "
+            "SAP Web Intelligence (WebI), and IDT."
+        )
 
     if any(term in q for term in [normalize_text(x) for x in nabahah_terms]):
         if lang == "ar":
@@ -216,6 +240,10 @@ def get_direct_kb_answer(question: str, lang: str):
         "تعليم", "التعليم", "دراسه", "الدراسه", "دراسة", "الدراسة",
         "بكالوريوس", "البكالوريوس", "education", "bachelor", "degree",
         "academic background", "qualification", "qualifications"
+    }
+    skills_terms = {
+        "مهارات", "المهارات", "مهاراتها", "المهارات التقنية", "المهارات التقنيه",
+        "skills", "technical skills"
     }
 
     if q in gpa_terms:
@@ -263,6 +291,40 @@ def get_direct_kb_answer(question: str, lang: str):
 
             combined = []
             for item in education_items:
+                content = extract_language_content(item.get("content", ""), lang)
+                if content:
+                    combined.append(content)
+
+            if combined:
+                return "\n\n".join(combined)
+
+    if q in skills_terms:
+        skill_items = []
+
+        for item in KB:
+            category = normalize_text(item.get("category", ""))
+            title = normalize_text(item.get("title", ""))
+            content = normalize_text(item.get("content", ""))
+
+            if (
+                category == "skills"
+                or "skills" in title
+                or "technical skills" in title
+                or any(term in content for term in [
+                    "python", "sql", "java", "power bi", "tableau",
+                    "streamlit", "fastapi", "scikit", "excel", "word",
+                    "figma", "canva", "webi", "idt"
+                ])
+            ):
+                skill_items.append(item)
+
+        if skill_items:
+            direct_multi = format_multi_item_response(skill_items, lang)
+            if direct_multi:
+                return direct_multi
+
+            combined = []
+            for item in skill_items:
                 content = extract_language_content(item.get("content", ""), lang)
                 if content:
                     combined.append(content)
