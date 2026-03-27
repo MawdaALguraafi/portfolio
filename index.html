@@ -2378,16 +2378,19 @@ html[data-theme="light"] .nav-item::before{
     font-size: 11px;
     line-height: 1.55;
   }
-/* ❌ إزالة الدائرة في اللايت */
+
+
+}
+/* ❌ حذف الدائرة في اللايت */
 html[data-theme="light"] .nav-item::before{
+  content: none !important;
   display: none !important;
 }
 
-/* ❌ منع ظهورها عند hover */
+/* ❌ تأكيد إلغاء hover */
 html[data-theme="light"] .nav-item:hover::before{
+  content: none !important;
   display: none !important;
-}
-
 }
 </style>
 
