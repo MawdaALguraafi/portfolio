@@ -81,7 +81,7 @@ def remove_markdown_format(text: str) -> str:
     text = re.sub(r"(?m)^\s*#{1,6}\s*", "", text)
     text = re.sub(r"\*\*(.*?)\*\*", r"\1", text)
     text = re.sub(r"\*(.*?)\*", r"\1", text)
-    text = re.sub(r"__(.*?)__", r"\1", text)
+    text = re.sub(r"__(.*?))__", r"\1", text)
     text = re.sub(r"_(.*?)_", r"\1", text)
     text = re.sub(r"(?m)^\s*[\*\-]\s+", "", text)
     text = re.sub(r"(?m)^\s*>\s*", "", text)
@@ -158,8 +158,8 @@ def is_greeting_only(question: str, lang: str) -> bool:
 def get_custom_answer(question: str, lang: str):
     if is_greeting_only(question, lang):
         if lang == "ar":
-            return "مرحبًا! اسأليني عن مودة، مثل المشاريع، الخبرات، التعليم، أو المهارات."
-        return "Hi! Ask me about Mawda’s projects, experience, education, or skills."
+            return "مرحبًا! اسأليني عن خبراتها، تعليمها، ومهاراتها."
+        return "Hi! Ask me about Mawda’s experience, education, and skills."
 
     return None
 
