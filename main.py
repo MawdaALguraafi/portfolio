@@ -130,20 +130,35 @@ def extract_language_title(title: str, lang: str) -> str:
     return title
 
 
-def get_custom_answer(question: str, lang: str):
+def is_greeting_only(question: str, lang: str) -> bool:
     q = normalize_text(question)
 
-    arabic_greetings = {
-        "هاي", "هلا", "هلاا", "مرحبا", "اهلا", "أهلا",
-        "السلام", "السلام عليكم", "صباح الخير", "مساء الخير"
-    }
-    english_greetings = {
+    arabic_greetings = [
+        "هاي", "هلا", "هلاا", "مرحبا", "اهلا", "السلام",
+        "السلام عليكم", "صباح الخير", "مساء الخير"
+    ]
+    english_greetings = [
         "hi", "hello", "hey", "good morning", "good evening"
-    }
+    ]
 
-    if lang == "ar" and q in {normalize_text(x) for x in arabic_greetings}:
-        return "مرحبًا! اسأليني عن مودة، مثل المشاريع، الخبرات، التعليم، المهارات."
-    if lang == "en" and q in {normalize_text(x) for x in english_greetings}:
+    greetings = arabic_greetings if lang == "ar" else english_greetings
+    normalized_greetings = [normalize_text(x) for x in greetings]
+
+    for greet in normalized_greetings:
+        if q == greet:
+            return True
+        if q.startswith(greet + " "):
+            remaining = q[len(greet):].strip()
+            if len(remaining.split()) <= 2:
+                return True
+
+    return False
+
+
+def get_custom_answer(question: str, lang: str):
+    if is_greeting_only(question, lang):
+        if lang == "ar":
+            return "مرحبًا! اسأليني عن مودة، مثل المشاريع، الخبرات، التعليم، أو المهارات."
         return "Hi! Ask me about Mawda’s projects, experience, education, or skills."
 
     return None
@@ -152,28 +167,62 @@ def get_custom_answer(question: str, lang: str):
 def get_direct_kb_answer(question: str, lang: str):
     q = normalize_text(question)
 
-    if q not in {"معدل", "المعدل", "gpa"}:
-        return None
+    gpa_terms = {"معدل", "المعدل", "gpa", "cgpa"}
+    education_terms = {
+        "تعليم", "التعليم", "دراسه", "الدراسه", "دراسة", "الدراسة",
+        "بكالوريوس", "البكالوريوس", "education", "bachelor", "degree",
+        "academic background", "qualification", "qualifications"
+    }
 
-    best_match = None
+    if q in gpa_terms:
+        for item in KB:
+            title = normalize_text(item.get("title", ""))
+            content = normalize_text(item.get("content", ""))
+            category = normalize_text(item.get("category", ""))
 
-    for item in KB:
-        title = normalize_text(item.get("title", ""))
-        content = normalize_text(item.get("content", ""))
-        category = normalize_text(item.get("category", ""))
+            if (
+                "gpa" in title
+                or "gpa" in content
+                or "4.88" in content
+                or "first class honors" in content
+                or ("education" == category and ("4.88" in content or "gpa" in content))
+            ):
+                best_match = extract_language_content(item.get("content", ""), lang)
+                if best_match:
+                    return best_match
 
-        if (
-            "gpa" in title
-            or "gpa" in content
-            or "4.88" in content
-            or "first class honors" in content
-            or ("education" == category and ("4.88" in content or "gpa" in content))
-        ):
-            best_match = extract_language_content(item.get("content", ""), lang)
-            if best_match:
-                break
+    if q in education_terms:
+        education_items = []
+        for item in KB:
+            category = normalize_text(item.get("category", ""))
+            title = normalize_text(item.get("title", ""))
+            content = normalize_text(item.get("content", ""))
 
-    return best_match
+            if (
+                category == "education"
+                or "bachelor" in title
+                or "bachelor" in content
+                or "computer science" in content
+                or "taibah" in content
+                or "bootcamp" in content
+                or "tuwaiq" in content
+            ):
+                education_items.append(item)
+
+        if education_items:
+            direct_multi = format_multi_item_response(education_items, lang)
+            if direct_multi:
+                return direct_multi
+
+            combined = []
+            for item in education_items:
+                content = extract_language_content(item.get("content", ""), lang)
+                if content:
+                    combined.append(content)
+            if combined:
+                return "\n\n".join(combined)
+
+    return None
 
 
 def expand_query_words(question: str):
@@ -197,8 +246,8 @@ def expand_query_words(question: str):
         "خبرة": ["experience", "work", "responsibilities"],
         "الخبره": ["experience", "work", "responsibilities"],
         "الخبرة": ["experience", "work", "responsibilities"],
-        "تشتغل": ["work", "job", "experience", "data analyst", "elm"],
-        "تعمل": ["work", "job", "experience", "data analyst", "elm"],
+        "تشتغل": ["work", "job", "experience", "data analyst", "ssm"],
+        "تعمل": ["work", "job", "experience", "data analyst", "ssm"],
         "وظيفه": ["job", "work", "data analyst"],
         "وظيفة": ["job", "work", "data analyst"],
         "مسؤوليات": ["responsibilities", "tasks"],
@@ -218,10 +267,12 @@ def expand_query_words(question: str):
         "أدلة": ["evidence", "digital evidence"],
 
         "تعليم": ["education", "bachelor", "bootcamp", "university"],
+        "التعليم": ["education", "bachelor", "bootcamp", "university"],
         "دراسه": ["education", "bachelor", "bootcamp", "university"],
         "دراسة": ["education", "bachelor", "bootcamp", "university"],
         "مؤهلات": ["education", "bachelor", "bootcamp"],
         "بكالوريوس": ["bachelor", "computer science", "taibah university"],
+        "البكالوريوس": ["bachelor", "computer science", "taibah university"],
         "معسكر": ["bootcamp", "tuwaiq academy", "data science", "ai bootcamp"],
         "طويق": ["tuwaiq academy", "bootcamp"],
 
@@ -264,8 +315,7 @@ def expand_query_words(question: str):
         "ايرادات": ["revenue", "tracking dashboard", "product and region", "power bi"],
         "إيرادات": ["revenue", "tracking dashboard", "product and region", "power bi"],
 
-        "elm": ["data analyst", "tableau", "power bi", "webi", "idt", "sql server"],
-        "علم": ["elm", "data analyst", "tableau", "power bi", "webi", "idt", "sql server"],
+        "ssm": ["data analyst", "tableau", "power bi", "webi", "idt", "sql server"],
 
         "xry": ["xry", "xamn", "md-next", "md-red"],
         "xamn": ["xry", "xamn", "md-next", "md-red"],
@@ -302,6 +352,19 @@ def expand_query_words(question: str):
             "figma", "canva", "webi", "idt"
         ])
 
+    if (
+        "تعليم" in joined_q
+        or "دراسة" in joined_q
+        or "دراسه" in joined_q
+        or "بكالوريوس" in joined_q
+        or "education" in joined_q
+        or "bachelor" in joined_q
+    ):
+        expanded.update([
+            "education", "bachelor", "computer science",
+            "taibah university", "bootcamp", "tuwaiq academy"
+        ])
+
     if "معدل" in joined_q or "gpa" in joined_q:
         expanded.update(["gpa", "4.88", "first class honors", "taibah university"])
 
@@ -325,21 +388,23 @@ def detect_broad_category(question: str):
         "وش خبراتها", "ما هي الخبرات"
     ]
     education_terms = [
-        "كل التعليم", "التعليم", "education", "academic background",
-        "الدراسه", "الدراسة", "المؤهلات", "المؤهل", "اعرض التعليم"
+        "كل التعليم", "التعليم", "تعليم", "education", "academic background",
+        "الدراسه", "الدراسة", "دراسه", "دراسة",
+        "المؤهلات", "المؤهل", "اعرض التعليم",
+        "بكالوريوس", "البكالوريوس", "bachelor", "degree"
     ]
     skills_terms = [
         "المهارات", "كل المهارات", "المهارات التقنية", "المهارات التقنيه",
         "technical skills", "skills", "وش مهاراتها", "اذكر المهارات"
     ]
 
-    if any(normalize_text(term) in q for term in project_terms):
+    if any(normalize_text(term) == q for term in project_terms):
         return {"mode": "category", "categories": {"project", "projects"}}
-    if any(normalize_text(term) in q for term in experience_terms):
+    if any(normalize_text(term) == q for term in experience_terms):
         return {"mode": "category", "categories": {"experience"}}
-    if any(normalize_text(term) in q for term in education_terms):
+    if any(normalize_text(term) == q for term in education_terms):
         return {"mode": "category", "categories": {"education"}}
-    if any(normalize_text(term) in q for term in skills_terms):
+    if any(normalize_text(term) == q for term in skills_terms):
         return {"mode": "category", "categories": {"skills"}}
 
     return None
@@ -417,6 +482,14 @@ def retrieve_chunks(question: str, top_k: int = 8):
         if any(x in q for x in ["مهارات", "skills", "تقنيه", "تقنية", "تولز", "ادوات", "أدوات"]):
             if category == "skills":
                 score += 12
+
+        if any(x in q for x in ["تعليم", "التعليم", "دراسة", "دراسه", "بكالوريوس", "education", "bachelor", "degree"]):
+            if category == "education":
+                score += 15
+            if any(term in normalized_content for term in [
+                "bachelor", "computer science", "taibah", "bootcamp", "tuwaiq"
+            ]):
+                score += 10
 
         if any(x in q for x in ["تستخدم", "استخدمت", "tools", "uses", "technologies"]):
             if any(tool_word in normalized_content for tool_word in [
@@ -702,6 +775,7 @@ async def generate_rag_answer(question: str, context: str, lang: str):
 - إذا كان السؤال عن أكثر من عنصر، فافصل بينها بوضوح، ولا تدمجها في فقرة واحدة.
 - إذا كان السؤال عن التدريب، فاذكر ما قامت به مودة أثناء التدريب والأدوات التي استخدمتها إذا كانت موجودة في السياق.
 - إذا كان السؤال عن الخبرة، فاذكر المسؤوليات والأدوات أو التقنيات المستخدمة إذا كانت موجودة في السياق.
+- إذا كان السؤال عن التعليم أو البكالوريوس، فاذكر المؤهل والجهة التعليمية والتفاصيل الموجودة في السياق فقط.
 - إذا كان السؤال عن المهارات التقنية، فاذكرها بشكل واضح ومنظم.
 - إذا كانت الإجابة موزعة على أكثر من عنصر في السياق، فادمجها في إجابة طبيعية دون تكرار، لكن لا تخلط بين العناصر المختلفة.
 - إذا طلب المستخدم "كل المشاريع" أو "كل الخبرات" أو "كل التعليم" أو "كل المهارات"، فاعرض جميع العناصر الموجودة في السياق بشكل مفصول وواضح.
@@ -733,6 +807,7 @@ Strict rules:
 - If the user asks about multiple items, separate them clearly and do not merge them into one paragraph.
 - If the user asks about the internship, mention what Mawda did during the internship and the tools she used if they appear in the context.
 - If the user asks about experience, mention the responsibilities and the tools or technologies used if they appear in the context.
+- If the user asks about education or bachelor’s degree, mention only the qualification and details explicitly found in the context.
 - If the user asks about technical skills, present them clearly.
 - If the answer is spread across multiple context items, combine it naturally without repetition, but do not mix different items together.
 - If the user asks for all projects, all experience, all education, or all skills, list all relevant items from the context clearly and separately.
