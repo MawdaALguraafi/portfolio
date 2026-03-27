@@ -2279,59 +2279,80 @@ html[data-theme="light"] .user-msg{
   }
 }
 
-@media (max-width: 480px){
+/* ===== MOBILE TIMELINE FIX ===== */
+/* =========================
+   TIMELINE MOBILE ALIGN FIX
+   ========================= */
+
+/* ===== MOBILE TIMELINE FIX ===== */
+
+/* 📱 تحت 768 */
+@media (max-width: 768px){
+
   .timeline-modern article,
   html[dir="rtl"] .timeline-modern article,
   html[dir="rtl"] .timeline-modern article:nth-child(odd),
   html[dir="rtl"] .timeline-modern article:nth-child(even){
-    padding: 0 0 16px 38px !important;
+    padding: 0 14px 18px 42px !important; /* 👈 زدنا يمين */
+  }
+
+  .timeline-modern::before{
+    left: 18px !important;
+  }
+
+  .timeline-modern article::before{
+    left: 11px !important;
+  }
+
+  /* الكروت */
+  .timeline-card,
+  .edu-card{
+    width: 100%;
+    padding: 10px 9px;
+    border-radius: 12px;
+  }
+
+  .timeline-head h3,
+  .edu-card h3{
+    font-size: 12px;
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+
+  .timeline-meta{
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .exp-list{
+    gap: 5px;
+    margin-top: 6px;
+  }
+
+  .exp-list li,
+  .timeline-card p,
+  .edu-card p{
+    font-size: 10.5px;
+    line-height: 1.5;
+  }
+}
+
+
+/* 📱📱 تحت 480 */
+@media (max-width: 480px){
+
+  .timeline-modern article{
+    padding: 0 25px 16px 38px !important; /* 👈 فراغ يمين أوضح */
   }
 
   .timeline-modern::before{
     left: 16px !important;
   }
 
-  .timeline-modern article::before,
-  html[dir="rtl"] .timeline-modern article::before{
+  .timeline-modern article::before{
     left: 9px !important;
   }
 
- @media (max-width: 768px){
-  .timeline-card,
-  .edu-card{
-    width: 100%;
-    padding: 13px 11px;
-    border-radius: 14px;
-  }
-
-  .timeline-head h3,
-  .edu-card h3{
-    font-size: 13px;
-    line-height: 1.4;
-    margin-bottom: 4px;
-  }
-
-  .timeline-meta{
-    display: block;
-    font-size: 11px;
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-
-  .exp-list{
-    gap: 6px;
-    margin-top: 8px;
-  }
-
-  .exp-list li,
-  .timeline-card p,
-  .edu-card p{
-    font-size: 11.5px;
-    line-height: 1.6;
-  }
- }
-}
-@media (max-width: 480px){
   .timeline-card,
   .edu-card{
     padding: 11px 10px;
@@ -2353,8 +2374,8 @@ html[data-theme="light"] .user-msg{
     font-size: 11px;
     line-height: 1.55;
   }
-}
 
+}
 </style>
 
 
@@ -3408,7 +3429,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatSendBtn = chatForm?.querySelector("button[type='submit']");
 
   let isSending = false;
-  const API_URL = "https://portfolio-51eu.onrender.com";
+  const API_URL = "https://portfolio2-4xs8.onrender.com/api/chat";
 
   function openChat() {
     chatWindow?.classList.remove("hidden");
