@@ -2378,6 +2378,15 @@ html[data-theme="light"] .nav-item::before{
     font-size: 11px;
     line-height: 1.55;
   }
+/* ❌ إزالة الدائرة في اللايت */
+html[data-theme="light"] .nav-item::before{
+  display: none !important;
+}
+
+/* ❌ منع ظهورها عند hover */
+html[data-theme="light"] .nav-item:hover::before{
+  display: none !important;
+}
 
 }
 </style>
