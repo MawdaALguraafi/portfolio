@@ -2381,19 +2381,11 @@ html[data-theme="light"] .nav-item::before{
 
 
 }
-/* ❌ حذف الدائرة في اللايت */
-html[data-theme="light"] .nav-item::before{
-  content: none !important;
-  display: none !important;
-}
-
-/* ❌ تأكيد إلغاء hover */
-html[data-theme="light"] .nav-item:hover::before{
-  content: none !important;
-  display: none !important;
-}
-.nav-item::before{
-  display: none !important;
+/* ❌ إزالة الخلفية البنفسجية من Home في اللايت */
+html[data-theme="light"] .nav-item.active{
+  background: transparent !important;
+  box-shadow: none !important;
+  color: rgba(20,18,37,.90) !important;
 }
     
 </style>
